@@ -4,12 +4,13 @@ This API uses Basic Authentication for its authentication.
 ### Authentication Test [GET]
 
 + Request (application/json)
+
     + Headers
 
-            Authorization:Basic {{basic_token}}
-            Accept:application/json
+:[](headers/basic.apib)
 
 + Response 200
+
     + Headers
 
 :[](headers/ratelimit.apib)
@@ -21,6 +22,7 @@ This API uses Basic Authentication for its authentication.
             }
 
 + Response 401
+
     + Headers
     
 :[](headers/ratelimit.apib)
@@ -34,6 +36,7 @@ This API uses Basic Authentication for its authentication.
             }
 
 + Response 403
+
     + Headers
     
 :[](headers/ratelimit.apib)

@@ -11,12 +11,14 @@ This API uses Basic Authentication for its authentication.
 ### Authentication Test [GET]
 
 + Request (application/json)
+
     + Headers
 
             Authorization:Basic {{basic_token}}
             Accept:application/json
 
 + Response 200
+
     + Headers
 
             X-RateLimit-Limit:60
@@ -30,6 +32,7 @@ This API uses Basic Authentication for its authentication.
             }
 
 + Response 401
+
     + Headers
     
             X-RateLimit-Limit:60
@@ -45,6 +48,7 @@ This API uses Basic Authentication for its authentication.
             }
 
 + Response 403
+
     + Headers
     
             X-RateLimit-Limit:60
@@ -268,8 +272,6 @@ Fetch ads report for a source and `account_id`.
     
             Authorization:Basic {{basic_token}}
             Accept:application/json
-
-
 
 
 + Response 200 
@@ -702,7 +704,6 @@ Fetch sections report for a source and `account_id`; optionally with `campaign_i
 
 
 
-
 + Response 200 
 
 
@@ -763,14 +764,13 @@ List all rules.
 
 
 
-
 + Response 200 
 
     + Headers
 
             X-RateLimit-Limit:60
             X-RateLimit-Remaining:59
-            X-Request-Id:17f276d3-0b94-4b6e-ad8f-075fac502aaf
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
     + Attributes (object)
 
