@@ -1,0 +1,49 @@
+{
+    "results": [
+        {
+            "vendor_campaign": "85adef34d6a87d00c54fdb561dcc5e0b59",
+            "vendor_ad": "c0e425ea1becbadf1864dd0aa33e87d71b",
+            "name": "test-ad-1",
+            "ctr": "0.0075",
+            "ecpc": "0.0200",
+            "cost": "4.4000",
+            "cpa": "0.0000",
+            "icr": "0.000000",
+            "impressions": 29266,
+            "clicks": 220,
+            "conversions": 0
+        },
+        {
+            "vendor_campaign": "85adef34d6a87d00c54fdb561dcc5e0b59",
+            "vendor_ad": "6a3c34102c0694384646005ae4c363ca57",
+            "name": "test-ad-2",
+            "ctr": "0.0069",
+            "ecpc": "0.0450",
+            "cost": "12.0700",
+            "cpa": "0.0158",
+            "icr": "0.019779",
+            "impressions": 38677,
+            "clicks": 268,
+            "conversions": 765
+        },
+        {
+            "vendor_campaign": "095a5a268d1424ac39d82c49f8365a8f4a",
+            "vendor_ad": "5f09f9526ada9e8ad51682e0f24fdbafe6",
+            "name": "test-ad-3",
+            "ctr": "0.0059",
+            "ecpc": "0.0200",
+            "cost": "2.4200",
+            "cpa": "2.4200",
+            "icr": "0.000049",
+            "impressions": 20517,
+            "clicks": 121,
+            "conversions": 1
+        }
+    ],
+    "pagination": {
+        "offset": 0,
+        "limit": 100,
+        "count": 3,
+        "total": 3
+    }
+}

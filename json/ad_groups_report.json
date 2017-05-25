@@ -1,0 +1,52 @@
+{
+    "results": [
+        {
+            "vendor_marketer": "123456",
+            "vendor_campaign": "597866360",
+            "vendor_ad_group": "8652979185",
+            "name": "Ad Group Test 1",
+            "ctr": null,
+            "ecpc": null,
+            "cost": null,
+            "cpa": null,
+            "icr": null,
+            "impressions": null,
+            "clicks": null,
+            "conversions": null
+        },
+        {
+            "vendor_marketer": "123456",
+            "vendor_campaign": "597866360",
+            "vendor_ad_group": "7442813551",
+            "name": "Ad Group Test 2",
+            "ctr": null,
+            "ecpc": null,
+            "cost": null,
+            "cpa": null,
+            "icr": null,
+            "impressions": null,
+            "clicks": null,
+            "conversions": null
+        },
+        {
+            "vendor_marketer": "123457",
+            "vendor_campaign": "654969786",
+            "vendor_ad_group": "3516309393",
+            "name": "Ad Group Test 3",
+            "ctr": null,
+            "ecpc": null,
+            "cost": null,
+            "cpa": null,
+            "icr": null,
+            "impressions": null,
+            "clicks": null,
+            "conversions": null
+        }
+    ],
+    "pagination": {
+        "offset": 0,
+        "limit": 100,
+        "count": 3,
+        "total": 3
+    }
+}

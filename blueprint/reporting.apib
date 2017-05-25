@@ -32,55 +32,7 @@ Fetch ads report for a source and `account_id`.
 
     + Body
 
-            {
-                "results": [
-                    {
-                        "vendor_campaign": "85adef34d6a87d00c54fdb561dcc5e0b59",
-                        "vendor_ad": "c0e425ea1becbadf1864dd0aa33e87d71b",
-                        "name": "test-ad-1",
-                        "ctr": "0.0075",
-                        "ecpc": "0.0200",
-                        "cost": "4.4000",
-                        "cpa": "0.0000",
-                        "icr": "0.000000",
-                        "impressions": 29266,
-                        "clicks": 220,
-                        "conversions": 0
-                    },
-                    {
-                        "vendor_campaign": "85adef34d6a87d00c54fdb561dcc5e0b59",
-                        "vendor_ad": "6a3c34102c0694384646005ae4c363ca57",
-                        "name": "test-ad-2",
-                        "ctr": "0.0069",
-                        "ecpc": "0.0450",
-                        "cost": "12.0700",
-                        "cpa": "0.0158",
-                        "icr": "0.019779",
-                        "impressions": 38677,
-                        "clicks": 268,
-                        "conversions": 765
-                    },
-                    {
-                        "vendor_campaign": "095a5a268d1424ac39d82c49f8365a8f4a",
-                        "vendor_ad": "5f09f9526ada9e8ad51682e0f24fdbafe6",
-                        "name": "test-ad-3",
-                        "ctr": "0.0059",
-                        "ecpc": "0.0200",
-                        "cost": "2.4200",
-                        "cpa": "2.4200",
-                        "icr": "0.000049",
-                        "impressions": 20517,
-                        "clicks": 121,
-                        "conversions": 1
-                    }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 3,
-                    "total": 3
-                }
-            }
+            :[](../json/ads_report.json)
 
 
 ## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
@@ -114,58 +66,8 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
 
     + Body
 
-            {
-                "results": [
-                    {
-                        "vendor_marketer": "123456",
-                        "vendor_campaign": "597866360",
-                        "vendor_ad_group": "8652979185",
-                        "name": "Ad Group Test 1",
-                        "ctr": null,
-                        "ecpc": null,
-                        "cost": null,
-                        "cpa": null,
-                        "icr": null,
-                        "impressions": null,
-                        "clicks": null,
-                        "conversions": null
-                    },
-                    {
-                        "vendor_marketer": "123456",
-                        "vendor_campaign": "597866360",
-                        "vendor_ad_group": "7442813551",
-                        "name": "Ad Group Test 2",
-                        "ctr": null,
-                        "ecpc": null,
-                        "cost": null,
-                        "cpa": null,
-                        "icr": null,
-                        "impressions": null,
-                        "clicks": null,
-                        "conversions": null
-                    },
-                    {
-                        "vendor_marketer": "123457",
-                        "vendor_campaign": "654969786",
-                        "vendor_ad_group": "3516309393",
-                        "name": "Ad Group Test 3",
-                        "ctr": null,
-                        "ecpc": null,
-                        "cost": null,
-                        "cpa": null,
-                        "icr": null,
-                        "impressions": null,
-                        "clicks": null,
-                        "conversions": null
-                    }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 3,
-                    "total": 3
-                }
-            }
+            :[](../json/ad_groups_report.json)
+
 
 ## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
 
@@ -198,72 +100,7 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
 
     + Body
     
-            {
-                "results": [
-                    {
-                        "vendor_campaign": "12345",
-                        "name": "Test Campaign 1",
-                        "ctr": null,
-                        "ecpc": null,
-                        "cost": null,
-                        "cpa": null,
-                        "icr": null,
-                        "impressions": 13838,
-                        "clicks": 3538,
-                        "conversions": 321,
-                        "sessions": null,
-                        "pageviews": null,
-                        "pageviews_per_session": null,
-                        "bounce_rate": null,
-                        "avg_session_duration": null,
-                        "goal_1_completions": null,
-                        "goal_2_completions": null
-                    },
-                    {
-                        "vendor_campaign": "12346",
-                        "name": "Test Campaign 2",
-                        "ctr": null,
-                        "ecpc": null,
-                        "cost": null,
-                        "cpa": null,
-                        "icr": null,
-                        "impressions": 500,
-                        "clicks": 50,
-                        "conversions": 3,
-                        "sessions": null,
-                        "pageviews": null,
-                        "pageviews_per_session": null,
-                        "bounce_rate": null,
-                        "avg_session_duration": null,
-                        "goal_1_completions": null,
-                        "goal_2_completions": null
-                    },
-                    {
-                        "vendor_campaign": "12347",
-                        "name": "Test Campaign 3",
-                        "ctr": null,
-                        "ecpc": null,
-                        "cost": null,
-                        "cpa": null,
-                        "icr": null,
-                        "impressions": 123,
-                        "clicks": 1,
-                        "conversions": 0,
-                        "sessions": null,
-                        "pageviews": null,
-                        "pageviews_per_session": null,
-                        "bounce_rate": null,
-                        "avg_session_duration": null,
-                        "goal_1_completions": null,
-                        "goal_2_completions": null
-                    }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 3,
-                    "total": 3
-            }
+            :[](../json/campaigns_report.json)
 
 
 ## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
@@ -300,85 +137,7 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
 
     + Body
 
-            {
-                "results": [
-                    {
-                        "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
-                        "vendor_marketer": "",
-                        "vendor_campaign": "",
-                        "name": "previously.tv",
-                        "ctr": "0.0136",
-                        "ecpc": "0.8267",
-                        "cost": "548.9100",
-                        "cpa": "274.4550",
-                        "icr": "0.0000",
-                        "impressions": 48902,
-                        "clicks": 664,
-                        "conversions": 2,
-                        "conversion_rate": "0.0030",
-                        "sessions": "522",
-                        "pageviews": "3985",
-                        "pageviews_per_session": "7.6341",
-                        "bounce_rate": "0.0249",
-                        "avg_session_duration": "00:05:54",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "68"
-                    },
-                    {
-                        "vendor_publisher": "00f5489fcb230267aba360a47a9f93b3d6",
-                        "vendor_marketer": "",
-                        "vendor_campaign": "",
-                        "name": "Rebel Circus (Sell It Social)",
-                        "ctr": "0.0161",
-                        "ecpc": "1.2802",
-                        "cost": "649.0700",
-                        "cpa": "649.0700",
-                        "icr": "0.0000",
-                        "impressions": 31475,
-                        "clicks": 507,
-                        "conversions": 1,
-                        "conversion_rate": "0.0020",
-                        "sessions": "275",
-                        "pageviews": "1390",
-                        "pageviews_per_session": "5.0545",
-                        "bounce_rate": "0.0618",
-                        "avg_session_duration": "00:02:40",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "44"
-                    },
-                    {
-                        "vendor_publisher": "00795491b416e2a259b0be2fd2835bbdb0",
-                        "vendor_marketer": "",
-                        "vendor_campaign": "",
-                        "name": "thepoplr (Pitria)",
-                        "ctr": "0.0053",
-                        "ecpc": "0.9360",
-                        "cost": "338.8300",
-                        "cpa": "112.9433",
-                        "icr": "0.0000",
-                        "impressions": 68723,
-                        "clicks": 362,
-                        "conversions": 3,
-                        "conversion_rate": "0.0083",
-                        "sessions": "269",
-                        "pageviews": "1313",
-                        "pageviews_per_session": "4.8810",
-                        "bounce_rate": "0.0483",
-                        "avg_session_duration": "00:05:37",
-                        "goal_1_completions": "3",
-                        "goal_2_completions": "59"
-                    }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 10,
-                    "total": 10
-                }
-            }
-
-
-
+            :[](../json/publishers_report.json)
 
 
 ## Sections Report [/reports/sections{?offset,limit,source,account_id,campaign_id,start_date,end_date}]
@@ -402,6 +161,18 @@ Fetch sections report for a source and `account_id`; optionally with `campaign_i
 
 
 + Response 200 
+    + Headers
+
+        :[](headers/ratelimit.apib)
+    
+    + Attributes
+
+        - `results` (array[SectionsReport])
+        - `pagination` (Pagination)
+
+    + Body
+
+            :[](../json/sections_report.json)
 
 
 
@@ -436,83 +207,5 @@ Fetch targets report for a `source` and `source_account_id`; optionally with `ca
 
     + Body
 
-            {
-                "results": [
-                    {
-                        "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
-                        "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
-                        "vendor_marketer": "",
-                        "vendor_campaign": "",
-                        "name": "previously.tv",
-                        "ctr": "0.0136",
-                        "ecpc": "0.8267",
-                        "cost": "548.9100",
-                        "cpa": "274.4550",
-                        "icr": "0.0000",
-                        "impressions": 48902,
-                        "clicks": 664,
-                        "conversions": 2,
-                        "conversion_rate": "0.0030",
-                        "sessions": "522",
-                        "pageviews": "3985",
-                        "pageviews_per_session": "7.6341",
-                        "bounce_rate": "0.0249",
-                        "avg_session_duration": "00:05:54",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "68"
-                    },
-                    {
-                        "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
-                        "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
-                        "vendor_marketer": "",
-                        "vendor_campaign": "",
-                        "name": "Rebel Circus (Sell It Social)",
-                        "ctr": "0.0161",
-                        "ecpc": "1.2802",
-                        "cost": "649.0700",
-                        "cpa": "649.0700",
-                        "icr": "0.0000",
-                        "impressions": 31475,
-                        "clicks": 507,
-                        "conversions": 1,
-                        "conversion_rate": "0.0020",
-                        "sessions": "275",
-                        "pageviews": "1390",
-                        "pageviews_per_session": "5.0545",
-                        "bounce_rate": "0.0618",
-                        "avg_session_duration": "00:02:40",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "44"
-                    },
-                    {
-                        "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
-                        "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
-                        "vendor_marketer": "",
-                        "vendor_campaign": "",
-                        "name": "thepoplr (Pitria)",
-                        "ctr": "0.0053",
-                        "ecpc": "0.9360",
-                        "cost": "338.8300",
-                        "cpa": "112.9433",
-                        "icr": "0.0000",
-                        "impressions": 68723,
-                        "clicks": 362,
-                        "conversions": 3,
-                        "conversion_rate": "0.0083",
-                        "sessions": "269",
-                        "pageviews": "1313",
-                        "pageviews_per_session": "4.8810",
-                        "bounce_rate": "0.0483",
-                        "avg_session_duration": "00:05:37",
-                        "goal_1_completions": "3",
-                        "goal_2_completions": "59"
-                    }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 10,
-                    "total": 10
-                }
-            }
+            :[](../json/targets_report.json)
 

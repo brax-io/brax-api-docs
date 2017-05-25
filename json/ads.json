@@ -1,0 +1,30 @@
+{
+    "results": [
+        {
+            "id": "1",
+            "vendor_campaign": "12345",
+            "vendor_ad": "342336233",
+            "title": "Brax automates the world",
+            "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1",
+            "image_url": "https://example.com/test_image_1.jpg",
+            "enabled": true,
+            "status": "paused"
+        },
+        {
+            "id": "2",
+            "vendor_campaign": "12345",
+            "vendor_ad": "342336234",
+            "title": "Brax automates the world",
+            "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=2",
+            "image_url": "https://example.com/test_image_2.jpg",
+            "enabled": false,
+            "status": "rejected"
+        }
+    ],
+    "pagination": {
+        "offset": 0,
+        "limit": 100,
+        "count": 2,
+        "total": 2
+    }
+}

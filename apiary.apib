@@ -103,38 +103,38 @@ List all accounts.
         - `pagination` (Pagination)
 
     + Body
-    
-            {
-                "results": [
-                    {
-                        "id": "e010f3346de2e41fed1a288a3ba5cd5e29",
-                        "name": "Selfserve_test_1",
-                        "source": "outbrain",
-                        "created_at": "2016-01-01T01:14:23+00:00",
-                        "updated_at": "2017-05-08T21:47:21+00:00"
-                    },
-                    {
-                        "id": "e010f3346de2e41faa3b288a3ba5cd5e3a",
-                        "name": "Selfserve_test_2",
-                        "source": "outbrain",
-                        "created_at": "2016-01-01T17:16:56+00:00",
-                        "updated_at": "2017-02-21T20:46:20+00:00"
-                    },
-                    {
-                        "id": "revcontent_test_1",
-                        "name": "revcontent_test_1",
-                        "source": "revcontent",
-                        "created_at": "2016-01-01T02:50:16+00:00",
-                        "updated_at": "2017-05-10T04:02:24+00:00"
-                    }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 3,
-                    "total": 3
+
+        {
+            "results": [
+                {
+                    "id": "e010f3346de2e41fed1a288a3ba5cd5e29",
+                    "name": "Selfserve_test_1",
+                    "source": "outbrain",
+                    "created_at": "2016-01-01T01:14:23+00:00",
+                    "updated_at": "2017-05-08T21:47:21+00:00"
+                },
+                {
+                    "id": "e010f3346de2e41faa3b288a3ba5cd5e3a",
+                    "name": "Selfserve_test_2",
+                    "source": "outbrain",
+                    "created_at": "2016-01-01T17:16:56+00:00",
+                    "updated_at": "2017-02-21T20:46:20+00:00"
+                },
+                {
+                    "id": "revcontent_test_1",
+                    "name": "revcontent_test_1",
+                    "source": "revcontent",
+                    "created_at": "2016-01-01T02:50:16+00:00",
+                    "updated_at": "2017-05-10T04:02:24+00:00"
                 }
+            ],
+            "pagination": {
+                "offset": 0,
+                "limit": 100,
+                "count": 3,
+                "total": 3
             }
+        }
 
 
 # Group Ads
@@ -178,36 +178,37 @@ List all ads.
 
     + Body
     
-            {
-              "results": [
-                    {
-                      "id": "1",
-                      "vendor_campaign": "12345",
-                      "vendor_ad": "342336233",
-                      "title": "Brax automates the world",
-                      "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1",
-                      "image_url": "https://example.com/test_image_1.jpg",
-                      "enabled": true,
-                      "status": "paused"
-                    },
-                    {
-                      "id": "2",
-                      "vendor_campaign": "12345",
-                      "vendor_ad": "342336234",
-                      "title": "Brax automates the world",
-                      "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=2",
-                      "image_url": "https://example.com/test_image_2.jpg",
-                      "enabled": false,
-                      "status": "rejected"
-                    }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 2,
-                    "total": 2
+        {
+            "results": [
+                {
+                    "id": "1",
+                    "vendor_campaign": "12345",
+                    "vendor_ad": "342336233",
+                    "title": "Brax automates the world",
+                    "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1",
+                    "image_url": "https://example.com/test_image_1.jpg",
+                    "enabled": true,
+                    "status": "paused"
+                },
+                {
+                    "id": "2",
+                    "vendor_campaign": "12345",
+                    "vendor_ad": "342336234",
+                    "title": "Brax automates the world",
+                    "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=2",
+                    "image_url": "https://example.com/test_image_2.jpg",
+                    "enabled": false,
+                    "status": "rejected"
                 }
+            ],
+            "pagination": {
+                "offset": 0,
+                "limit": 100,
+                "count": 2,
+                "total": 2
             }
+        }
+
 
 # Group Campaigns
 Endpoints to manage campaigns and campaign settings.
@@ -250,6 +251,20 @@ List all campaigns.
 
         - `results` (array[Campaign])
         - `pagination` (Pagination)
+
+    + Body
+
+        {
+            "results": [
+            ],
+            "pagination": {
+                "offset": 0,
+                "limit": 100,
+                "count": 0,
+                "total": 0
+            }
+        }
+
 
 # Group Reporting
 Endpoints for managing reporting of ads, ad groups, campaigns, publishers, sections, and targets.
@@ -447,6 +462,7 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
                 }
             }
 
+
 ## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
 
 ### Campaigns [GET]
@@ -557,6 +573,7 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
                     "limit": 100,
                     "count": 3,
                     "total": 3
+                }
             }
 
 
@@ -687,9 +704,6 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
             }
 
 
-
-
-
 ## Sections Report [/reports/sections{?offset,limit,source,account_id,campaign_id,start_date,end_date}]
 
 ### Sections [GET]
@@ -720,41 +734,6 @@ Fetch sections report for a source and `account_id`; optionally with `campaign_i
         Authorization:Basic {{basic_token}}
         Accept:application/json
 
-
-
-+ Response 200 
-
-
-
-## Targets Report [/reports/targets{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
-
-### Targets [GET]
-Fetch targets report for a `source` and `source_account_id`; optionally with `campaign_id`.
-
-+ Parameters
-    + `offset` (Integer, optional) - starting index of the items to fetch
-        + Default: 0
-    + `limit` (Integer, optional) - maximum number of items to fetch - max: `100`
-        + Default: 100
-    + `source`: "revcontent" (Source, optional) - source name
-        + Sample: "revcontent"
-    + `source_account_id` (SourceID, required) - account id
-        + Sample: "123456789"
-    + `campaign_id` (ID, optional) -
-        + Sample: "987654321"
-    + `start_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: 2017-04-17
-        
-    + `end_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: 2017-05-16
-
-+ Request (application/json)
-    + Headers
-
-        Authorization:Basic {{basic_token}}
-        Accept:application/json
 
 
 + Response 200 
@@ -851,6 +830,64 @@ Fetch targets report for a `source` and `source_account_id`; optionally with `ca
                 }
             }
 
+
+
+## Targets Report [/reports/targets{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+
+### Targets [GET]
+Fetch targets report for a `source` and `source_account_id`; optionally with `campaign_id`.
+
++ Parameters
+    + `offset` (Integer, optional) - starting index of the items to fetch
+        + Default: 0
+    + `limit` (Integer, optional) - maximum number of items to fetch - max: `100`
+        + Default: 100
+    + `source`: "revcontent" (Source, optional) - source name
+        + Sample: "revcontent"
+    + `source_account_id` (SourceID, required) - account id
+        + Sample: "123456789"
+    + `campaign_id` (ID, optional) -
+        + Sample: "987654321"
+    + `start_date` (Date, optional) -
+        + Default: yesterday
+        + Sample: 2017-04-17
+        
+    + `end_date` (Date, optional) -
+        + Default: yesterday
+        + Sample: 2017-05-16
+
++ Request (application/json)
+    + Headers
+
+        Authorization:Basic {{basic_token}}
+        Accept:application/json
+
+
++ Response 200 
+    + Headers
+
+        X-RateLimit-Limit:60
+        X-RateLimit-Remaining:59
+        X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+    
+    + Attributes
+
+        - `results` (array[SectionsReport])
+        - `pagination` (Pagination)
+
+    + Body
+
+            {
+                "results": [
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 0,
+                    "total": 0
+                }
+            }
+
 # Group Rules
 Endpoints to manage rules, rule settings, preview running rules, run rules, and rule job statuses.
 
@@ -885,96 +922,96 @@ List all rules.
 
     + Body
 
-            {
-                "rules": [
-                    {
-                        "id": 132,
-                        "name": "asdf",
-                        "type": "pause_campaign",
-                        "conditions": [
-                            {
-                                "id": 75,
-                                "source": "campaign.cost",
-                                "operator": ">",
-                                "value": "10",
-                                "date_range": "last_7_days"
-                            }
-                        ],
-                        "filters": [
-                            {
-                                "id": 67,
-                                "vendor": "",
-                                "account_name": "",
-                                "campaign_name": ""
-                            }
-                        ]
-                    },
-                    {
-                        "id": 144,
-                        "name": "iuou",
-                        "type": "pause_ad",
-                        "conditions": [
-                            {
-                                "id": 81,
-                                "source": "campaign.cost",
-                                "operator": ">",
-                                "value": "10.00",
-                                "date_range": "last_7_days"
-                            },
-                            {
-                                "id": 86,
-                                "source": "ad.cpa",
-                                "operator": "<",
-                                "value": "8",
-                                "date_range": "last_2_days_inclusive"
-                            }
-                        ],
-                        "filters": [
-                            {
-                                "id": 74,
-                                "vendor": "outbrain",
-                                "account_name": "Selfserve_brax",
-                                "campaign_name": ""
-                            }
-                        ]
-                    },
-                    {
-                        "id": 150,
-                        "name": "pub",
-                        "type": "block_publisher",
-                        "conditions": [
-                            {
-                                "id": 89,
-                                "source": "campaign.cost",
-                                "operator": ">",
-                                "value": "10.00",
-                                "date_range": "last_7_days"
-                            },
-                            {
-                                "id": 90,
-                                "source": "publisher.cost",
-                                "operator": ">",
-                                "value": "0",
-                                "date_range": "last_7_days"
-                            }
-                        ],
-                        "filters": [
-                            {
-                                "id": 80,
-                                "vendor": "",
-                                "account_name": "",
-                                "campaign_name": ""
-                            }
-                        ]
-                    }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 3,
-                    "total": 3
+        {
+            "rules": [
+                {
+                    "id": 132,
+                    "name": "asdf",
+                    "type": "pause_campaign",
+                    "conditions": [
+                        {
+                            "id": 75,
+                            "source": "campaign.cost",
+                            "operator": ">",
+                            "value": "10",
+                            "date_range": "last_7_days"
+                        }
+                    ],
+                    "filters": [
+                        {
+                            "id": 67,
+                            "vendor": "",
+                            "account_name": "",
+                            "campaign_name": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 144,
+                    "name": "iuou",
+                    "type": "pause_ad",
+                    "conditions": [
+                        {
+                            "id": 81,
+                            "source": "campaign.cost",
+                            "operator": ">",
+                            "value": "10.00",
+                            "date_range": "last_7_days"
+                        },
+                        {
+                            "id": 86,
+                            "source": "ad.cpa",
+                            "operator": "<",
+                            "value": "8",
+                            "date_range": "last_2_days_inclusive"
+                        }
+                    ],
+                    "filters": [
+                        {
+                            "id": 74,
+                            "vendor": "outbrain",
+                            "account_name": "Selfserve_brax",
+                            "campaign_name": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 150,
+                    "name": "pub",
+                    "type": "block_publisher",
+                    "conditions": [
+                        {
+                            "id": 89,
+                            "source": "campaign.cost",
+                            "operator": ">",
+                            "value": "10.00",
+                            "date_range": "last_7_days"
+                        },
+                        {
+                            "id": 90,
+                            "source": "publisher.cost",
+                            "operator": ">",
+                            "value": "0",
+                            "date_range": "last_7_days"
+                        }
+                    ],
+                    "filters": [
+                        {
+                            "id": 80,
+                            "vendor": "",
+                            "account_name": "",
+                            "campaign_name": ""
+                        }
+                    ]
                 }
+            ],
+            "pagination": {
+                "offset": 0,
+                "limit": 100,
+                "count": 3,
+                "total": 3
             }
+        }
 
 
 
@@ -1074,61 +1111,61 @@ TODO: Add Description
 
     + Body
 
-            {
-                "jobs": [
-                    {
-                        "id": 32,
-                        "created_at": "2017-05-19T18:46:28+00:00",
-                        "created_by": "Mark Simon",
-                        "rule": {
-                            "name": "asdf",
-                            "type": "pause_campaign"
-                        },
-                        "stats": {
-                            "total": 5,
-                            "remaining": 5,
-                            "successful": 0,
-                            "failed": 0
-                        }
+        {
+            "jobs": [
+                {
+                    "id": 32,
+                    "created_at": "2017-05-19T18:46:28+00:00",
+                    "created_by": "Mark Simon",
+                    "rule": {
+                        "name": "asdf",
+                        "type": "pause_campaign"
                     },
-                    {
-                        "id": 33,
-                        "created_at": "2017-05-19T23:50:52+00:00",
-                        "created_by": "Mark Simon",
-                        "rule": {
-                            "name": "asdf",
-                            "type": "pause_campaign"
-                        },
-                        "stats": {
-                            "total": 5,
-                            "remaining": 5,
-                            "successful": 0,
-                            "failed": 0
-                        }
-                    },
-                    {
-                        "id": 34,
-                        "created_at": "2017-05-20T01:10:28+00:00",
-                        "created_by": "Mark Simon",
-                        "rule": {
-                            "name": "asdf",
-                            "type": "pause_campaign"
-                        },
-                        "stats": {
-                            "total": 2,
-                            "remaining": 2,
-                            "successful": 0,
-                            "failed": 0
-                        }
+                    "stats": {
+                        "total": 5,
+                        "remaining": 5,
+                        "successful": 0,
+                        "failed": 0
                     }
-                ],
-                "pagination": {
-                    "offset": 0,
-                    "limit": 100,
-                    "count": 3,
-                    "total": 3
+                },
+                {
+                    "id": 33,
+                    "created_at": "2017-05-19T23:50:52+00:00",
+                    "created_by": "Mark Simon",
+                    "rule": {
+                        "name": "asdf",
+                        "type": "pause_campaign"
+                    },
+                    "stats": {
+                        "total": 5,
+                        "remaining": 5,
+                        "successful": 0,
+                        "failed": 0
+                    }
+                },
+                {
+                    "id": 34,
+                    "created_at": "2017-05-20T01:10:28+00:00",
+                    "created_by": "Mark Simon",
+                    "rule": {
+                        "name": "asdf",
+                        "type": "pause_campaign"
+                    },
+                    "stats": {
+                        "total": 2,
+                        "remaining": 2,
+                        "successful": 0,
+                        "failed": 0
+                    }
                 }
+            ],
+            "pagination": {
+                "offset": 0,
+                "limit": 100,
+                "count": 3,
+                "total": 3
             }
+        }
 
 
 

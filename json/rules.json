@@ -1,0 +1,91 @@
+{
+    "rules": [
+        {
+            "id": 132,
+            "name": "asdf",
+            "type": "pause_campaign",
+            "conditions": [
+                {
+                    "id": 75,
+                    "source": "campaign.cost",
+                    "operator": ">",
+                    "value": "10",
+                    "date_range": "last_7_days"
+                }
+            ],
+            "filters": [
+                {
+                    "id": 67,
+                    "vendor": "",
+                    "account_name": "",
+                    "campaign_name": ""
+                }
+            ]
+        },
+        {
+            "id": 144,
+            "name": "iuou",
+            "type": "pause_ad",
+            "conditions": [
+                {
+                    "id": 81,
+                    "source": "campaign.cost",
+                    "operator": ">",
+                    "value": "10.00",
+                    "date_range": "last_7_days"
+                },
+                {
+                    "id": 86,
+                    "source": "ad.cpa",
+                    "operator": "<",
+                    "value": "8",
+                    "date_range": "last_2_days_inclusive"
+                }
+            ],
+            "filters": [
+                {
+                    "id": 74,
+                    "vendor": "outbrain",
+                    "account_name": "Selfserve_brax",
+                    "campaign_name": ""
+                }
+            ]
+        },
+        {
+            "id": 150,
+            "name": "pub",
+            "type": "block_publisher",
+            "conditions": [
+                {
+                    "id": 89,
+                    "source": "campaign.cost",
+                    "operator": ">",
+                    "value": "10.00",
+                    "date_range": "last_7_days"
+                },
+                {
+                    "id": 90,
+                    "source": "publisher.cost",
+                    "operator": ">",
+                    "value": "0",
+                    "date_range": "last_7_days"
+                }
+            ],
+            "filters": [
+                {
+                    "id": 80,
+                    "vendor": "",
+                    "account_name": "",
+                    "campaign_name": ""
+                }
+            ]
+        }
+    ],
+    "pagination": {
+        "offset": 0,
+        "limit": 100,
+        "count": 3,
+        "total": 3
+    }
+}
+

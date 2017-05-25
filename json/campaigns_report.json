@@ -1,0 +1,67 @@
+{
+    "results": [
+        {
+            "vendor_campaign": "12345",
+            "name": "Test Campaign 1",
+            "ctr": null,
+            "ecpc": null,
+            "cost": null,
+            "cpa": null,
+            "icr": null,
+            "impressions": 13838,
+            "clicks": 3538,
+            "conversions": 321,
+            "sessions": null,
+            "pageviews": null,
+            "pageviews_per_session": null,
+            "bounce_rate": null,
+            "avg_session_duration": null,
+            "goal_1_completions": null,
+            "goal_2_completions": null
+        },
+        {
+            "vendor_campaign": "12346",
+            "name": "Test Campaign 2",
+            "ctr": null,
+            "ecpc": null,
+            "cost": null,
+            "cpa": null,
+            "icr": null,
+            "impressions": 500,
+            "clicks": 50,
+            "conversions": 3,
+            "sessions": null,
+            "pageviews": null,
+            "pageviews_per_session": null,
+            "bounce_rate": null,
+            "avg_session_duration": null,
+            "goal_1_completions": null,
+            "goal_2_completions": null
+        },
+        {
+            "vendor_campaign": "12347",
+            "name": "Test Campaign 3",
+            "ctr": null,
+            "ecpc": null,
+            "cost": null,
+            "cpa": null,
+            "icr": null,
+            "impressions": 123,
+            "clicks": 1,
+            "conversions": 0,
+            "sessions": null,
+            "pageviews": null,
+            "pageviews_per_session": null,
+            "bounce_rate": null,
+            "avg_session_duration": null,
+            "goal_1_completions": null,
+            "goal_2_completions": null
+        }
+    ],
+    "pagination": {
+        "offset": 0,
+        "limit": 100,
+        "count": 3,
+        "total": 3
+    }
+}
