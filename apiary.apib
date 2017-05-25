@@ -232,11 +232,11 @@ List all campaigns.
         + Default: yahoo
         + Sample: yahoo
 
-    + account_id (string, optional) -
+    + `account_id` (string, optional) -
         + Default: {{account_id}}
         + Sample: {{account_id}}
         
-    + campaign_id (string, optional) -
+    + `campaign_id` (string, optional) -
         + Default: {{campaign_id}}
         + Sample: {{campaign_id}}
 
@@ -264,7 +264,7 @@ Endpoints for managing reporting of ads, ad groups, campaigns, publishers, secti
 ## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,start_date,end_date}]
 
 ### Ads [GET]
-Fetch ads report for a source and account_id.
+Fetch ads report for a source and `account_id`.
 
 + Parameters
     + offset (number, optional) -
@@ -280,11 +280,11 @@ Fetch ads report for a source and account_id.
     + `source_account_id` (SourceID, optional) -
         + Sample: {{account_id}}
         
-    + start_date (Date, optional) -
+    + `start_date` (Date, optional) -
         + Default: yesterday
         + Sample: 2017-04-17
         
-    + end_date (Date, optional) -
+    + `end_date` (Date, optional) -
         + Default: yesterday
         + Sample: 2017-05-16
 
@@ -388,7 +388,7 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
         + Default: yesterday
         + Sample: 2017-04-01
 
-    + end_date (Date, optional) -
+    + `end_date` (Date, optional) -
         + Default: yesterday
         + Sample: 2017-05-17
 
@@ -488,7 +488,7 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
     + start_date (Date, optional) -
         + Sample: 2017-01-01
 
-    + end_date (Date, optional) -
+    + `end_date` (Date, optional) -
         + Sample: 2017-01-31
 
 + Request (application/json)
@@ -603,7 +603,7 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
         + Default: yesterday
         + Sample: "2017-04-16"
 
-    + end_date (Date, optional) -
+    + `end_date` (Date, optional) -
         + Default: yesterday
         + Sample: "2017-05-17"
 
@@ -711,36 +711,35 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
 ## Sections Report [/reports/sections{?offset,limit,source,account_id,campaign_id,start_date,end_date}]
 
 ### Sections [GET]
-Fetch sections report for a source and account_id; optionally with campaign_id.
+Fetch sections report for a source and `account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + offset (number, optional) -
+    + `offset` (number, optional) -
         + Default: 0
         + Sample: 0
         
-    + limit (number, optional) -
+    + `limit` (number, optional) -
         + Default: 100
         + Sample: 100
 
-    + source (Source, optional) - source name
+    + `source` (Source, optional) - source name
         + Default: outbrain
         + Sample: outbrain
 
-    + account_id (string, optional) -
+    + `source_account_id` (SourceID, optional) -
         + Default: {{account_id}}
         + Sample: {{account_id}}
 
-    + campaign_id (string, optional) -
-        + Default: {{campaign_id}}
-        + Sample: {{campaign_id}}
+    + `campaign_id` (ID, optional) -
+        + Sample: 26751
 
-    + start_date (string, optional) -
-        + Default: 2017-04-01
-        + Sample: 2017-04-01
+    + `start_date` (Date, optional) -
+        + Default: yesterday
+        + Sample: "2017-04-01"
 
-    + end_date (string, optional) -
-        + Default: 2017-05-17
-        + Sample: 2017-05-17
+    + `end_date` (Date, optional) -
+        + Default: yesterday
+        + Sample: "2017-05-17"
 
 + Request (application/json)
     + Headers
@@ -808,11 +807,9 @@ List all rules.
 + Parameters
     + offset (number, optional) -
         + Default: 0
-        + Sample: 0
 
     + limit (number, optional) -
         + Default: 100
-        + Sample: 100
 
 + Request (application/json)
     + Headers
@@ -931,7 +928,7 @@ List all rules.
 ## Rules By Rule Id [/rules/{rule_id}]
 
 + Parameters
-    + rule_id (string, required)
+    + `rule_id` (ID, required)
 
 
 ### Rule by id [GET]
@@ -954,7 +951,7 @@ TODO: Add Description
 ## Rules Preview By Rule Id [/rules/{rule_id}/preview]
 
 + Parameters
-    + rule_id (string, required)
+    + `rule_id` (ID, required)
 
 
 ### Preview running a rule [GET]
@@ -977,7 +974,7 @@ TODO: Add Description
 ## Rules Run By Rule Id [/rules/{rule_id}/run]
 
 + Parameters
-    + rule_id (string, required)
+    + `rule_id` (ID, required)
 
 
 ### Run a rule [POST]
