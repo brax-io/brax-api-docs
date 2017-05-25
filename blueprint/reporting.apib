@@ -7,26 +7,11 @@ Endpoints for managing reporting of ads, ad groups, campaigns, publishers, secti
 Fetch ads report for a source and `account_id`.
 
 + Parameters
-    + offset (Integer, optional) -
-        + Default: 0
-
-    + `limit` (Integer, optional) -
-        + Default: 100
-
+:[](params/pagination.apib)
     + `source` (Source, optional) - source name
-        + Default: outbrain
-        + Sample: outbrain
-        
-    + `source_account_id` (SourceID, optional) -
-        + Sample: {{account_id}}
-        
-    + `start_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: 2017-04-17
-        
-    + `end_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: 2017-05-16
+        + Sample: "content-ad"
+:[](params/source_account_id.apib)
+:[](params/start_end_dates.apib)
 
 + Request (application/json)
     + Headers
@@ -107,28 +92,12 @@ Fetch ads report for a source and `account_id`.
 Fetch ad groups report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + `offset` (number, optional) -
-        + Default: 0
-        
-    + `limit` (number, optional) -
-        + Default: 100
-
+:[](params/pagination.apib)
     + `source` (Source, optional) - source name
         + Sample: "yahoo"
-
-    + `source_account_id` (SourceID, required) -
-        + Sample: "123456789"
-
-    + `campaign_id` (ID, optional) -
-        + Sample: "987654321"
-
-    + `start_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: "2017-04-01"
-
-    + `end_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: "2017-05-17"
+:[](params/source_account_id.apib)
+:[](params/campaign_id.apib)
+:[](params/start_end_dates.apib)
 
 + Request (application/json)
     + Headers
@@ -208,26 +177,12 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
 Fetch campaigns report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + `offset` (Integer, optional) -
-        + Sample: 0
-        
-    + `limit` (Integer, optional) -
-        + Sample: 100
-        
+:[](params/pagination.apib)
     + `source` (Source, optional) - source name
-        + Sample: outbrain
-
-    + `source_account_id` (SourceID, required) -
-        + Sample: {{account_id}}
-
-    + `campaign_id` (ID, optional) -
-        + Sample: {{campaign_id}}
-
-    + `start_date` (Date, optional) -
-        + Sample: 2017-01-01
-
-    + `end_date` (Date, optional) -
-        + Sample: 2017-01-31
+        + Sample: "outbrain"
+:[](params/source_account_id.apib)
+:[](params/campaign_id.apib)
+:[](params/start_end_dates.apib)
 
 + Request (application/json)
     + Headers
@@ -322,28 +277,13 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
 Fetch publishers report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + `offset` (Integer, optional) -
-        + Default: 0
-
-    + `limit` (Integer, optional) - Maximum: `100`
-        + Default: 100
-
+:[](params/pagination.apib)
     + `source` (Source, optional) - source name
-        + Sample: "outbrain"
-
-    + `source_account_id` (SourceID, required) -
-        + Sample: "123456789"
-
-    + `campaign_id` (ID, optional) -
-        + Sample: 24761
-
-    + `start_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: "2017-04-16"
-
-    + `end_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: "2017-05-17"
+        + Sample: "taboola"
+:[](params/source.apib)
+:[](params/source_account_id.apib)
+:[](params/campaign_id.apib)
+:[](params/start_end_dates.apib)
 
 + Request (application/json)
     + Headers
@@ -452,28 +392,12 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
 Fetch sections report for a source and `account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + `offset` (Integer, optional) -
-        + Default: 0
-        
-    + `limit` (Integer, optional) -
-        + Default: 100
-
+:[](params/pagination.apib)
     + `source` (Source, optional) - source name
         + Sample: "outbrain"
-
-    + `source_account_id` (SourceID, optional) -
-        + Sample: "123456789"
-
-    + `campaign_id` (ID, optional) -
-        + Sample: 26751
-
-    + `start_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: "2017-04-01"
-
-    + `end_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: "2017-05-17"
+:[](params/source_account_id.apib)
+:[](params/campaign_id.apib)
+:[](params/start_end_dates.apib)
 
 + Request (application/json)
     + Headers
@@ -494,28 +418,12 @@ Fetch sections report for a source and `account_id`; optionally with `campaign_i
 Fetch targets report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + `offset` (Integer, optional) -
-        + Default: 0
-        
-    + `limit` (Integer, optional) -
-        + Default: 100
-
-    + `source` (Source, optional) - source name
+:[](params/pagination.apib)
+    + `source`: "revcontent" (Source, optional) - source name
         + Sample: "revcontent"
-        
-    + `source_account_id` (SourceID, required) -
-        + Sample: "123456789"
-
-    + `campaign_id` (ID, optional) -
-        + Sample: 24671
-    
-    + `start_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: "2017-04-01"
-    
-    + `end_date` (Date, optional) -
-        + Default: yesterday
-        + Sample: "2017-05-17"
+:[](params/source_account_id.apib)
+:[](params/campaign_id.apib)
+:[](params/start_end_dates.apib)
 
 + Request (application/json)
     + Headers
