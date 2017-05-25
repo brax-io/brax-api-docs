@@ -1,0 +1,1366 @@
+FORMAT: 1A
+HOST: https://api.brax.io
+
+# BRAX Console API 1.0
+Brax Console API 1.0
+
+## Authentication [/ping]
+This API uses Basic Authentication for its authentication.
+
+### Authentication Test [GET]
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Response 200
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Body
+
+            {
+                "results": "pong"
+            }
+
++ Response 401
+    + Headers
+    
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+    
+    + Body
+    
+            {
+                "timestamp": "2017-05-24 01:07:38",
+                "message": "Invalid credentials",
+                "errors": null
+            }
+
++ Response 403
+    + Headers
+    
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+    
+    + Body
+    
+            {
+                "timestamp": "2017-05-24 01:07:38",
+                "message": "API access is not enabled",
+                "errors": null
+            }
+            
+
+# Group Accounts
+Endpoints to manage accounts and account settings.
+
+The Account object has the following properties:
+...
+
+## Accounts [/accounts{?offset,limit,source}]
+
++ Parameters
+    + source (Source, optional) - source name
+    + offset (number, optional) -
+        + Default: 0
+        + Sample: 0
+    + limit (number, optional) -
+        + Default: 100
+        + Sample: 100
+
+### List Accounts [GET]
+List all accounts.
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Response 200
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (Account)
+
+    + Body
+    
+            {
+                "results": [
+                    {
+                        "id": "e010f3346de2e41fed1a288a3ba5cd5e29",
+                        "name": "Selfserve_test_1",
+                        "source": "outbrain",
+                        "created_at": "2016-01-01T01:14:23+00:00",
+                        "updated_at": "2017-05-08T21:47:21+00:00"
+                    },
+                    {
+                        "id": "e010f3346de2e41faa3b288a3ba5cd5e3a",
+                        "name": "Selfserve_test_2",
+                        "source": "outbrain",
+                        "created_at": "2016-01-01T17:16:56+00:00",
+                        "updated_at": "2017-02-21T20:46:20+00:00"
+                    },
+                    {
+                        "id": "revcontent_test_1",
+                        "name": "revcontent_test_1",
+                        "source": "revcontent",
+                        "created_at": "2016-01-01T02:50:16+00:00",
+                        "updated_at": "2017-05-10T04:02:24+00:00"
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 3,
+                    "total": 3
+                }
+            }
+
+
+
+
+
+
+# Group Ads
+Endpoints to manage ads.
+
+## Ads [/ads{?offset,limit,source,account_id,campaign_id}]
+
+### List Ads [GET]
+List all ads.
+
++ Parameters
+    + offset (number, optional) -
+        + Default: 0
+        + Sample: 0
+        
+    + limit (number, optional) -
+        + Default: 100
+        + Sample: 100
+        
+    + source (Source, optional) - source name
+        + Sample: revcontent
+    
+    + account_id (string, required) - account id
+        + Sample: {{account_id}}
+        
+    + campaign_id (string, optional) -
+        + Sample: {{campaign_id}}
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Response 200 
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (Ad)
+
+    + Body
+    
+            {
+              "results": [
+                    {
+                      "id": "1",
+                      "vendor_campaign": "12345",
+                      "vendor_ad": "342336233",
+                      "title": "Brax automates the world",
+                      "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1",
+                      "image_url": "https://example.com/test_image_1.jpg",
+                      "enabled": true,
+                      "status": "paused"
+                    },
+                    {
+                      "id": "2",
+                      "vendor_campaign": "12345",
+                      "vendor_ad": "342336234",
+                      "title": "Brax automates the world",
+                      "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=2",
+                      "image_url": "https://example.com/test_image_2.jpg",
+                      "enabled": false,
+                      "status": "rejected"
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 2,
+                    "total": 2
+                }
+            }
+
+
+
+# Group Campaigns
+Endpoints to manage campaigns and campaign settings.
+
+The Campaign object has the following properties (common to all sources):
+
+## Campaigns [/campaigns{?offset,limit,source,account_id,campaign_id}]
+
+### List Campaigns [GET]
+List all campaigns.
+
++ Parameters
+    + offset (number, optional) -
+        + Default: 0
+        + Sample: 0
+        
+    + limit (number, optional) -
+        + Default: 100
+        + Sample: 100
+
+    + source (Source, optional) - source name
+        + Default: yahoo
+        + Sample: yahoo
+
+    + account_id (string, optional) -
+        + Default: {{account_id}}
+        + Sample: {{account_id}}
+        
+    + campaign_id (string, optional) -
+        + Default: {{campaign_id}}
+        + Sample: {{campaign_id}}
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
++ Response 200 
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (Campaign)
+   
+
+# Group Reporting
+Endpoints for managing reporting of ads, ad groups, campaigns, publishers, sections, and targets.
+
+## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,start_date,end_date}]
+
+### Ads [GET]
+Fetch ads report for a source and account_id.
+
++ Parameters
+    + offset (number, optional) -
+        + Default: 0
+
+    + `limit` (number, optional) -
+        + Default: 100
+
+    + `source` (Source, optional) - source name
+        + Default: outbrain
+        + Sample: outbrain
+        
+    + `source_account_id` (SourceID, optional) -
+        + Sample: {{account_id}}
+        
+    + start_date (Date, optional) -
+        + Default: yesterday
+        + Sample: 2017-04-17
+        
+    + end_date (Date, optional) -
+        + Default: yesterday
+        + Sample: 2017-05-16
+
++ Request (application/json)
+    + Headers
+    
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (AdsReport)
+    
+
+    + Body
+
+            {
+                "results": [
+                    {
+                        "vendor_campaign": "85adef34d6a87d00c54fdb561dcc5e0b59",
+                        "vendor_ad": "c0e425ea1becbadf1864dd0aa33e87d71b",
+                        "name": "test-ad-1",
+                        "ctr": "0.0075",
+                        "ecpc": "0.0200",
+                        "cost": "4.4000",
+                        "cpa": "0.0000",
+                        "icr": "0.000000",
+                        "impressions": 29266,
+                        "clicks": 220,
+                        "conversions": 0
+                    },
+                    {
+                        "vendor_campaign": "85adef34d6a87d00c54fdb561dcc5e0b59",
+                        "vendor_ad": "6a3c34102c0694384646005ae4c363ca57",
+                        "name": "test-ad-2",
+                        "ctr": "0.0069",
+                        "ecpc": "0.0450",
+                        "cost": "12.0700",
+                        "cpa": "0.0158",
+                        "icr": "0.019779",
+                        "impressions": 38677,
+                        "clicks": 268,
+                        "conversions": 765
+                    },
+                    {
+                        "vendor_campaign": "095a5a268d1424ac39d82c49f8365a8f4a",
+                        "vendor_ad": "5f09f9526ada9e8ad51682e0f24fdbafe6",
+                        "name": "test-ad-3",
+                        "ctr": "0.0059",
+                        "ecpc": "0.0200",
+                        "cost": "2.4200",
+                        "cpa": "2.4200",
+                        "icr": "0.000049",
+                        "impressions": 20517,
+                        "clicks": 121,
+                        "conversions": 1
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 3,
+                    "total": 3
+                }
+            }
+
+
+## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+
+### Ad Groups [GET]
+Fetch ad groups report for a `source` and `source_account_id`; optionally with `campaign_id`.
+
++ Parameters
+    + offset (number, optional) -
+        + Default: 0
+        + Sample: 0
+        
+    + limit (number, optional) -
+        + Default: 100
+        + Sample: 100
+
+    + source (Source, optional) - source name
+        + Sample: yahoo
+
+    + source_account_id (SourceID, required) -
+        + Sample: {{account_id}}
+
+    + campaign_id (ID, optional) -
+        + Sample: {{campaign_id}}
+
+    + start_date (Date, optional) -
+        + Default: yesterday
+        + Sample: 2017-04-01
+
+    + end_date (Date, optional) -
+        + Default: yesterday
+        + Sample: 2017-05-17
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Response 200 
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (object)
+    
+
+    + Body
+
+            {
+                "results": [
+                    {
+                        "vendor_marketer": "123456",
+                        "vendor_campaign": "597866360",
+                        "vendor_ad_group": "8652979185",
+                        "name": "Ad Group Test 1",
+                        "ctr": null,
+                        "ecpc": null,
+                        "cost": null,
+                        "cpa": null,
+                        "icr": null,
+                        "impressions": null,
+                        "clicks": null,
+                        "conversions": null
+                    },
+                    {
+                        "vendor_marketer": "123456",
+                        "vendor_campaign": "597866360",
+                        "vendor_ad_group": "7442813551",
+                        "name": "Ad Group Test 2",
+                        "ctr": null,
+                        "ecpc": null,
+                        "cost": null,
+                        "cpa": null,
+                        "icr": null,
+                        "impressions": null,
+                        "clicks": null,
+                        "conversions": null
+                    },
+                    {
+                        "vendor_marketer": "123457",
+                        "vendor_campaign": "654969786",
+                        "vendor_ad_group": "3516309393",
+                        "name": "Ad Group Test 3",
+                        "ctr": null,
+                        "ecpc": null,
+                        "cost": null,
+                        "cpa": null,
+                        "icr": null,
+                        "impressions": null,
+                        "clicks": null,
+                        "conversions": null
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 3,
+                    "total": 3
+                }
+            }
+
+## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+
+### Campaigns [GET]
+Fetch campaigns report for a `source` and `source_account_id`; optionally with `campaign_id`.
+
++ Parameters
+    + offset (number, optional) -
+        + Sample: 0
+        
+    + limit (number, optional) -
+        + Sample: 100
+        
+    + source (Source, optional) - source name
+        + Sample: outbrain
+
+    + source_account_id (SourceID, required) -
+        + Sample: {{account_id}}
+
+    + campaign_id (ID, optional) -
+        + Sample: {{campaign_id}}
+
+    + start_date (Date, optional) -
+        + Sample: 2017-01-01
+
+    + end_date (Date, optional) -
+        + Sample: 2017-01-31
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Response 200 
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (CampaignsReport)
+    
+
+    + Body
+    
+            {
+                "results": [
+                    {
+                        "vendor_campaign": "12345",
+                        "name": "Test Campaign 1",
+                        "ctr": null,
+                        "ecpc": null,
+                        "cost": null,
+                        "cpa": null,
+                        "icr": null,
+                        "impressions": 13838,
+                        "clicks": 3538,
+                        "conversions": 321,
+                        "sessions": null,
+                        "pageviews": null,
+                        "pageviews_per_session": null,
+                        "bounce_rate": null,
+                        "avg_session_duration": null,
+                        "goal_1_completions": null,
+                        "goal_2_completions": null
+                    },
+                    {
+                        "vendor_campaign": "12346",
+                        "name": "Test Campaign 2",
+                        "ctr": null,
+                        "ecpc": null,
+                        "cost": null,
+                        "cpa": null,
+                        "icr": null,
+                        "impressions": 500,
+                        "clicks": 50,
+                        "conversions": 3,
+                        "sessions": null,
+                        "pageviews": null,
+                        "pageviews_per_session": null,
+                        "bounce_rate": null,
+                        "avg_session_duration": null,
+                        "goal_1_completions": null,
+                        "goal_2_completions": null
+                    },
+                    {
+                        "vendor_campaign": "12347",
+                        "name": "Test Campaign 3",
+                        "ctr": null,
+                        "ecpc": null,
+                        "cost": null,
+                        "cpa": null,
+                        "icr": null,
+                        "impressions": 123,
+                        "clicks": 1,
+                        "conversions": 0,
+                        "sessions": null,
+                        "pageviews": null,
+                        "pageviews_per_session": null,
+                        "bounce_rate": null,
+                        "avg_session_duration": null,
+                        "goal_1_completions": null,
+                        "goal_2_completions": null
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 3,
+                    "total": 3
+            }
+
+
+## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+
+### Publishers [GET]
+Fetch publishers report for a `source` and `source_account_id`; optionally with `campaign_id`.
+
++ Parameters
+    + offset (Integer, optional) -
+        + Default: 0
+
+    + limit (Integer, optional) - Maximum: `100`
+        + Default: 100
+
+    + source (Source, optional) - source name
+        + Sample: "outbrain"
+
+    + source_account_id (SourceID, required) -
+        + Sample: "123456789"
+
+    + campaign_id (ID, optional) -
+        + Sample: 24761
+
+    + start_date (Date, optional) -
+        + Default: yesterday
+        + Sample: "2017-04-16"
+
+    + end_date (Date, optional) -
+        + Default: yesterday
+        + Sample: "2017-05-17"
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+    
+    + Attributes (PublishersReport)
+
+    + Body
+
+            {
+                "results": [
+                    {
+                        "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
+                        "vendor_marketer": "",
+                        "vendor_campaign": "",
+                        "name": "previously.tv",
+                        "ctr": "0.0136",
+                        "ecpc": "0.8267",
+                        "cost": "548.9100",
+                        "cpa": "274.4550",
+                        "icr": "0.0000",
+                        "impressions": 48902,
+                        "clicks": 664,
+                        "conversions": 2,
+                        "conversion_rate": "0.0030",
+                        "sessions": "522",
+                        "pageviews": "3985",
+                        "pageviews_per_session": "7.6341",
+                        "bounce_rate": "0.0249",
+                        "avg_session_duration": "00:05:54",
+                        "goal_1_completions": "1",
+                        "goal_2_completions": "68"
+                    },
+                    {
+                        "vendor_publisher": "00f5489fcb230267aba360a47a9f93b3d6",
+                        "vendor_marketer": "",
+                        "vendor_campaign": "",
+                        "name": "Rebel Circus (Sell It Social)",
+                        "ctr": "0.0161",
+                        "ecpc": "1.2802",
+                        "cost": "649.0700",
+                        "cpa": "649.0700",
+                        "icr": "0.0000",
+                        "impressions": 31475,
+                        "clicks": 507,
+                        "conversions": 1,
+                        "conversion_rate": "0.0020",
+                        "sessions": "275",
+                        "pageviews": "1390",
+                        "pageviews_per_session": "5.0545",
+                        "bounce_rate": "0.0618",
+                        "avg_session_duration": "00:02:40",
+                        "goal_1_completions": "1",
+                        "goal_2_completions": "44"
+                    },
+                    {
+                        "vendor_publisher": "00795491b416e2a259b0be2fd2835bbdb0",
+                        "vendor_marketer": "",
+                        "vendor_campaign": "",
+                        "name": "thepoplr (Pitria)",
+                        "ctr": "0.0053",
+                        "ecpc": "0.9360",
+                        "cost": "338.8300",
+                        "cpa": "112.9433",
+                        "icr": "0.0000",
+                        "impressions": 68723,
+                        "clicks": 362,
+                        "conversions": 3,
+                        "conversion_rate": "0.0083",
+                        "sessions": "269",
+                        "pageviews": "1313",
+                        "pageviews_per_session": "4.8810",
+                        "bounce_rate": "0.0483",
+                        "avg_session_duration": "00:05:37",
+                        "goal_1_completions": "3",
+                        "goal_2_completions": "59"
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 10,
+                    "total": 10
+                }
+            }
+
+
+
+
+
+## Sections Report [/reports/sections{?offset,limit,source,account_id,campaign_id,start_date,end_date}]
+
+### Sections [GET]
+Fetch sections report for a source and account_id; optionally with campaign_id.
+
++ Parameters
+    + offset (number, optional) -
+        + Default: 0
+        + Sample: 0
+        
+    + limit (number, optional) -
+        + Default: 100
+        + Sample: 100
+
+    + source (Source, optional) - source name
+        + Default: outbrain
+        + Sample: outbrain
+
+    + account_id (string, optional) -
+        + Default: {{account_id}}
+        + Sample: {{account_id}}
+
+    + campaign_id (string, optional) -
+        + Default: {{campaign_id}}
+        + Sample: {{campaign_id}}
+
+    + start_date (string, optional) -
+        + Default: 2017-04-01
+        + Sample: 2017-04-01
+
+    + end_date (string, optional) -
+        + Default: 2017-05-17
+        + Sample: 2017-05-17
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 
+
+
+
+## Targets Report [/reports/targets{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+
+### Targets [GET]
+Fetch targets report for a `source` and `source_account_id`; optionally with `campaign_id`.
+
++ Parameters
+    + `offset` (number, optional) -
+        + Default: 0
+        + Sample: 0
+        
+    + `limit` (number, optional) -
+        + Default: 100
+        + Sample: 100
+
+    + `source` (Source, optional) - source name
+        + Sample: "revcontent"
+        
+    + `source_account_id` (SourceID, required) -
+        + Sample: "123456789"
+
+    + `campaign_id` (ID, optional) -
+        + Sample: 24671
+    
+    + `start_date` (Date, optional) -
+        + Default: yesterday
+        + Sample: "2017-04-01"
+    
+    + `end_date` (Date, optional) -
+        + Default: yesterday
+        + Sample: "2017-05-17"
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
++ Response 200 
+
+
+
+# Group Rules
+Endpoints to manage rules, rule settings, preview running rules, run rules, and rule job statuses.
+
+## Rules [/rules{?offset,limit}]
+
+### List Rules [GET]
+List all rules.
+
++ Parameters
+    + offset (number, optional) -
+        + Default: 0
+        + Sample: 0
+
+    + limit (number, optional) -
+        + Default: 100
+        + Sample: 100
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:17f276d3-0b94-4b6e-ad8f-075fac502aaf
+
+    + Attributes (object)
+
+    + Body
+
+            {
+                "rules": [
+                    {
+                        "id": 132,
+                        "name": "asdf",
+                        "type": "pause_campaign",
+                        "conditions": [
+                            {
+                                "id": 75,
+                                "source": "campaign.cost",
+                                "operator": ">",
+                                "value": "10",
+                                "date_range": "last_7_days"
+                            }
+                        ],
+                        "filters": [
+                            {
+                                "id": 67,
+                                "vendor": "",
+                                "account_name": "",
+                                "campaign_name": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": 144,
+                        "name": "iuou",
+                        "type": "pause_ad",
+                        "conditions": [
+                            {
+                                "id": 81,
+                                "source": "campaign.cost",
+                                "operator": ">",
+                                "value": "10.00",
+                                "date_range": "last_7_days"
+                            },
+                            {
+                                "id": 86,
+                                "source": "ad.cpa",
+                                "operator": "<",
+                                "value": "8",
+                                "date_range": "last_2_days_inclusive"
+                            }
+                        ],
+                        "filters": [
+                            {
+                                "id": 74,
+                                "vendor": "outbrain",
+                                "account_name": "Selfserve_brax",
+                                "campaign_name": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": 150,
+                        "name": "pub",
+                        "type": "block_publisher",
+                        "conditions": [
+                            {
+                                "id": 89,
+                                "source": "campaign.cost",
+                                "operator": ">",
+                                "value": "10.00",
+                                "date_range": "last_7_days"
+                            },
+                            {
+                                "id": 90,
+                                "source": "publisher.cost",
+                                "operator": ">",
+                                "value": "0",
+                                "date_range": "last_7_days"
+                            }
+                        ],
+                        "filters": [
+                            {
+                                "id": 80,
+                                "vendor": "",
+                                "account_name": "",
+                                "campaign_name": ""
+                            }
+                        ]
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 3,
+                    "total": 3
+                }
+            }
+
+
+
+## Rules By Rule Id [/rules/{rule_id}]
+
++ Parameters
+    + rule_id (string, required)
+
+
+### Rule by id [GET]
+TODO: Add Description
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 (application/json)
+    + Attributes (Rule by idResponse)
+
+
+
+## Rules Preview By Rule Id [/rules/{rule_id}/preview]
+
++ Parameters
+    + rule_id (string, required)
+
+
+### Preview running a rule [GET]
+TODO: Add Description
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## Rules Run By Rule Id [/rules/{rule_id}/run]
+
++ Parameters
+    + rule_id (string, required)
+
+
+### Run a rule [POST]
+TODO: Add Description
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## Rules Jobs [/rules/jobs]
+
+
+### Job history [GET]
+TODO: Add Description
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 
+
+    + Headers
+    
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (object)
+
+    + Body
+
+            {
+                "jobs": [
+                    {
+                        "id": 32,
+                        "created_at": "2017-05-19T18:46:28+00:00",
+                        "created_by": "Mark Simon",
+                        "rule": {
+                            "name": "asdf",
+                            "type": "pause_campaign"
+                        },
+                        "stats": {
+                            "total": 5,
+                            "remaining": 5,
+                            "successful": 0,
+                            "failed": 0
+                        }
+                    },
+                    {
+                        "id": 33,
+                        "created_at": "2017-05-19T23:50:52+00:00",
+                        "created_by": "Mark Simon",
+                        "rule": {
+                            "name": "asdf",
+                            "type": "pause_campaign"
+                        },
+                        "stats": {
+                            "total": 5,
+                            "remaining": 5,
+                            "successful": 0,
+                            "failed": 0
+                        }
+                    },
+                    {
+                        "id": 34,
+                        "created_at": "2017-05-20T01:10:28+00:00",
+                        "created_by": "Mark Simon",
+                        "rule": {
+                            "name": "asdf",
+                            "type": "pause_campaign"
+                        },
+                        "stats": {
+                            "total": 2,
+                            "remaining": 2,
+                            "successful": 0,
+                            "failed": 0
+                        }
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 3,
+                    "total": 3
+                }
+            }
+
+
+
+## Rules Jobs By Job Id [/rules/jobs/{job_id}]
+
++ Parameters
+    + job_id (string, required)
+
+
+### Job status by id [GET]
+TODO: Add Description
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+
+
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group Users
+Endpoints to manage users and user settings.
+
+## Users [/users{?offset,limit}]
+
+### List Users [GET]
+List all users.
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Parameters
+    + offset (number, optional) -
+        + Default: 0
+        + Sample: 0
+
+    + limit (number, optional) -
+        + Default: 100
+        + Sample: 100
+
+
++ Response 200 
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (User)
+
+
+    + Body
+
+            {
+              "results": [
+                {
+                  "username": "test_user",
+                  "email": "test_user@example.com",
+                  "confirmed": true,
+                  "administrator": false,
+                  "created_at": "2016-01-01T00:53:09+00:00",
+                  "updated_at": "2017-02-17T05:41:51+00:00"
+                },
+                {
+                  "username": "admin_user",
+                  "email": "admin_user@example.com",
+                  "confirmed": true,
+                  "administrator": true,
+                  "created_at": "2016-01-01T15:13:14+00:00",
+                  "updated_at": "2017-05-11T15:14:48+00:00"
+                }
+              ],
+              "pagination": {
+                "offset": 0,
+                "limit": 100,
+                "count": 2,
+                "total": 2
+              }
+            }
+
+
+
+
+
+
+
+# Data Structures
+
+## Url (string) - a properly formatted URI according to RFC 3986
+
+## Date (string) - formatted date, such as: '2017-01-01'
+
+## DateTime (string) - formatted date time, such as: '2016-01-01T15:13:14+00:00'
+
+## Decimal (number) - decimal or double numeric value, such as: 0.001, or 3.14
+
+## Integer (number) - a number such as 1, 2, 3...
+
+## Duration (string) - a duration in hours, minutes, and seconds, e.g. 00:02:34
+
+## SourceID (string) - source's unique identifier for the referenced object
+
+## ID (Integer) - primary identifier for the referenced object
+
+## DateRange (enum) - A date range
+- `yesterday` - yesterday
+- `last_2_days` - two days ago and yesterday
+- `last_3_days` - last three days
+- `last_4_days` - last four days
+- `last_5_days` - last five days
+- `last_6_days` - last six days
+- `last_7_days` - last seven days
+- `last_14_days` - last fourteen days
+- `last_30_days` - last thirty days
+
+## CampaignStatus (enum) - running status for a campaign
+- `active` - campaign is running
+- `paused` - campaign has been paused
+- `budget_limited` - campaign has met its budget
+- `deleted` - campaign has been deleted
+
+## Source (enum) - an ad network
++ `outbrain` - Outbrain ([www.outbrain.com](//www.outbrain.com))
++ `taboola` - Taboola ([www.taboola.com](//www.taboola.com))
++ `revcontent` - Revcontent ([www.revcontent.com](//www.revcontent.com))
++ `yahoo` - Yahoo Gemini ([gemini.yahoo.com](//gemini.yahoo.com))
++ `content-ad` - Content.ad ([www.content.ad](//content.ad))
+
+## RuleType (enum)
+- `pause_campaign` - Pause Campaigns
+- `pause_ad` - Pause Ads
+- `block_publisher` - Block Publishers
+- `block_section` - Block Sections (Outbrain)
+- `block_target` - Block Targets (Revcontent)
+- `pause_ad_group` - Pause Ad Groups (Yahoo)
+- `modify_bid_publisher` - Update Site Bid Modifiers
+- `multiply_bid_target` - Update Target Bids
+- `multiply_bid_campaign` - Update Campaign Bids
+
+## Metric (enum) - a string composed of an object and a metric separated by a dot
+### Members
+- `campaign`, `ad`, `publisher`, `target`, `section`, `ad_group` (enum) - reporting object
+- .
+- `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`, `sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions` (enum) - metric field
+
+### Sample
+- `campaign.clicks` - Campaign clicks
+- `target.ctr` - Target CTR
+
+
+## Operator (enum)
+- `<` - less than 
+- `=` - equals
+- `>` - greater than
+
+## Rule by idResponse (object)
+
+### Properties
++ `id` (Integer, required) 
++ `name` (string, required) 
++ `type` (RuleType, required) 
++ `conditions` (array[Condition], required) 
++ `filters` (array[Filter], required) 
+
+
+## Condition (object)
+
+### Properties
++ `id` (Integer, required) 
++ `metric` (Metric, required) 
++ `operator` (Operator, required) 
++ `value` (Decimal, required) 
++ `date_range` (DateRange, required) 
+
+
+## Filter (object)
+
+### Properties
++ `id`: 87 (ID, required)
++ `source` (Source, required)
++ `account_id` (Integer, required)
++ `campaign_id` (Integer, required)
+
+## Account (object)
++ `id`: 123 (ID, required) - primary identifier for the account
++ `source` (Source) - name of the source
++ `source_account_id`: "e010f3346de2e41fed1a288a3ba5cd5e29" (SourceID) - source's unique identifier for the account
++ `name`: "Selfserve_test_1" (string) - name of the account
++ `created_at` (DateTime) - date and time the account was created
++ `updated_at` (DateTime) - date and time the account was last updated
+
+## Ad (object)
++ `tracking_ad_id` (string) - identifier provided to the ad's tracking code via {{AD_ID}}
++ `source_campaign_id` (SourceID) - unique vendor_campaign identifier
++ `source_ad_id` (SourceID) - vendor_ad id
++ `title` (string) - ad title / headline
++ `url` (Url) - ad destination url
++ `image_url` (Url) - ad image url
++ `enabled` (boolean) - ad enabled status
++ `status` (string) - ad status       
+
+## Campaign (object)
++ `id` (ID) - primary campaign identifier
++ `source`: "outbrain" (Source) - name of the source
++ `source_campaign_id` (SourceID) - unique vendor_campaign identifier
++ `name` (string) - campaign name
++ `start_at` (DateTime) - campaign start datetime
++ `end_at` (DateTime) - campaign end datetime
++ `enabled` (boolean) - campaign enabled status
++ `status` (CampaignStatus) - campaign status
++ `cpc` (Decimal) - the cost per click assigned to this campaign
++ `budget_amount` (Decimal) - the allotted budget for this campaign
++ `tracking_code` (string) - tracking code used on ads within this campaign
++ `created_at` (DateTime) - date and time the campaign was created
++ `updated_at` (DateTime) - date and time the campaign was last updated
+
+
+## User (object)
++ username (string) - username
++ email (string) - user's email
++ confirmed (boolean) - user's confirmed status
++ administrator (boolean) - whether or not a user is an administrator
++ created_at (DateTime) - date and time the user was created
++ updated_at (DateTime) - date and time the user was last updated
+
+
+
+
+
+
+        
+## AdsReport (object)
++ `source_account_id` (string) - source's unique account identifier
++ `source_campaign_id` (string) - source's unique campaign identifier
++ `source_ad_id` (string) - unique vendor_ad identifier
++ `name` (string) - name identifying ad
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
+
+## CampaignsReport (object)
++ `source_account_id` (string) - source's unique account identifier
++ `source_campaign_id` (string) - source's unique campaign identifier
++ `name` (string) - name identifying campaign
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
+
+
+## PublishersReport (object)
+### Properties
++ `source_account_id` (string) - source's unique account identifier
++ `source_campaign_id` (string) - source's unique campaign identifier
++ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (string) - source's unique publisher identifier
++ `name`: "Test Publisher" (string) - name identifying publisher
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
+
+## ReportingMetrics
++ `impressions`: 21 (Integer) - impressions
++ `clicks`: 4 (Integer) - clicks
++ `conversions`: 2 (Integer) - conversions
++ `cost`: 1.09 (Decimal) - cost
++ `ctr`: 0.1905 (Decimal) - click through rate
++ `ecpc`: 0.2725 (Decimal) - estimated cost per click
++ `cpa`: 0.545 (Decimal) - cost per action
++ `icr`: 0.09523810 (Decimal) - impression:conversion rate
+
+## GoogleAnalyticsMetrics
++ `sessions`: 522 (Integer,optional) - sessions
++ `pageviews`: 3985 (Integer,optional) - pageviews
++ `pageviews_per_session`: 7.6341 (Decimal,optional) - pageviews per session
++ `bounce_rate`: 0.0249 (Decimal,optional) - bounce rate
++ `avg_session_duration`: "00:05:54" (Duration,optional) - average session suration
++ `goal_1_completions`: 1 (Integer,optional) - goal #1 completions
++ `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
