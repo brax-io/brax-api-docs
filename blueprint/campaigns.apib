@@ -9,25 +9,20 @@ The Campaign object has the following properties (common to all sources):
 List all campaigns.
 
 + Parameters
-    + offset (number, optional) -
+    + `offset` (Integer, optional) -
         + Default: 0
-        + Sample: 0
         
-    + limit (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
-        + Sample: 100
 
-    + source (Source, optional) - source name
-        + Default: yahoo
+    + `source` (Source, optional) - source name
         + Sample: yahoo
 
-    + `account_id` (string, optional) -
-        + Default: {{account_id}}
-        + Sample: {{account_id}}
+    + `source_account_id` (string, optional) -
+        + Sample: "123456789"
         
-    + `campaign_id` (string, optional) -
-        + Default: {{campaign_id}}
-        + Sample: {{campaign_id}}
+    + `source_campaign_id` (string, optional) -
+        + Sample: "987654321"
 
 + Request (application/json)
     + Headers

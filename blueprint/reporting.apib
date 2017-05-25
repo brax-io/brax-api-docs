@@ -7,10 +7,10 @@ Endpoints for managing reporting of ads, ad groups, campaigns, publishers, secti
 Fetch ads report for a source and `account_id`.
 
 + Parameters
-    + offset (number, optional) -
+    + offset (Integer, optional) -
         + Default: 0
 
-    + `limit` (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
 
     + `source` (Source, optional) - source name
@@ -107,30 +107,28 @@ Fetch ads report for a source and `account_id`.
 Fetch ad groups report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + offset (number, optional) -
+    + `offset` (number, optional) -
         + Default: 0
-        + Sample: 0
         
-    + limit (number, optional) -
+    + `limit` (number, optional) -
         + Default: 100
-        + Sample: 100
 
-    + source (Source, optional) - source name
-        + Sample: yahoo
+    + `source` (Source, optional) - source name
+        + Sample: "yahoo"
 
-    + source_account_id (SourceID, required) -
-        + Sample: {{account_id}}
+    + `source_account_id` (SourceID, required) -
+        + Sample: "123456789"
 
-    + campaign_id (ID, optional) -
-        + Sample: {{campaign_id}}
+    + `campaign_id` (ID, optional) -
+        + Sample: "987654321"
 
-    + start_date (Date, optional) -
+    + `start_date` (Date, optional) -
         + Default: yesterday
-        + Sample: 2017-04-01
+        + Sample: "2017-04-01"
 
     + `end_date` (Date, optional) -
         + Default: yesterday
-        + Sample: 2017-05-17
+        + Sample: "2017-05-17"
 
 + Request (application/json)
     + Headers

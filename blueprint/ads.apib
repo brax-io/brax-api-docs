@@ -7,22 +7,20 @@ Endpoints to manage ads.
 List all ads.
 
 + Parameters
-    + offset (number, optional) -
+    + `offset` (Integer, optional) -
         + Default: 0
-        + Sample: 0
         
-    + limit (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
-        + Sample: 100
         
-    + source (Source, optional) - source name
-        + Sample: revcontent
+    + `source` (Source, optional) - source name
+        + Sample: "revcontent"
     
-    + account_id (string, required) - account id
-        + Sample: {{account_id}}
+    + `source_account_id` (SourceID, required) - account id
+        + Sample: "123456789"
         
-    + campaign_id (string, optional) -
-        + Sample: {{campaign_id}}
+    + `source_campaign_id` (SourceID, optional) -
+        + Sample: "987654321"
 
 + Request (application/json)
     + Headers
