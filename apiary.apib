@@ -97,7 +97,10 @@ List all accounts.
             X-RateLimit-Remaining:59
             X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (Account)
+    + Attributes
+
+        - `results` (array[Account])
+        - `pagination` (Pagination)
 
     + Body
     
@@ -167,7 +170,11 @@ List all ads.
             X-RateLimit-Remaining:59
             X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (Ad)
+    + Attributes
+
+        - `results` (array[Ad])
+        - `pagination` (Pagination)
+
 
     + Body
     
@@ -239,8 +246,10 @@ List all campaigns.
             X-RateLimit-Remaining:59
             X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (Campaign)
+    + Attributes
 
+        - `results` (array[Campaign])
+        - `pagination` (Pagination)
 
 # Group Reporting
 Endpoints for managing reporting of ads, ad groups, campaigns, publishers, sections, and targets.
@@ -282,8 +291,10 @@ Fetch ads report for a source and `account_id`.
             X-RateLimit-Remaining:59
             X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (AdsReport)
+    + Attributes
     
+        - `results` (array[AdsReport])
+        - `pagination` (Pagination)
 
     + Body
 
@@ -376,8 +387,10 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
             X-RateLimit-Remaining:59
             X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (object)
+    + Attributes
     
+        - `results` (array[AdGroupsReport])
+        - `pagination` (Pagination)
 
     + Body
 
@@ -472,8 +485,10 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
             X-RateLimit-Remaining:59
             X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (CampaignsReport)
+    + Attributes
     
+        - `results` (array[CampaignsReport])
+        - `pagination` (Pagination)
 
     + Body
     
@@ -587,7 +602,10 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
             X-RateLimit-Remaining:59
             X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
     
-    + Attributes (PublishersReport)
+    + Attributes
+
+        - `results` (array[PublishersReport])
+        - `pagination` (Pagination)
 
     + Body
 
@@ -740,7 +758,98 @@ Fetch targets report for a `source` and `source_account_id`; optionally with `ca
 
 
 + Response 200 
+    + Headers
 
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+    
+    + Attributes
+
+        - `results` (array[SectionsReport])
+        - `pagination` (Pagination)
+
+    + Body
+
+            {
+                "results": [
+                    {
+                        "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
+                        "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
+                        "vendor_marketer": "",
+                        "vendor_campaign": "",
+                        "name": "previously.tv",
+                        "ctr": "0.0136",
+                        "ecpc": "0.8267",
+                        "cost": "548.9100",
+                        "cpa": "274.4550",
+                        "icr": "0.0000",
+                        "impressions": 48902,
+                        "clicks": 664,
+                        "conversions": 2,
+                        "conversion_rate": "0.0030",
+                        "sessions": "522",
+                        "pageviews": "3985",
+                        "pageviews_per_session": "7.6341",
+                        "bounce_rate": "0.0249",
+                        "avg_session_duration": "00:05:54",
+                        "goal_1_completions": "1",
+                        "goal_2_completions": "68"
+                    },
+                    {
+                        "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
+                        "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
+                        "vendor_marketer": "",
+                        "vendor_campaign": "",
+                        "name": "Rebel Circus (Sell It Social)",
+                        "ctr": "0.0161",
+                        "ecpc": "1.2802",
+                        "cost": "649.0700",
+                        "cpa": "649.0700",
+                        "icr": "0.0000",
+                        "impressions": 31475,
+                        "clicks": 507,
+                        "conversions": 1,
+                        "conversion_rate": "0.0020",
+                        "sessions": "275",
+                        "pageviews": "1390",
+                        "pageviews_per_session": "5.0545",
+                        "bounce_rate": "0.0618",
+                        "avg_session_duration": "00:02:40",
+                        "goal_1_completions": "1",
+                        "goal_2_completions": "44"
+                    },
+                    {
+                        "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
+                        "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
+                        "vendor_marketer": "",
+                        "vendor_campaign": "",
+                        "name": "thepoplr (Pitria)",
+                        "ctr": "0.0053",
+                        "ecpc": "0.9360",
+                        "cost": "338.8300",
+                        "cpa": "112.9433",
+                        "icr": "0.0000",
+                        "impressions": 68723,
+                        "clicks": 362,
+                        "conversions": 3,
+                        "conversion_rate": "0.0083",
+                        "sessions": "269",
+                        "pageviews": "1313",
+                        "pageviews_per_session": "4.8810",
+                        "bounce_rate": "0.0483",
+                        "avg_session_duration": "00:05:37",
+                        "goal_1_completions": "3",
+                        "goal_2_completions": "59"
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 10,
+                    "total": 10
+                }
+            }
 
 # Group Rules
 Endpoints to manage rules, rule settings, preview running rules, run rules, and rule job statuses.
@@ -1074,8 +1183,10 @@ List all users.
             X-RateLimit-Remaining:59
             X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (User)
+    + Attributes
 
+        - `results` (array[User])
+        - `pagination` (Pagination)
 
     + Body
 
@@ -1186,6 +1297,15 @@ List all users.
 + `filters` (array[Filter], required) 
 
 
+## Pagination (object)
+
+### Properties
++ `offset`: 0 (Integer)
++ `limit`: 100 (Integer)
++ `count`: 100 (Integer)
++ `total`: 984 (Integer)
+
+
 ## Condition (object)
 
 ### Properties
@@ -1267,6 +1387,13 @@ List all users.
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
+## AdGroupsReport (object)
++ `source_account_id` (string) - source's unique account identifier
++ `source_campaign_id` (string) - source's unique campaign identifier
++ `source_ad_group_id` (string) - source's unique ad group identifier
++ `name` (string) - name identifying ad
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
 
 ## PublishersReport (object)
 ### Properties
@@ -1274,6 +1401,16 @@ List all users.
 + `source_campaign_id` (string) - source's unique campaign identifier
 + `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (string) - source's unique publisher identifier
 + `name`: "Test Publisher" (string) - name identifying publisher
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
+
+## SectionsReport (object)
+### Properties
++ `source_account_id` (string) - source's unique account identifier
++ `source_campaign_id` (string) - source's unique campaign identifier
++ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (string) - source's unique publisher identifier
++ `source_section_id`: "00a4cb1d955ea603d69fb3a3dba54d1460" (string) - source's unique section identifier
++ `name`: "Test Publisher" (string) - name identifying section
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
@@ -1295,5 +1432,4 @@ List all users.
 + `avg_session_duration`: "00:05:54" (Duration,optional) - average session suration
 + `goal_1_completions`: 1 (Integer,optional) - goal #1 completions
 + `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
-
 
