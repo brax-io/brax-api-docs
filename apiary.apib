@@ -70,13 +70,11 @@ The Account object has the following properties:
 ## Accounts [/accounts{?offset,limit,source}]
 
 + Parameters
-    + source (Source, optional) - source name
-    + offset (number, optional) -
+    + `source` (Source, optional) - source name
+    + `offset` (Integer, optional) -
         + Default: 0
-        + Sample: 0
-    + limit (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
-        + Sample: 100
 
 ### List Accounts [GET]
 List all accounts.
@@ -140,22 +138,20 @@ Endpoints to manage ads.
 List all ads.
 
 + Parameters
-    + offset (number, optional) -
+    + `offset` (Integer, optional) -
         + Default: 0
-        + Sample: 0
         
-    + limit (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
-        + Sample: 100
         
-    + source (Source, optional) - source name
-        + Sample: revcontent
+    + `source` (Source, optional) - source name
+        + Sample: "revcontent"
     
-    + account_id (string, required) - account id
-        + Sample: {{account_id}}
+    + `source_account_id` (SourceID, required) - account id
+        + Sample: "123456789"
         
-    + campaign_id (string, optional) -
-        + Sample: {{campaign_id}}
+    + `source_campaign_id` (SourceID, optional) -
+        + Sample: "987654321"
 
 + Request (application/json)
     + Headers
@@ -216,25 +212,20 @@ The Campaign object has the following properties (common to all sources):
 List all campaigns.
 
 + Parameters
-    + offset (number, optional) -
+    + `offset` (Integer, optional) -
         + Default: 0
-        + Sample: 0
         
-    + limit (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
-        + Sample: 100
 
-    + source (Source, optional) - source name
-        + Default: yahoo
+    + `source` (Source, optional) - source name
         + Sample: yahoo
 
-    + `account_id` (string, optional) -
-        + Default: {{account_id}}
-        + Sample: {{account_id}}
+    + `source_account_id` (string, optional) -
+        + Sample: "123456789"
         
-    + `campaign_id` (string, optional) -
-        + Default: {{campaign_id}}
-        + Sample: {{campaign_id}}
+    + `source_campaign_id` (string, optional) -
+        + Sample: "987654321"
 
 + Request (application/json)
     + Headers
@@ -263,10 +254,10 @@ Endpoints for managing reporting of ads, ad groups, campaigns, publishers, secti
 Fetch ads report for a source and `account_id`.
 
 + Parameters
-    + offset (number, optional) -
+    + offset (Integer, optional) -
         + Default: 0
 
-    + `limit` (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
 
     + `source` (Source, optional) - source name
@@ -363,30 +354,28 @@ Fetch ads report for a source and `account_id`.
 Fetch ad groups report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + offset (number, optional) -
+    + `offset` (number, optional) -
         + Default: 0
-        + Sample: 0
         
-    + limit (number, optional) -
+    + `limit` (number, optional) -
         + Default: 100
-        + Sample: 100
 
-    + source (Source, optional) - source name
-        + Sample: yahoo
+    + `source` (Source, optional) - source name
+        + Sample: "yahoo"
 
-    + source_account_id (SourceID, required) -
-        + Sample: {{account_id}}
+    + `source_account_id` (SourceID, required) -
+        + Sample: "123456789"
 
-    + campaign_id (ID, optional) -
-        + Sample: {{campaign_id}}
+    + `campaign_id` (ID, optional) -
+        + Sample: "987654321"
 
-    + start_date (Date, optional) -
+    + `start_date` (Date, optional) -
         + Default: yesterday
-        + Sample: 2017-04-01
+        + Sample: "2017-04-01"
 
     + `end_date` (Date, optional) -
         + Default: yesterday
-        + Sample: 2017-05-17
+        + Sample: "2017-05-17"
 
 + Request (application/json)
     + Headers
@@ -466,22 +455,22 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
 Fetch campaigns report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + offset (number, optional) -
+    + `offset` (Integer, optional) -
         + Sample: 0
         
-    + limit (number, optional) -
+    + `limit` (Integer, optional) -
         + Sample: 100
         
-    + source (Source, optional) - source name
+    + `source` (Source, optional) - source name
         + Sample: outbrain
 
-    + source_account_id (SourceID, required) -
+    + `source_account_id` (SourceID, required) -
         + Sample: {{account_id}}
 
-    + campaign_id (ID, optional) -
+    + `campaign_id` (ID, optional) -
         + Sample: {{campaign_id}}
 
-    + start_date (Date, optional) -
+    + `start_date` (Date, optional) -
         + Sample: 2017-01-01
 
     + `end_date` (Date, optional) -
@@ -580,22 +569,22 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
 Fetch publishers report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + offset (Integer, optional) -
+    + `offset` (Integer, optional) -
         + Default: 0
 
-    + limit (Integer, optional) - Maximum: `100`
+    + `limit` (Integer, optional) - Maximum: `100`
         + Default: 100
 
-    + source (Source, optional) - source name
+    + `source` (Source, optional) - source name
         + Sample: "outbrain"
 
-    + source_account_id (SourceID, required) -
+    + `source_account_id` (SourceID, required) -
         + Sample: "123456789"
 
-    + campaign_id (ID, optional) -
+    + `campaign_id` (ID, optional) -
         + Sample: 24761
 
-    + start_date (Date, optional) -
+    + `start_date` (Date, optional) -
         + Default: yesterday
         + Sample: "2017-04-16"
 
@@ -710,21 +699,17 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
 Fetch sections report for a source and `account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + `offset` (number, optional) -
+    + `offset` (Integer, optional) -
         + Default: 0
-        + Sample: 0
         
-    + `limit` (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
-        + Sample: 100
 
     + `source` (Source, optional) - source name
-        + Default: outbrain
-        + Sample: outbrain
+        + Sample: "outbrain"
 
     + `source_account_id` (SourceID, optional) -
-        + Default: {{account_id}}
-        + Sample: {{account_id}}
+        + Sample: "123456789"
 
     + `campaign_id` (ID, optional) -
         + Sample: 26751
@@ -756,13 +741,11 @@ Fetch sections report for a source and `account_id`; optionally with `campaign_i
 Fetch targets report for a `source` and `source_account_id`; optionally with `campaign_id`.
 
 + Parameters
-    + `offset` (number, optional) -
+    + `offset` (Integer, optional) -
         + Default: 0
-        + Sample: 0
         
-    + `limit` (number, optional) -
+    + `limit` (Integer, optional) -
         + Default: 100
-        + Sample: 100
 
     + `source` (Source, optional) - source name
         + Sample: "revcontent"
@@ -800,10 +783,10 @@ Endpoints to manage rules, rule settings, preview running rules, run rules, and 
 List all rules.
 
 + Parameters
-    + offset (number, optional) -
+    + offset (Integer, optional) -
         + Default: 0
 
-    + limit (number, optional) -
+    + limit (Integer, optional) -
         + Default: 100
 
 + Request (application/json)
@@ -1077,7 +1060,7 @@ TODO: Add Description
 ## Rules Jobs By Job Id [/rules/jobs/{job_id}]
 
 + Parameters
-    + job_id (string, required)
+    + `job_id` (ID, required)
 
 
 ### Job status by id [GET]
@@ -1111,13 +1094,11 @@ List all users.
             Accept:application/json
 
 + Parameters
-    + offset (number, optional) -
+    + offset (Integer, optional) -
         + Default: 0
-        + Sample: 0
 
-    + limit (number, optional) -
+    + limit (Integer, optional) -
         + Default: 100
-        + Sample: 100
 
 
 + Response 200 
@@ -1297,8 +1278,8 @@ List all users.
 + email (string) - user's email
 + confirmed (boolean) - user's confirmed status
 + administrator (boolean) - whether or not a user is an administrator
-+ created_at (DateTime) - date and time the user was created
-+ updated_at (DateTime) - date and time the user was last updated
++ `created_at` (DateTime) - date and time the user was created
++ `updated_at` (DateTime) - date and time the user was last updated
 
 
 
@@ -1309,7 +1290,7 @@ List all users.
 ## AdsReport (object)
 + `source_account_id` (string) - source's unique account identifier
 + `source_campaign_id` (string) - source's unique campaign identifier
-+ `source_ad_id` (string) - unique vendor_ad identifier
++ `source_ad_id` (string) - source's unique ad identifier
 + `name` (string) - name identifying ad
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
