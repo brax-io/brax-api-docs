@@ -1,0 +1,56 @@
+## Authentication [/ping]
+This API uses Basic Authentication for its authentication.
+
+### Authentication Test [GET]
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Response 200
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Body
+
+            {
+                "results": "pong"
+            }
+
++ Response 401
+    + Headers
+    
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+    
+    + Body
+    
+            {
+                "timestamp": "2017-05-24 01:07:38",
+                "message": "Invalid credentials",
+                "errors": null
+            }
+
++ Response 403
+    + Headers
+    
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+    
+    + Body
+    
+            {
+                "timestamp": "2017-05-24 01:07:38",
+                "message": "API access is not enabled",
+                "errors": null
+            }
+            
+
+

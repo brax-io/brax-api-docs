@@ -1,0 +1,74 @@
+# Group Ads
+Endpoints to manage ads.
+
+## Ads [/ads{?offset,limit,source,account_id,campaign_id}]
+
+### List Ads [GET]
+List all ads.
+
++ Parameters
+    + offset (number, optional) -
+        + Default: 0
+        + Sample: 0
+        
+    + limit (number, optional) -
+        + Default: 100
+        + Sample: 100
+        
+    + source (Source, optional) - source name
+        + Sample: revcontent
+    
+    + account_id (string, required) - account id
+        + Sample: {{account_id}}
+        
+    + campaign_id (string, optional) -
+        + Sample: {{campaign_id}}
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Response 200 
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Attributes (Ad)
+
+    + Body
+    
+            {
+              "results": [
+                    {
+                      "id": "1",
+                      "vendor_campaign": "12345",
+                      "vendor_ad": "342336233",
+                      "title": "Brax automates the world",
+                      "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1",
+                      "image_url": "https://example.com/test_image_1.jpg",
+                      "enabled": true,
+                      "status": "paused"
+                    },
+                    {
+                      "id": "2",
+                      "vendor_campaign": "12345",
+                      "vendor_ad": "342336234",
+                      "title": "Brax automates the world",
+                      "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=2",
+                      "image_url": "https://example.com/test_image_2.jpg",
+                      "enabled": false,
+                      "status": "rejected"
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 100,
+                    "count": 2,
+                    "total": 2
+                }
+            }
+

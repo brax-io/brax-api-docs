@@ -1,0 +1,189 @@
+# Data Structures
+
+## Url (string) - a properly formatted URI according to RFC 3986
+
+## Date (string) - formatted date, such as: '2017-01-01'
+
+## DateTime (string) - formatted date time, such as: '2016-01-01T15:13:14+00:00'
+
+## Decimal (number) - decimal or double numeric value, such as: 0.001, or 3.14
+
+## Integer (number) - a number such as 1, 2, 3...
+
+## Duration (string) - a duration in hours, minutes, and seconds, e.g. 00:02:34
+
+## SourceID (string) - source's unique identifier for the referenced object
+
+## ID (Integer) - primary identifier for the referenced object
+
+## DateRange (enum) - A date range
+- `yesterday` - yesterday
+- `last_2_days` - two days ago and yesterday
+- `last_3_days` - last three days
+- `last_4_days` - last four days
+- `last_5_days` - last five days
+- `last_6_days` - last six days
+- `last_7_days` - last seven days
+- `last_14_days` - last fourteen days
+- `last_30_days` - last thirty days
+
+## CampaignStatus (enum) - running status for a campaign
+- `active` - campaign is running
+- `paused` - campaign has been paused
+- `budget_limited` - campaign has met its budget
+- `deleted` - campaign has been deleted
+
+## Source (enum) - an ad network
++ `outbrain` - Outbrain ([www.outbrain.com](//www.outbrain.com))
++ `taboola` - Taboola ([www.taboola.com](//www.taboola.com))
++ `revcontent` - Revcontent ([www.revcontent.com](//www.revcontent.com))
++ `yahoo` - Yahoo Gemini ([gemini.yahoo.com](//gemini.yahoo.com))
++ `content-ad` - Content.ad ([www.content.ad](//content.ad))
+
+## RuleType (enum)
+- `pause_campaign` - Pause Campaigns
+- `pause_ad` - Pause Ads
+- `block_publisher` - Block Publishers
+- `block_section` - Block Sections (Outbrain)
+- `block_target` - Block Targets (Revcontent)
+- `pause_ad_group` - Pause Ad Groups (Yahoo)
+- `modify_bid_publisher` - Update Site Bid Modifiers
+- `multiply_bid_target` - Update Target Bids
+- `multiply_bid_campaign` - Update Campaign Bids
+
+## Metric (enum) - a string composed of an object and a metric separated by a dot
+### Members
+- `campaign`, `ad`, `publisher`, `target`, `section`, `ad_group` (enum) - reporting object
+- .
+- `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`, `sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions` (enum) - metric field
+
+### Sample
+- `campaign.clicks` - Campaign clicks
+- `target.ctr` - Target CTR
+
+
+## Operator (enum)
+- `<` - less than 
+- `=` - equals
+- `>` - greater than
+
+## Rule by idResponse (object)
+
+### Properties
++ `id` (Integer, required) 
++ `name` (string, required) 
++ `type` (RuleType, required) 
++ `conditions` (array[Condition], required) 
++ `filters` (array[Filter], required) 
+
+
+## Condition (object)
+
+### Properties
++ `id` (Integer, required) 
++ `metric` (Metric, required) 
++ `operator` (Operator, required) 
++ `value` (Decimal, required) 
++ `date_range` (DateRange, required) 
+
+
+## Filter (object)
+
+### Properties
++ `id`: 87 (ID, required)
++ `source` (Source, required)
++ `account_id` (Integer, required)
++ `campaign_id` (Integer, required)
+
+## Account (object)
++ `id`: 123 (ID, required) - primary identifier for the account
++ `source` (Source) - name of the source
++ `source_account_id`: "e010f3346de2e41fed1a288a3ba5cd5e29" (SourceID) - source's unique identifier for the account
++ `name`: "Selfserve_test_1" (string) - name of the account
++ `created_at` (DateTime) - date and time the account was created
++ `updated_at` (DateTime) - date and time the account was last updated
+
+## Ad (object)
++ `tracking_ad_id` (string) - identifier provided to the ad's tracking code via {{AD_ID}}
++ `source_campaign_id` (SourceID) - unique vendor_campaign identifier
++ `source_ad_id` (SourceID) - vendor_ad id
++ `title` (string) - ad title / headline
++ `url` (Url) - ad destination url
++ `image_url` (Url) - ad image url
++ `enabled` (boolean) - ad enabled status
++ `status` (string) - ad status       
+
+## Campaign (object)
++ `id` (ID) - primary campaign identifier
++ `source`: "outbrain" (Source) - name of the source
++ `source_campaign_id` (SourceID) - unique vendor_campaign identifier
++ `name` (string) - campaign name
++ `start_at` (DateTime) - campaign start datetime
++ `end_at` (DateTime) - campaign end datetime
++ `enabled` (boolean) - campaign enabled status
++ `status` (CampaignStatus) - campaign status
++ `cpc` (Decimal) - the cost per click assigned to this campaign
++ `budget_amount` (Decimal) - the allotted budget for this campaign
++ `tracking_code` (string) - tracking code used on ads within this campaign
++ `created_at` (DateTime) - date and time the campaign was created
++ `updated_at` (DateTime) - date and time the campaign was last updated
+
+
+## User (object)
++ username (string) - username
++ email (string) - user's email
++ confirmed (boolean) - user's confirmed status
++ administrator (boolean) - whether or not a user is an administrator
++ created_at (DateTime) - date and time the user was created
++ updated_at (DateTime) - date and time the user was last updated
+
+
+
+
+
+
+        
+## AdsReport (object)
++ `source_account_id` (string) - source's unique account identifier
++ `source_campaign_id` (string) - source's unique campaign identifier
++ `source_ad_id` (string) - unique vendor_ad identifier
++ `name` (string) - name identifying ad
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
+
+## CampaignsReport (object)
++ `source_account_id` (string) - source's unique account identifier
++ `source_campaign_id` (string) - source's unique campaign identifier
++ `name` (string) - name identifying campaign
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
+
+
+## PublishersReport (object)
+### Properties
++ `source_account_id` (string) - source's unique account identifier
++ `source_campaign_id` (string) - source's unique campaign identifier
++ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (string) - source's unique publisher identifier
++ `name`: "Test Publisher" (string) - name identifying publisher
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
+
+## ReportingMetrics
++ `impressions`: 21 (Integer) - impressions
++ `clicks`: 4 (Integer) - clicks
++ `conversions`: 2 (Integer) - conversions
++ `cost`: 1.09 (Decimal) - cost
++ `ctr`: 0.1905 (Decimal) - click through rate
++ `ecpc`: 0.2725 (Decimal) - estimated cost per click
++ `cpa`: 0.545 (Decimal) - cost per action
++ `icr`: 0.09523810 (Decimal) - impression:conversion rate
+
+## GoogleAnalyticsMetrics
++ `sessions`: 522 (Integer,optional) - sessions
++ `pageviews`: 3985 (Integer,optional) - pageviews
++ `pageviews_per_session`: 7.6341 (Decimal,optional) - pageviews per session
++ `bounce_rate`: 0.0249 (Decimal,optional) - bounce rate
++ `avg_session_duration`: "00:05:54" (Duration,optional) - average session suration
++ `goal_1_completions`: 1 (Integer,optional) - goal #1 completions
++ `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
+

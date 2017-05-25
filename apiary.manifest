@@ -1,0 +1,9 @@
+blueprint/head.apib
+blueprint/auth.apib
+blueprint/accounts.apib
+blueprint/ads.apib
+blueprint/campaigns.apib
+blueprint/reporting.apib
+blueprint/rules.apib
+blueprint/users.apib
+blueprint/data_strucutres.apib
