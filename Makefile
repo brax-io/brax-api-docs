@@ -10,5 +10,5 @@ preview: apiary.apib
 	apiary preview
 
 blueprint/tables/.apib:
-	php data_structure_tables.php
+	php data_structures.php
 

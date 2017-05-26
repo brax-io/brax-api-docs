@@ -2,21 +2,21 @@
 
 ## Url (string) - a properly formatted URI according to RFC 3986
 
-## Date (string) - formatted date, such as: '2017-01-01'
+## Date (string) - formatted date, such as: `"2017-01-01"`
 
-## DateTime (string) - formatted date time, such as: '2016-01-01T15:13:14+00:00'
+## DateTime (string) - formatted date time, such as: `"2016-01-01T15:13:14+00:00"`
 
-## Decimal (number) - decimal or double numeric value, such as: 0.001, or 3.14
+## Decimal (number) - decimal or double numeric value, such as: `0.001`, or `3.14`
 
 ## Integer (number) - a number such as 1, 2, 3...
 
-## Duration (string) - a duration in hours, minutes, and seconds, e.g. 00:02:34
+## Duration (string) - a duration in hours, minutes, and seconds, e.g. `"00:02:34"`
 
 ## SourceID (string) - source's unique identifier for the referenced object
 
 ## ID (Integer) - primary identifier for the referenced object
 
-## DateRange (enum) - A date range
+## DateRange (enum) - string describing a relative date range
 - `yesterday` - yesterday
 - `last_2_days` - two days ago and yesterday
 - `last_3_days` - last three days
@@ -40,7 +40,7 @@
 + `yahoo` - Yahoo Gemini ([gemini.yahoo.com](//gemini.yahoo.com))
 + `content-ad` - Content.ad ([www.content.ad](//content.ad))
 
-## RuleType (enum)
+## RuleType (enum) - string describing the type of rule, indicating what it affects and how
 - `pause_campaign` - Pause Campaigns
 - `pause_ad` - Pause Ads
 - `block_publisher` - Block Publishers
@@ -77,15 +77,6 @@
 + `filters` (array[Filter], required) 
 
 
-## Pagination (object)
-
-### Properties
-+ `offset`: 0 (Integer)
-+ `limit`: 100 (Integer)
-+ `count`: 100 (Integer)
-+ `total`: 984 (Integer)
-
-
 ## Condition (object)
 
 ### Properties
@@ -103,6 +94,14 @@
 + `source` (Source, required)
 + `account_id` (Integer, required)
 + `campaign_id` (Integer, required)
+
+## Pagination (object)
+
+### Properties
++ `offset`: 0 (Integer)
++ `limit`: 100 (Integer)
++ `count`: 100 (Integer)
++ `total`: 984 (Integer)
 
 ## Account (object) - represents an account accessible at a network
 + `id`: 123 (ID, required) - primary identifier for the account
@@ -145,9 +144,6 @@
 + administrator (boolean) - whether or not a user is an administrator
 + `created_at` (DateTime) - date and time the user was created
 + `updated_at` (DateTime) - date and time the user was last updated
-
-
-
 
 
 

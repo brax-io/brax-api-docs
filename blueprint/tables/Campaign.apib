@@ -1,19 +1,19 @@
-# Campaign
-- represents a campaign running on a network
+# Campaign <a name='Campaign' />
+Represents a campaign running on a network
 
-| Field                | Type                | Comments                                       |
-|:---------------------|---------------------|------------------------------------------------|
-| `id`                 | (ID)                | primary campaign identifier                    |
-| `source`:            | "outbrain" (Source) | name of the source                             |
-| `source_campaign_id` | (SourceID)          | unique vendor_campaign identifier              |
-| `name`               | (string)            | campaign name                                  |
-| `start_at`           | (DateTime)          | campaign start datetime                        |
-| `end_at`             | (DateTime)          | campaign end datetime                          |
-| `enabled`            | (boolean)           | campaign enabled status                        |
-| `status`             | (CampaignStatus)    | campaign status                                |
-| `cpc`                | (Decimal)           | the cost per click assigned to this campaign   |
-| `budget_amount`      | (Decimal)           | the allotted budget for this campaign          |
-| `tracking_code`      | (string)            | tracking code used on ads within this campaign |
-| `created_at`         | (DateTime)          | date and time the campaign was created         |
-| `updated_at`         | (DateTime)          | date and time the campaign was last updated    |
+| Field                | Type                                         | Example    | Description                                    |
+|:---------------------|----------------------------------------------|------------|------------------------------------------------|
+| `id`                 | <a href='#ID'>ID</a>                         |            | primary campaign identifier                    |
+| `source`             | <a href='#Source'>Source</a>                 | "outbrain" | name of the source                             |
+| `source_campaign_id` | <a href='#SourceID'>SourceID</a>             |            | unique vendor_campaign identifier              |
+| `name`               | string                                       |            | campaign name                                  |
+| `start_at`           | <a href='#DateTime'>DateTime</a>             |            | campaign start datetime                        |
+| `end_at`             | <a href='#DateTime'>DateTime</a>             |            | campaign end datetime                          |
+| `enabled`            | boolean                                      |            | campaign enabled status                        |
+| `status`             | <a href='#CampaignStatus'>CampaignStatus</a> |            | campaign status                                |
+| `cpc`                | <a href='#Decimal'>Decimal</a>               |            | the cost per click assigned to this campaign   |
+| `budget_amount`      | <a href='#Decimal'>Decimal</a>               |            | the allotted budget for this campaign          |
+| `tracking_code`      | string                                       |            | tracking code used on ads within this campaign |
+| `created_at`         | <a href='#DateTime'>DateTime</a>             |            | date and time the campaign was created         |
+| `updated_at`         | <a href='#DateTime'>DateTime</a>             |            | date and time the campaign was last updated    |
 
