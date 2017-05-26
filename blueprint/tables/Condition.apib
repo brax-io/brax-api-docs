@@ -1,11 +1,11 @@
-# Condition <a name='Condition' />
-Criteria required to match target objects, e.g. `campaign.cost` `<` `10` using `last_7_days`
+#### Condition <a name='Condition' />
+Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
 
-| Field        | Type                                        | Example       | Description                          |
-|:-------------|---------------------------------------------|---------------|--------------------------------------|
-| `id`         | <a href='#ID'>ID</a> required               | 721           |                                      |
-| `metric`     | <a href='#Metric'>Metric</a> required       | campaign.cost | metric for input criteria            |
-| `operator`   | <a href='#Operator'>Operator</a> required   | <             | comparison operator to apply         |
-| `value`      | <a href='#Decimal'>Decimal</a> required     | 10            | expected value for comparison        |
-| `date_range` | <a href='#DateRange'>DateRange</a> required | last_7_days   | reporting range to aggregate metrics |
+| Field          | Type                                          | Example       | Description                          |
+|:---------------|-----------------------------------------------|---------------|--------------------------------------|
+| **id**         | <a href='#ID'>ID</a> *required*               | 721           | condition primary identifier         |
+| **metric**     | <a href='#Metric'>Metric</a> *required*       | campaign.cost | metric for input criteria            |
+| **operator**   | <a href='#Operator'>Operator</a> *required*   | <             | comparison operator to apply         |
+| **value**      | <a href='#Decimal'>Decimal</a> *required*     | 10            | expected value for comparison        |
+| **date_range** | <a href='#DateRange'>DateRange</a> *required* | `last_7_days` | reporting range to aggregate metrics |
 

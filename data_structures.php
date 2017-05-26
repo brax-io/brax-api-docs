@@ -21,19 +21,20 @@ function make_table($table, $base)
 		}
 	}
 
-	for( $j = 1; $j <= 2; $j++ )
+	foreach([2,1] as $col)
 	{
-		if( $widths[1] == 0 )
+		if( $widths[$col] == 0 )
 		{
-			unset( $head[1] );
-			unset( $widths[1] );
+			unset( $head[$col] );
+			unset( $widths[$col] );
 			$head = array_values($head);
 			$widths = array_values($widths);
 			foreach( $table as $i => $row )
 			{
-				unset( $table[$i][1] );
+				unset( $table[$i][$col] );
 				$table[$i] = array_values($table[$i]);
 			}
+			$col++;
 		}
 	}
 
@@ -90,7 +91,7 @@ foreach( $f as $line )
 		$base = $split[2] ?? "";
 		$description = ucfirst(str_replace('- ', '', $split[3] ?? ""));
 		$out = fopen("blueprint/tables/$type.apib","w");
-		$str = "# $type <a name='$type' />\n$description\n";
+		$str = "#### $type <a name='$type' />\n$description\n";
 		fwrite($out, $str);
 	}
 	if( in_array( substr( $line, 0, 2 ), ['- ','+ '] ) )
@@ -118,16 +119,30 @@ foreach( $f as $line )
 			$type = "";
 		}
 
+		if( $base != '(enum)' )
+		{
+			$name = str_replace('`','**', $name);
+		}
+
 		$type = str_replace('(','', $type);
 		$type = str_replace(')','', $type);
 		$split = explode(',', $type, 2);
 		$type = $split[0];
-		if( strtolower($type) != $type )
+
+		$type_prefix = "";
+		if( substr($type,0,6) == 'array[' )
 		{
-			$type = "<a href='#$type'>$type</a>";
+			$type = substr($type,6, -1);
+			$type_prefix = "array of ";
 		}
-		$type .= $split[1] ?? "";
-		$table[] = [ $name, $type, $example, $description ];
+
+		$type_suffix = ($split[1] ?? "");
+		if( strlen( $type_suffix ) > 0 )
+			$type_suffix = " *".trim($split[1] ?? "")."*";
+
+		if( strtolower($type) != $type )
+			$type = "<a href='#$type'>$type</a>";
+		$table[] = [ $name, $type_prefix.$type.$type_suffix, $example, $description ];
 	}
 
 }

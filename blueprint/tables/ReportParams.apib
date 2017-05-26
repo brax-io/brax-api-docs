@@ -1,0 +1,13 @@
+#### ReportParams <a name='ReportParams' />
+Input parameters for pulling reporting data
+
+| Field                  | Type                                | Example    | Description                                    |
+|:-----------------------|-------------------------------------|------------|------------------------------------------------|
+| **offset**             | <a href='#Integer'>Integer</a>      | 0          | starting index of the result set               |
+| **limit**              | <a href='#Integer'>Integer</a>      | 100        | maximum number of records to fetch; max: `100` |
+| **source**             | <a href='#Source'>Source</a>        | revcontent | name of the source                             |
+| **source_account_id**  | <a href='#SourceID'>SourceID</a>    | 12345      | source's unique account identifier             |
+| **source_campaign_id** | <a href='#SourceID'>SourceID</a>    | 67890      | source's unique campaign identifier            |
+| **start_date**         | <a href='#Date'>Date</a> *required* | 2017-02-12 | start date for aggregating metrics             |
+| **end_date**           | <a href='#Date'>Date</a> *required* | 2017-02-18 | end date for aggregating metrics               |
+

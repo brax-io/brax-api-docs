@@ -12,9 +12,9 @@
 
 ## Duration (string) - a duration in hours, minutes, and seconds, e.g. `00:02:34`
 
-## ID (Integer) - fields named `..._id` — the primary identifier for the referenced object
+## ID (Integer) - fields named **..._id** — the primary identifier for the referenced object
 
-## SourceID (string) - fields named `source_..._id` — the source's unique identifier for the referenced object
+## SourceID (string) - fields named **source_..._id** — the source's unique identifier for the referenced object
 
 ## DateRange (enum) - string describing a relative date range
 - `yesterday` - yesterday
@@ -70,9 +70,9 @@
 ## Rule by idResponse (object)
 
 ### Properties
-+ `id`: 986 (ID, required) 
-+ `name`: my ads rule (string, required)
-+ `type`: pause_ads (RuleType, required) - determines what actions are performed on which objects
++ `id`: 986 (ID, required) - rule primary identifier
++ `name`: my ads rule (string, required) - name of the rule
++ `type`: `pause_ads` (RuleType, required) - determines what actions are performed on which objects
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
 
@@ -80,17 +80,17 @@
 ## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
 
 ### Properties
-+ `id`: 721 (ID, required)
++ `id`: 721 (ID, required) - condition primary identifier
 + `metric`: campaign.cost (Metric, required) - metric for input criteria
 + `operator`: < (Operator, required) - comparison operator to apply
 + `value`: 10 (Decimal, required) - expected value for comparison
-+ `date_range`: last_7_days (DateRange, required) - reporting range to aggregate metrics
++ `date_range`: `last_7_days` (DateRange, required) - reporting range to aggregate metrics
 
 
 ## Filter (object)
 
 ### Properties
-+ `id`: 87 (ID, required)
++ `id`: 87 (ID, required) - filter primary identifier
 + `source`: taboola (Source, optional) - restrict search to the given network
 + `account_id`: 96751 (ID, optional) - restrict search to the given account
 + `campaign_id`: 452677 (ID, optional) - restrict search to the given campaign
@@ -105,16 +105,16 @@
 
 ## Account (object) - represents an account accessible at a network
 + `id`: 123 (ID, required) - primary identifier for the account
-+ `source` (Source) - name of the source
-+ `source_account_id`: "e010f3346de2e41fed1a288a3ba5cd5e29" (SourceID) - source's unique identifier for the account
-+ `name`: "Selfserve_test_1" (string) - name of the account
++ `source`: content-ad (Source) - name of the source
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `name`: Selfserve_test_1 (string) - name of the account
 + `created_at` (DateTime) - date and time the account was created
 + `updated_at` (DateTime) - date and time the account was last updated
 
 ## Ad (object) - represents an ad in a campaign 
-+ `tracking_ad_id` (string) - identifier provided to the ad's tracking code via {{AD_ID}}
-+ `source_campaign_id` (SourceID) - unique vendor_campaign identifier
-+ `source_ad_id` (SourceID) - vendor_ad id
++ `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source_campaign_id` (SourceID) - source's unique campaign identifier
++ `source_ad_id` (SourceID) - source's unique ad identifier
 + `title` (string) - ad title / headline
 + `url` (Url) - ad destination url
 + `image_url` (Url) - ad image url
@@ -122,71 +122,89 @@
 + `status` (string) - ad status       
 
 ## Campaign (object) - represents a campaign running on a network
-+ `id` (ID) - primary campaign identifier
-+ `source`: "outbrain" (Source) - name of the source
-+ `source_campaign_id` (SourceID) - unique vendor_campaign identifier
-+ `name` (string) - campaign name
-+ `start_at` (DateTime) - campaign start datetime
-+ `end_at` (DateTime) - campaign end datetime
-+ `enabled` (boolean) - campaign enabled status
-+ `status` (CampaignStatus) - campaign status
-+ `cpc` (Decimal) - the cost per click assigned to this campaign
-+ `budget_amount` (Decimal) - the allotted budget for this campaign
-+ `tracking_code` (string) - tracking code used on ads within this campaign
-+ `created_at` (DateTime) - date and time the campaign was created
-+ `updated_at` (DateTime) - date and time the campaign was last updated
++ `id`: 234567 (ID) - primary campaign identifier
++ `source`: revcontent (Source) - name of the source
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `name`: my-test-campaign (string) - campaign name
++ `start_at`: 2017-01-01T05:00:00+00:00 (DateTime) - campaign start datetime
++ `end_at`:  2017-01-31T05:00:00+00:00 (DateTime) - campaign end datetime
++ `enabled`: true (boolean) - campaign enabled status
++ `status`: active (CampaignStatus) - campaign status
++ `cpc`: 0.08 (Decimal) - the cost per click assigned to this campaign
++ `budget_amount`: 105.00 (Decimal) - the allotted budget for this campaign
++ `tracking_code`: utm_campaign={{CAMPAIGN}} (string) - tracking code used on ads within this campaign
++ `created_at`: 2016-12-30T23:18:42+00:00 (DateTime) - date and time the campaign was created
++ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the campaign was last updated
 
 
 ## User (object) - describes a Brax user
-+ username (string) - username
-+ email (string) - user's email
-+ confirmed (boolean) - user's confirmed status
-+ administrator (boolean) - whether or not a user is an administrator
-+ `created_at` (DateTime) - date and time the user was created
-+ `updated_at` (DateTime) - date and time the user was last updated
++ `username`: ivan (string) - username
++ `email`: user@site.com (string) - user's email
++ `confirmed`: true (boolean) - user's confirmed status
++ `administrator`: false (boolean) - whether or not a user is an administrator
++ `created_at`: 2017-01-01T00:12:34+00:00 (DateTime) - date and time the user was created
++ `updated_at`: 2017-02-03T13:45:01+00:00 (DateTime) - date and time the user was last updated
 
 
+
+## ReportParams (object) - input parameters for pulling reporting data
++ `offset`: 0 (Integer) - starting index of the result set
++ `limit`: 100 (Integer) - maximum number of records to fetch; max: `100`
++ `source`: revcontent (Source) - name of the source
++ `source_account_id`: 12345 (SourceID) - source's unique account identifier
++ `source_campaign_id`: 67890 (SourceID) - source's unique campaign identifier
++ `start_date`: 2017-02-12 (Date, required) - start date for aggregating metrics
++ `end_date`: 2017-02-18 (Date, required) - end date for aggregating metrics
 
         
 ## AdsReport (object)
-+ `source_account_id` (string) - source's unique account identifier
-+ `source_campaign_id` (string) - source's unique campaign identifier
-+ `source_ad_id` (string) - source's unique ad identifier
++ `source_account_id` (SourceID) - source's unique account identifier
++ `source_campaign_id` (SourceID) - source's unique campaign identifier
++ `source_ad_id` (SourceID) - source's unique ad identifier
 + `name` (string) - name identifying ad
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## CampaignsReport (object)
-+ `source_account_id` (string) - source's unique account identifier
-+ `source_campaign_id` (string) - source's unique campaign identifier
++ `source_account_id` (SourceID) - source's unique account identifier
++ `source_campaign_id` (SourceID) - source's unique campaign identifier
 + `name` (string) - name identifying campaign
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## AdGroupsReport (object)
-+ `source_account_id` (string) - source's unique account identifier
-+ `source_campaign_id` (string) - source's unique campaign identifier
-+ `source_ad_group_id` (string) - source's unique ad group identifier
++ `source_account_id` (SourceID) - source's unique account identifier
++ `source_campaign_id` (SourceID) - source's unique campaign identifier
++ `source_ad_group_id` (SourceID) - source's unique ad group identifier
 + `name` (string) - name identifying ad
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## PublishersReport (object)
 ### Properties
-+ `source_account_id` (string) - source's unique account identifier
-+ `source_campaign_id` (string) - source's unique campaign identifier
-+ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (string) - source's unique publisher identifier
++ `source_account_id` (SourceID) - source's unique account identifier
++ `source_campaign_id` (SourceID) - source's unique campaign identifier
++ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (SourceID) - source's unique publisher identifier
 + `name`: "Test Publisher" (string) - name identifying publisher
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## SectionsReport (object)
 ### Properties
-+ `source_account_id` (string) - source's unique account identifier
-+ `source_campaign_id` (string) - source's unique campaign identifier
-+ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (string) - source's unique publisher identifier
-+ `source_section_id`: "00a4cb1d955ea603d69fb3a3dba54d1460" (string) - source's unique section identifier
++ `source_account_id` (SourceID) - source's unique account identifier
++ `source_campaign_id` (SourceID) - source's unique campaign identifier
++ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (SourceID) - source's unique publisher identifier
++ `source_section_id`: "00a4cb1d955ea603d69fb3a3dba54d1460" (SourceID) - source's unique section identifier
 + `name`: "Test Publisher" (string) - name identifying section
++ Include ReportingMetrics
++ Include GoogleAnalyticsMetrics
+
+## TargetsReport (object)
+### Properties
++ `source_account_id` (SourceID) - source's unique account identifier
++ `source_campaign_id` (SourceID) - source's unique campaign identifier
++ `source_target_id`: (SourceID) - source's unique target identifier
++ `name`: "Test Target" (string) - name identifying section
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 

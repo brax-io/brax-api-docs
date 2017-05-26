@@ -1,10 +1,16 @@
 # Group Reporting
 Endpoints for managing reporting of ads, ad groups, campaigns, publishers, sections, and targets.
 
+# Parameters
+All reporting endpoints accept a combination of parameters to refine the result set.
+
+:[](tables/ReportParams.apib)
+
+
 ## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,start_date,end_date}]
 
 ### Ads [GET]
-Fetch ads report for a source and `account_id`.
+Fetch ads report for a source and **account_id**.
 
 + Parameters
     :[](params/pagination.apib)
@@ -38,7 +44,7 @@ Fetch ads report for a source and `account_id`.
 ## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
 
 ### Ad Groups [GET]
-Fetch ad groups report for a `source` and `source_account_id`; optionally with `campaign_id`.
+Fetch ad groups report for a **source** and **source_account_id**; optionally with **campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
@@ -72,7 +78,7 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
 ## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
 
 ### Campaigns [GET]
-Fetch campaigns report for a `source` and `source_account_id`; optionally with `campaign_id`.
+Fetch campaigns report for a **source** and **source_account_id**; optionally with **campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
@@ -106,7 +112,7 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
 ## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
 
 ### Publishers [GET]
-Fetch publishers report for a `source` and `source_account_id`; optionally with `campaign_id`.
+Fetch publishers report for a **source** and **source_account_id**; optionally with **campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
@@ -143,7 +149,7 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
 ## Sections Report [/reports/sections{?offset,limit,source,account_id,campaign_id,start_date,end_date}]
 
 ### Sections [GET]
-Fetch sections report for a source and `account_id`; optionally with `campaign_id`.
+Fetch sections report for a source and **account_id**; optionally with **campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
@@ -179,7 +185,7 @@ Fetch sections report for a source and `account_id`; optionally with `campaign_i
 ## Targets Report [/reports/targets{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
 
 ### Targets [GET]
-Fetch targets report for a `source` and `source_account_id`; optionally with `campaign_id`.
+Fetch targets report for a **source** and **source_account_id**; optionally with **campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
