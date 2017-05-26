@@ -73,9 +73,11 @@ function make_table($table, $base)
 
 $f = file("blueprint/data_structures.apib");
 
+$out = null;
 $type = null;
 $table = [];
 $base = null;
+$description = "";
 foreach( $f as $line )
 {
 	if( substr($line,0,3) == '## ' )
@@ -87,14 +89,14 @@ foreach( $f as $line )
 			$table = [];
 		}
 		$split = explode(' ', $line, 4);
-		$type = $split[1];
+		$type = trim($split[1]);
 		$base = $split[2] ?? "";
 		$description = ucfirst(str_replace('- ', '', $split[3] ?? ""));
 		$out = fopen("blueprint/tables/$type.apib","w");
 		$str = "#### $type <a name='$type' />\n$description\n";
 		fwrite($out, $str);
 	}
-	if( in_array( substr( $line, 0, 2 ), ['- ','+ '] ) )
+	elseif( in_array( substr( $line, 0, 2 ), ['- ','+ '] ) )
 	{
 		$split = explode(' - ', substr(trim($line),2));
 		$name_type = $split[0];
@@ -144,7 +146,16 @@ foreach( $f as $line )
 			$type = "<a href='#$type'>$type</a>";
 		$table[] = [ $name, $type_prefix.$type.$type_suffix, $example, $description ];
 	}
+	elseif( substr( $line, 0, 4 ) == "### " )
+	{
+	}
+	else
+	{
+		if( $out )
+			fwrite($out, trim($line)."\n" );
+	}
 
 }
 
+fwrite($out, make_table($table, $base));
 fclose($out);

@@ -81,8 +81,8 @@
 
 ### Properties
 + `id`: 721 (ID, required) - condition primary identifier
-+ `metric`: campaign.cost (Metric, required) - metric for input criteria
-+ `operator`: < (Operator, required) - comparison operator to apply
++ `metric`: `campaign.cost` (Metric, required) - metric for input criteria
++ `operator`: `<` (Operator, required) - comparison operator to apply
 + `value`: 10 (Decimal, required) - expected value for comparison
 + `date_range`: `last_7_days` (DateRange, required) - reporting range to aggregate metrics
 
@@ -147,7 +147,7 @@
 
 
 
-## ReportParams (object) - input parameters for pulling reporting data
+## ReportParams - input parameters for pulling reporting data
 + `offset`: 0 (Integer) - starting index of the result set
 + `limit`: 100 (Integer) - maximum number of records to fetch; max: `100`
 + `source`: revcontent (Source) - name of the source
@@ -209,6 +209,7 @@
 + Include GoogleAnalyticsMetrics
 
 ## ReportingMetrics
+Results will contain these standard performance metrics
 + `impressions`: 21 (Integer) - impressions
 + `clicks`: 4 (Integer) - clicks
 + `conversions`: 2 (Integer) - conversions
@@ -219,11 +220,12 @@
 + `icr`: 0.09523810 (Decimal) - impression:conversion rate
 
 ## GoogleAnalyticsMetrics
+For users with Google Analytics enabled, results will also contain these analytics metrics
 + `sessions`: 522 (Integer,optional) - sessions
 + `pageviews`: 3985 (Integer,optional) - pageviews
 + `pageviews_per_session`: 7.6341 (Decimal,optional) - pageviews per session
 + `bounce_rate`: 0.0249 (Decimal,optional) - bounce rate
-+ `avg_session_duration`: "00:05:54" (Duration,optional) - average session suration
++ `avg_session_duration`: 00:05:54 (Duration,optional) - average session suration
 + `goal_1_completions`: 1 (Integer,optional) - goal #1 completions
 + `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
 
