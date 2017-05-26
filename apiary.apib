@@ -78,6 +78,17 @@ Represents an account accessible at a network
 | `created_at`        | <a href='#DateTime'>DateTime</a> |                                      | date and time the account was created      |
 | `updated_at`        | <a href='#DateTime'>DateTime</a> |                                      | date and time the account was last updated |
 
+# Source <a name='Source' />
+String representing an ad network
+
+| Value        | Description                                             |
+|:-------------|---------------------------------------------------------|
+| `outbrain`   | Outbrain ([www.outbrain.com](//www.outbrain.com))       |
+| `taboola`    | Taboola ([www.taboola.com](//www.taboola.com))          |
+| `revcontent` | Revcontent ([www.revcontent.com](//www.revcontent.com)) |
+| `yahoo`      | Yahoo Gemini ([gemini.yahoo.com](//gemini.yahoo.com))   |
+| `content-ad` | Content.ad ([www.content.ad](//content.ad))             |
+
 
 ## Accounts [/accounts{?offset,limit,source}]
 
@@ -147,6 +158,21 @@ List all accounts.
 
 # Group Ads
 Endpoints to manage ads.
+
+# Ad <a name='Ad' />
+Represents an ad in a campaign 
+
+| Field                | Type                             | Example | Description                                                 |
+|:---------------------|----------------------------------|---------|-------------------------------------------------------------|
+| `tracking_ad_id`     | string                           |         | identifier provided to the ad's tracking code via {{AD_ID}} |
+| `source_campaign_id` | <a href='#SourceID'>SourceID</a> |         | unique vendor_campaign identifier                           |
+| `source_ad_id`       | <a href='#SourceID'>SourceID</a> |         | vendor_ad id                                                |
+| `title`              | string                           |         | ad title / headline                                         |
+| `url`                | <a href='#Url'>Url</a>           |         | ad destination url                                          |
+| `image_url`          | <a href='#Url'>Url</a>           |         | ad image url                                                |
+| `enabled`            | boolean                          |         | ad enabled status                                           |
+| `status`             | string                           |         | ad status                                                   |
+
 
 ## Ads [/ads{?offset,limit,source,account_id,campaign_id}]
 
@@ -220,7 +246,36 @@ List all ads.
 # Group Campaigns
 Endpoints to manage campaigns and campaign settings.
 
-The Campaign object has the following properties (common to all sources):
+# Campaign <a name='Campaign' />
+Represents a campaign running on a network
+
+| Field                | Type                                         | Example    | Description                                    |
+|:---------------------|----------------------------------------------|------------|------------------------------------------------|
+| `id`                 | <a href='#ID'>ID</a>                         |            | primary campaign identifier                    |
+| `source`             | <a href='#Source'>Source</a>                 | "outbrain" | name of the source                             |
+| `source_campaign_id` | <a href='#SourceID'>SourceID</a>             |            | unique vendor_campaign identifier              |
+| `name`               | string                                       |            | campaign name                                  |
+| `start_at`           | <a href='#DateTime'>DateTime</a>             |            | campaign start datetime                        |
+| `end_at`             | <a href='#DateTime'>DateTime</a>             |            | campaign end datetime                          |
+| `enabled`            | boolean                                      |            | campaign enabled status                        |
+| `status`             | <a href='#CampaignStatus'>CampaignStatus</a> |            | campaign status                                |
+| `cpc`                | <a href='#Decimal'>Decimal</a>               |            | the cost per click assigned to this campaign   |
+| `budget_amount`      | <a href='#Decimal'>Decimal</a>               |            | the allotted budget for this campaign          |
+| `tracking_code`      | string                                       |            | tracking code used on ads within this campaign |
+| `created_at`         | <a href='#DateTime'>DateTime</a>             |            | date and time the campaign was created         |
+| `updated_at`         | <a href='#DateTime'>DateTime</a>             |            | date and time the campaign was last updated    |
+
+
+# CampaignStatus <a name='CampaignStatus' />
+Running status for a campaign
+
+| Value            | Description                 |
+|:-----------------|-----------------------------|
+| `active`         | campaign is running         |
+| `paused`         | campaign has been paused    |
+| `budget_limited` | campaign has met its budget |
+| `deleted`        | campaign has been deleted   |
+
 
 ## Campaigns [/campaigns{?offset,limit,source,account_id,campaign_id}]
 
@@ -898,6 +953,53 @@ Fetch targets report for a `source` and `source_account_id`; optionally with `ca
 # Group Rules
 Endpoints to manage rules, rule settings, preview running rules, run rules, and rule job statuses.
 
+# Rule <a name='Rule' />
+IdResponse (object)
+
+| Field        | Type                                                      | Example     | Description                                            |
+|:-------------|-----------------------------------------------------------|-------------|--------------------------------------------------------|
+| `id`         | <a href='#ID'>ID</a> required                             | 986         |                                                        |
+| `name`       | string required                                           | my ads rule |                                                        |
+| `type`       | <a href='#RuleType'>RuleType</a> required                 | pause_ads   | determines what actions are performed on which objects |
+| `conditions` | <a href='#array[Condition]'>array[Condition]</a> required |             | criteria for matching                                  |
+| `filters`    | <a href='#array[Filter]'>array[Filter]</a> required       |             | restrict search to source, account, or campaign level  |
+
+# Condition <a name='Condition' />
+Criteria required to match target objects, e.g. `campaign.cost` `<` `10` using `last_7_days`
+
+| Field        | Type                                        | Example       | Description                          |
+|:-------------|---------------------------------------------|---------------|--------------------------------------|
+| `id`         | <a href='#ID'>ID</a> required               | 721           |                                      |
+| `metric`     | <a href='#Metric'>Metric</a> required       | campaign.cost | metric for input criteria            |
+| `operator`   | <a href='#Operator'>Operator</a> required   | <             | comparison operator to apply         |
+| `value`      | <a href='#Decimal'>Decimal</a> required     | 10            | expected value for comparison        |
+| `date_range` | <a href='#DateRange'>DateRange</a> required | last_7_days   | reporting range to aggregate metrics |
+
+# Filter <a name='Filter' />
+
+| Field         | Type                                  | Example | Description                           |
+|:--------------|---------------------------------------|---------|---------------------------------------|
+| `id`          | <a href='#ID'>ID</a> required         | 87      |                                       |
+| `source`      | <a href='#Source'>Source</a> optional | taboola | restrict search to the given network  |
+| `account_id`  | <a href='#ID'>ID</a> optional         | 96751   | restrict search to the given account  |
+| `campaign_id` | <a href='#ID'>ID</a> optional         | 452677  | restrict search to the given campaign |
+
+# RuleType <a name='RuleType' />
+String describing the type of rule, indicating what it affects and how
+
+| Value                   | Description                |
+|:------------------------|----------------------------|
+| `pause_campaign`        | Pause Campaigns            |
+| `pause_ad`              | Pause Ads                  |
+| `block_publisher`       | Block Publishers           |
+| `block_section`         | Block Sections (Outbrain)  |
+| `block_target`          | Block Targets (Revcontent) |
+| `pause_ad_group`        | Pause Ad Groups (Yahoo)    |
+| `modify_bid_publisher`  | Update Site Bid Modifiers  |
+| `multiply_bid_target`   | Update Target Bids         |
+| `multiply_bid_campaign` | Update Campaign Bids       |
+
+
 ## Rules [/rules{?offset,limit}]
 
 ### List Rules [GET]
@@ -1195,6 +1297,7 @@ TODO: Add Description
     + Attributes (object)
 
 
+
 # Group Users
 Endpoints to manage users and user settings.
 
@@ -1274,23 +1377,23 @@ List all users.
 # Group Types
 
 # ID <a name='ID' />
-Primary identifier for the referenced object
+Fields named `..._id` — the primary identifier for the referenced object
 
 # SourceID <a name='SourceID' />
-Source's unique identifier for the referenced object
+Fields named `source_..._id` — the source's unique identifier for the referenced object
 
 # Integer <a name='Integer' />
-A number such as 1, 2, 3...
+A whole number such as `1`, `2`, `3`...
 
 # Decimal <a name='Decimal' />
 Decimal or double numeric value, such as: `0.001`, or `3.14`
 
 
 # Date <a name='Date' />
-Formatted date, such as: `"2017-01-01"`
+Formatted date, such as: `2017-01-01`
 
 # DateTime <a name='DateTime' />
-Formatted date time, such as: `"2016-01-01T15:13:14+00:00"`
+Date time formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
 
 # DateRange <a name='DateRange' />
 String describing a relative date range
@@ -1308,66 +1411,28 @@ String describing a relative date range
 | `last_30_days` | last thirty days           |
 
 # Duration <a name='Duration' />
-A duration in hours, minutes, and seconds, e.g. `"00:02:34"`
+A duration in hours, minutes, and seconds, e.g. `00:02:34`
 
 # Url <a name='Url' />
 A properly formatted URI according to RFC 3986
-
-
-# CampaignStatus <a name='CampaignStatus' />
-Running status for a campaign
-
-| Value            | Description                 |
-|:-----------------|-----------------------------|
-| `active`         | campaign is running         |
-| `paused`         | campaign has been paused    |
-| `budget_limited` | campaign has met its budget |
-| `deleted`        | campaign has been deleted   |
-
-# Source <a name='Source' />
-An ad network
-
-| Value        | Description                                             |
-|:-------------|---------------------------------------------------------|
-| `outbrain`   | Outbrain ([www.outbrain.com](//www.outbrain.com))       |
-| `taboola`    | Taboola ([www.taboola.com](//www.taboola.com))          |
-| `revcontent` | Revcontent ([www.revcontent.com](//www.revcontent.com)) |
-| `yahoo`      | Yahoo Gemini ([gemini.yahoo.com](//gemini.yahoo.com))   |
-| `content-ad` | Content.ad ([www.content.ad](//content.ad))             |
-
-# RuleType <a name='RuleType' />
-String describing the type of rule, indicating what it affects and how
-
-| Value                   | Description                |
-|:------------------------|----------------------------|
-| `pause_campaign`        | Pause Campaigns            |
-| `pause_ad`              | Pause Ads                  |
-| `block_publisher`       | Block Publishers           |
-| `block_section`         | Block Sections (Outbrain)  |
-| `block_target`          | Block Targets (Revcontent) |
-| `pause_ad_group`        | Pause Ad Groups (Yahoo)    |
-| `modify_bid_publisher`  | Update Site Bid Modifiers  |
-| `multiply_bid_target`   | Update Target Bids         |
-| `multiply_bid_campaign` | Update Campaign Bids       |
-
 
 # Data Structures
 
 ## Url (string) - a properly formatted URI according to RFC 3986
 
-## Date (string) - formatted date, such as: `"2017-01-01"`
+## Date (string) - formatted date, such as: `2017-01-01`
 
-## DateTime (string) - formatted date time, such as: `"2016-01-01T15:13:14+00:00"`
+## DateTime (string) - date time formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
 
 ## Decimal (number) - decimal or double numeric value, such as: `0.001`, or `3.14`
 
-## Integer (number) - a number such as 1, 2, 3...
+## Integer (number) - a whole number such as `1`, `2`, `3`...
 
-## Duration (string) - a duration in hours, minutes, and seconds, e.g. `"00:02:34"`
+## Duration (string) - a duration in hours, minutes, and seconds, e.g. `00:02:34`
 
-## SourceID (string) - source's unique identifier for the referenced object
+## ID (Integer) - fields named `..._id` — the primary identifier for the referenced object
 
-## ID (Integer) - primary identifier for the referenced object
+## SourceID (string) - fields named `source_..._id` — the source's unique identifier for the referenced object
 
 ## DateRange (enum) - string describing a relative date range
 - `yesterday` - yesterday
@@ -1386,7 +1451,7 @@ String describing the type of rule, indicating what it affects and how
 - `budget_limited` - campaign has met its budget
 - `deleted` - campaign has been deleted
 
-## Source (enum) - an ad network
+## Source (enum) - string representing an ad network
 + `outbrain` - Outbrain ([www.outbrain.com](//www.outbrain.com))
 + `taboola` - Taboola ([www.taboola.com](//www.taboola.com))
 + `revcontent` - Revcontent ([www.revcontent.com](//www.revcontent.com))
@@ -1423,38 +1488,38 @@ String describing the type of rule, indicating what it affects and how
 ## Rule by idResponse (object)
 
 ### Properties
-+ `id` (Integer, required) 
-+ `name` (string, required) 
-+ `type` (RuleType, required) 
-+ `conditions` (array[Condition], required) 
-+ `filters` (array[Filter], required) 
++ `id`: 986 (ID, required) 
++ `name`: my ads rule (string, required)
++ `type`: pause_ads (RuleType, required) - determines what actions are performed on which objects
++ `conditions` (array[Condition], required) - criteria for matching
++ `filters` (array[Filter], required) - restrict search to source, account, or campaign level
 
 
-## Condition (object)
+## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` using `last_7_days`
 
 ### Properties
-+ `id` (Integer, required) 
-+ `metric` (Metric, required) 
-+ `operator` (Operator, required) 
-+ `value` (Decimal, required) 
-+ `date_range` (DateRange, required) 
++ `id`: 721 (ID, required)
++ `metric`: campaign.cost (Metric, required) - metric for input criteria
++ `operator`: < (Operator, required) - comparison operator to apply
++ `value`: 10 (Decimal, required) - expected value for comparison
++ `date_range`: last_7_days (DateRange, required) - reporting range to aggregate metrics
 
 
 ## Filter (object)
 
 ### Properties
 + `id`: 87 (ID, required)
-+ `source` (Source, required)
-+ `account_id` (Integer, required)
-+ `campaign_id` (Integer, required)
++ `source`: taboola (Source, optional) - restrict search to the given network
++ `account_id`: 96751 (ID, optional) - restrict search to the given account
++ `campaign_id`: 452677 (ID, optional) - restrict search to the given campaign
 
-## Pagination (object)
+## Pagination (object) - indicates the number of records available
 
 ### Properties
-+ `offset`: 0 (Integer)
-+ `limit`: 100 (Integer)
-+ `count`: 100 (Integer)
-+ `total`: 984 (Integer)
++ `offset`: 0 (Integer) - starting index of the result set
++ `limit`: 100 (Integer) - maximum possible records in the result set / page size
++ `count`: 100 (Integer) - actual number of records in the result set
++ `total`: 984 (Integer) - total number of available records for the requested resource
 
 ## Account (object) - represents an account accessible at a network
 + `id`: 123 (ID, required) - primary identifier for the account

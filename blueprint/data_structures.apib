@@ -2,19 +2,19 @@
 
 ## Url (string) - a properly formatted URI according to RFC 3986
 
-## Date (string) - formatted date, such as: `"2017-01-01"`
+## Date (string) - formatted date, such as: `2017-01-01`
 
-## DateTime (string) - formatted date time, such as: `"2016-01-01T15:13:14+00:00"`
+## DateTime (string) - date time formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
 
 ## Decimal (number) - decimal or double numeric value, such as: `0.001`, or `3.14`
 
-## Integer (number) - a number such as 1, 2, 3...
+## Integer (number) - a whole number such as `1`, `2`, `3`...
 
-## Duration (string) - a duration in hours, minutes, and seconds, e.g. `"00:02:34"`
+## Duration (string) - a duration in hours, minutes, and seconds, e.g. `00:02:34`
 
-## SourceID (string) - source's unique identifier for the referenced object
+## ID (Integer) - fields named `..._id` — the primary identifier for the referenced object
 
-## ID (Integer) - primary identifier for the referenced object
+## SourceID (string) - fields named `source_..._id` — the source's unique identifier for the referenced object
 
 ## DateRange (enum) - string describing a relative date range
 - `yesterday` - yesterday
@@ -33,7 +33,7 @@
 - `budget_limited` - campaign has met its budget
 - `deleted` - campaign has been deleted
 
-## Source (enum) - an ad network
+## Source (enum) - string representing an ad network
 + `outbrain` - Outbrain ([www.outbrain.com](//www.outbrain.com))
 + `taboola` - Taboola ([www.taboola.com](//www.taboola.com))
 + `revcontent` - Revcontent ([www.revcontent.com](//www.revcontent.com))
@@ -70,38 +70,38 @@
 ## Rule by idResponse (object)
 
 ### Properties
-+ `id` (Integer, required) 
-+ `name` (string, required) 
-+ `type` (RuleType, required) 
-+ `conditions` (array[Condition], required) 
-+ `filters` (array[Filter], required) 
++ `id`: 986 (ID, required) 
++ `name`: my ads rule (string, required)
++ `type`: pause_ads (RuleType, required) - determines what actions are performed on which objects
++ `conditions` (array[Condition], required) - criteria for matching
++ `filters` (array[Filter], required) - restrict search to source, account, or campaign level
 
 
-## Condition (object)
+## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
 
 ### Properties
-+ `id` (Integer, required) 
-+ `metric` (Metric, required) 
-+ `operator` (Operator, required) 
-+ `value` (Decimal, required) 
-+ `date_range` (DateRange, required) 
++ `id`: 721 (ID, required)
++ `metric`: campaign.cost (Metric, required) - metric for input criteria
++ `operator`: < (Operator, required) - comparison operator to apply
++ `value`: 10 (Decimal, required) - expected value for comparison
++ `date_range`: last_7_days (DateRange, required) - reporting range to aggregate metrics
 
 
 ## Filter (object)
 
 ### Properties
 + `id`: 87 (ID, required)
-+ `source` (Source, required)
-+ `account_id` (Integer, required)
-+ `campaign_id` (Integer, required)
++ `source`: taboola (Source, optional) - restrict search to the given network
++ `account_id`: 96751 (ID, optional) - restrict search to the given account
++ `campaign_id`: 452677 (ID, optional) - restrict search to the given campaign
 
-## Pagination (object)
+## Pagination (object) - indicates the number of records available
 
 ### Properties
-+ `offset`: 0 (Integer)
-+ `limit`: 100 (Integer)
-+ `count`: 100 (Integer)
-+ `total`: 984 (Integer)
++ `offset`: 0 (Integer) - starting index of the result set
++ `limit`: 100 (Integer) - maximum possible records in the result set / page size
++ `count`: 100 (Integer) - actual number of records in the result set
++ `total`: 984 (Integer) - total number of available records for the requested resource
 
 ## Account (object) - represents an account accessible at a network
 + `id`: 123 (ID, required) - primary identifier for the account
