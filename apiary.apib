@@ -344,7 +344,6 @@ All reporting endpoints accept a combination of parameters to refine the result 
 Input parameters for pulling reporting data
 
 
-
 | Field                  | Type                                | Example    | Description                                    |
 |:-----------------------|-------------------------------------|------------|------------------------------------------------|
 | **offset**             | <a href='#Integer'>Integer</a>      | 0          | starting index of the result set               |
@@ -357,8 +356,8 @@ Input parameters for pulling reporting data
 
 
 #### ReportingMetrics <a name='ReportingMetrics' />
-
 Results will contain these standard performance metrics
+
 
 | Field           | Type                           | Example    | Description                |
 |:----------------|--------------------------------|------------|----------------------------|
@@ -373,8 +372,8 @@ Results will contain these standard performance metrics
 
 
 #### GoogleAnalyticsMetrics <a name='GoogleAnalyticsMetrics' />
-
 For users with Google Analytics enabled, results will also contain these analytics metrics
+
 
 | Field                     | Type                                        | Example  | Description              |
 |:--------------------------|---------------------------------------------|----------|--------------------------|
@@ -1643,7 +1642,7 @@ A properly formatted URI according to RFC 3986
 
 
 
-## ReportParams - input parameters for pulling reporting data
+## ReportParams (object) - input parameters for pulling reporting data
 + `offset`: 0 (Integer) - starting index of the result set
 + `limit`: 100 (Integer) - maximum number of records to fetch; max: `100`
 + `source`: revcontent (Source) - name of the source
@@ -1652,12 +1651,32 @@ A properly formatted URI according to RFC 3986
 + `start_date`: 2017-02-12 (Date, required) - start date for aggregating metrics
 + `end_date`: 2017-02-18 (Date, required) - end date for aggregating metrics
 
-        
+## ReportingMetrics (object) - Results will contain these standard performance metrics
++ `impressions`: 21 (Integer) - impressions
++ `clicks`: 4 (Integer) - clicks
++ `conversions`: 2 (Integer) - conversions
++ `cost`: 1.09 (Decimal) - cost
++ `ctr`: 0.1905 (Decimal) - click through rate
++ `ecpc`: 0.2725 (Decimal) - estimated cost per click
++ `cpa`: 0.545 (Decimal) - cost per action
++ `icr`: 0.09523810 (Decimal) - impression:conversion rate
+
+## GoogleAnalyticsMetrics (object) - For users with Google Analytics enabled, results will also contain these analytics metrics
++ `sessions`: 522 (Integer,optional) - sessions
++ `pageviews`: 3985 (Integer,optional) - pageviews
++ `pageviews_per_session`: 7.6341 (Decimal,optional) - pageviews per session
++ `bounce_rate`: 0.0249 (Decimal,optional) - bounce rate
++ `avg_session_duration`: 00:05:54 (Duration,optional) - average session suration
++ `goal_1_completions`: 1 (Integer,optional) - goal #1 completions
++ `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
+
 ## AdsReport (object)
 + `source_account_id` (SourceID) - source's unique account identifier
 + `source_campaign_id` (SourceID) - source's unique campaign identifier
 + `source_ad_id` (SourceID) - source's unique ad identifier
-+ `name` (string) - name identifying ad
++ `title` (string) - ad title / headline
++ `url` (Url) - ad destination url
++ `image_url` (Url) - ad image url
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
@@ -1703,25 +1722,4 @@ A properly formatted URI according to RFC 3986
 + `name`: "Test Target" (string) - name identifying section
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
-
-## ReportingMetrics
-Results will contain these standard performance metrics
-+ `impressions`: 21 (Integer) - impressions
-+ `clicks`: 4 (Integer) - clicks
-+ `conversions`: 2 (Integer) - conversions
-+ `cost`: 1.09 (Decimal) - cost
-+ `ctr`: 0.1905 (Decimal) - click through rate
-+ `ecpc`: 0.2725 (Decimal) - estimated cost per click
-+ `cpa`: 0.545 (Decimal) - cost per action
-+ `icr`: 0.09523810 (Decimal) - impression:conversion rate
-
-## GoogleAnalyticsMetrics
-For users with Google Analytics enabled, results will also contain these analytics metrics
-+ `sessions`: 522 (Integer,optional) - sessions
-+ `pageviews`: 3985 (Integer,optional) - pageviews
-+ `pageviews_per_session`: 7.6341 (Decimal,optional) - pageviews per session
-+ `bounce_rate`: 0.0249 (Decimal,optional) - bounce rate
-+ `avg_session_duration`: 00:05:54 (Duration,optional) - average session suration
-+ `goal_1_completions`: 1 (Integer,optional) - goal #1 completions
-+ `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
 
