@@ -19,7 +19,7 @@ Fetch ads report for a source and `account_id`.
         :[](headers/basic.apib)
 
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
 
@@ -27,8 +27,8 @@ Fetch ads report for a source and `account_id`.
 
     + Attributes
     
-        - `results` (array[AdsReport])
-        - `pagination` (Pagination)
+        + `results` (array[AdsReport])
+        + `pagination` (Pagination)
 
     + Body
 
@@ -53,7 +53,7 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
 
         :[](headers/basic.apib)
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
 
@@ -87,7 +87,7 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
 
         :[](headers/basic.apib)
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
 
@@ -125,7 +125,7 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
 
 
 
-+ Response 200 
++ Response 200 (application/json)
     + Headers
 
         :[](headers/ratelimit.apib)
@@ -160,7 +160,7 @@ Fetch sections report for a source and `account_id`; optionally with `campaign_i
 
 
 
-+ Response 200 
++ Response 200 (application/json)
     + Headers
 
         :[](headers/ratelimit.apib)
@@ -195,7 +195,7 @@ Fetch targets report for a `source` and `source_account_id`; optionally with `ca
         :[](headers/basic.apib)
 
 
-+ Response 200 
++ Response 200 (application/json)
     + Headers
 
         :[](headers/ratelimit.apib)

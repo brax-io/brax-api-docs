@@ -17,7 +17,7 @@ This API uses Basic Authentication for its authentication.
         Authorization:Basic {{basic_token}}
         Accept:application/json
 
-+ Response 200
++ Response 200 (application/json)
 
     + Headers
 
@@ -31,7 +31,7 @@ This API uses Basic Authentication for its authentication.
                 "results": "pong"
             }
 
-+ Response 401
++ Response 401 (application/json)
 
     + Headers
     
@@ -47,7 +47,7 @@ This API uses Basic Authentication for its authentication.
                 "errors": null
             }
 
-+ Response 403
++ Response 403 (application/json)
 
     + Headers
     
@@ -171,7 +171,7 @@ List all ads.
         Authorization:Basic {{basic_token}}
         Accept:application/json
 
-+ Response 200 
++ Response 200 (application/json)
     + Headers
 
         X-RateLimit-Limit:60
@@ -182,7 +182,6 @@ List all ads.
 
         - `results` (array[Ad])
         - `pagination` (Pagination)
-
 
     + Body
     
@@ -247,7 +246,7 @@ List all campaigns.
         Accept:application/json
 
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
 
@@ -306,7 +305,7 @@ Fetch ads report for a source and `account_id`.
         Accept:application/json
 
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
 
@@ -316,8 +315,8 @@ Fetch ads report for a source and `account_id`.
 
     + Attributes
     
-        - `results` (array[AdsReport])
-        - `pagination` (Pagination)
+        + `results` (array[AdsReport])
+        + `pagination` (Pagination)
 
     + Body
 
@@ -402,7 +401,7 @@ Fetch ad groups report for a `source` and `source_account_id`; optionally with `
         Authorization:Basic {{basic_token}}
         Accept:application/json
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
 
@@ -501,7 +500,7 @@ Fetch campaigns report for a `source` and `source_account_id`; optionally with `
         Authorization:Basic {{basic_token}}
         Accept:application/json
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
 
@@ -620,7 +619,7 @@ Fetch publishers report for a `source` and `source_account_id`; optionally with 
 
 
 
-+ Response 200 
++ Response 200 (application/json)
     + Headers
 
         X-RateLimit-Limit:60
@@ -744,7 +743,7 @@ Fetch sections report for a source and `account_id`; optionally with `campaign_i
 
 
 
-+ Response 200 
++ Response 200 (application/json)
     + Headers
 
         X-RateLimit-Limit:60
@@ -871,7 +870,7 @@ Fetch targets report for a `source` and `source_account_id`; optionally with `ca
         Accept:application/json
 
 
-+ Response 200 
++ Response 200 (application/json)
     + Headers
 
         X-RateLimit-Limit:60
@@ -918,7 +917,7 @@ List all rules.
 
 
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
 
@@ -1061,10 +1060,7 @@ TODO: Add Description
         Authorization:Basic {{basic_token}}
         Accept:application/json
 
-
-
-
-+ Response 200 
++ Response 200 (application/json)
     + Attributes (object)
 
 
@@ -1087,7 +1083,7 @@ TODO: Add Description
 
 
 
-+ Response 200 
++ Response 200 (application/json)
     + Attributes (object)
 
 
@@ -1107,7 +1103,7 @@ TODO: Add Description
 
 
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers
     
@@ -1195,7 +1191,7 @@ TODO: Add Description
 
 
 
-+ Response 200 
++ Response 200 (application/json)
     + Attributes (object)
 
 
@@ -1233,7 +1229,7 @@ List all users.
         + Default: 100
 
 
-+ Response 200
++ Response 200 (application/json)
 
     + Headers
 
@@ -1248,33 +1244,32 @@ List all users.
 
     + Body
 
+        {
+          "results": [
             {
-              "results": [
-                {
-                  "username": "test_user",
-                  "email": "test_user@example.com",
-                  "confirmed": true,
-                  "administrator": false,
-                  "created_at": "2016-01-01T00:53:09+00:00",
-                  "updated_at": "2017-02-17T05:41:51+00:00"
-                },
-                {
-                  "username": "admin_user",
-                  "email": "admin_user@example.com",
-                  "confirmed": true,
-                  "administrator": true,
-                  "created_at": "2016-01-01T15:13:14+00:00",
-                  "updated_at": "2017-05-11T15:14:48+00:00"
-                }
-              ],
-              "pagination": {
-                "offset": 0,
-                "limit": 100,
-                "count": 2,
-                "total": 2
-              }
+              "username": "test_user",
+              "email": "test_user@example.com",
+              "confirmed": true,
+              "administrator": false,
+              "created_at": "2016-01-01T00:53:09+00:00",
+              "updated_at": "2017-02-17T05:41:51+00:00"
+            },
+            {
+              "username": "admin_user",
+              "email": "admin_user@example.com",
+              "confirmed": true,
+              "administrator": true,
+              "created_at": "2016-01-01T15:13:14+00:00",
+              "updated_at": "2017-05-11T15:14:48+00:00"
             }
-
+          ],
+          "pagination": {
+            "offset": 0,
+            "limit": 100,
+            "count": 2,
+            "total": 2
+          }
+        }
 
 # Group Types
 
