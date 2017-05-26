@@ -6,4 +6,4 @@
 :[Reporting](blueprint/reporting.apib)
 :[Rules](blueprint/rules.apib)
 :[Users](blueprint/users.apib)
-:[Data Structures](blueprint/data_strucutres.apib)
+:[Data Structures](blueprint/data_structures.apib)
