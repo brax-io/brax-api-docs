@@ -108,8 +108,8 @@
 + `source`: content-ad (Source) - name of the source
 + `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
 + `name`: Selfserve_test_1 (string) - name of the account
-+ `created_at` (DateTime) - date and time the account was created
-+ `updated_at` (DateTime) - date and time the account was last updated
++ `created_at`: 2017-01-21T08:02:43+00:00 (DateTime) - date and time the account was created
++ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the account was last updated
 
 ## Ad (object) - represents an ad in a campaign 
 + `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
@@ -138,6 +138,7 @@
 
 
 ## User (object) - describes a Brax user
++ `id`: 234567 (ID) - primary user identifier
 + `username`: ivan (string) - username
 + `email`: user@site.com (string) - user's email
 + `confirmed`: true (boolean) - user's confirmed status

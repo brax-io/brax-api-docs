@@ -45,17 +45,17 @@ Fetch ads report for a source and **account_id**.
             :[](../json/ads_report.json)
 
 
-## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Ad Groups [GET]
-Fetch ad groups report for a **source** and **source_account_id**; optionally with **campaign_id**.
+Fetch ad groups report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
     + `source` (Source, optional) - source name
         + Sample: "yahoo"
     :[](params/source_account_id.apib)
-    :[](params/campaign_id.apib)
+    :[](params/source_campaign_id.apib)
     :[](params/start_end_dates.apib)
 
 + Request (application/json)
@@ -79,17 +79,17 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
             :[](../json/ad_groups_report.json)
 
 
-## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Campaigns [GET]
-Fetch campaigns report for a **source** and **source_account_id**; optionally with **campaign_id**.
+Fetch campaigns report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
     + `source` (Source, optional) - source name
         + Sample: "outbrain"
     :[](params/source_account_id.apib)
-    :[](params/campaign_id.apib)
+    :[](params/source_campaign_id.apib)
     :[](params/start_end_dates.apib)
 
 + Request (application/json)
@@ -113,10 +113,10 @@ Fetch campaigns report for a **source** and **source_account_id**; optionally wi
             :[](../json/campaigns_report.json)
 
 
-## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Publishers [GET]
-Fetch publishers report for a **source** and **source_account_id**; optionally with **campaign_id**.
+Fetch publishers report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
@@ -124,7 +124,7 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
         + Sample: "taboola"
     :[](params/source.apib)
     :[](params/source_account_id.apib)
-    :[](params/campaign_id.apib)
+    :[](params/source_campaign_id.apib)
     :[](params/start_end_dates.apib)
 
 + Request (application/json)
@@ -150,17 +150,17 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
             :[](../json/publishers_report.json)
 
 
-## Sections Report [/reports/sections{?offset,limit,source,account_id,campaign_id,start_date,end_date}]
+## Sections Report [/reports/sections{?offset,limit,source,account_id,source_campaign_id,start_date,end_date}]
 
 ### Sections [GET]
-Fetch sections report for a source and **account_id**; optionally with **campaign_id**.
+Fetch sections report for a source and **account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
     + `source` (Source, optional) - source name
         + Sample: "outbrain"
     :[](params/source_account_id.apib)
-    :[](params/campaign_id.apib)
+    :[](params/source_campaign_id.apib)
     :[](params/start_end_dates.apib)
 
 + Request (application/json)
@@ -186,17 +186,17 @@ Fetch sections report for a source and **account_id**; optionally with **campaig
 
 
 
-## Targets Report [/reports/targets{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+## Targets Report [/reports/targets{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Targets [GET]
-Fetch targets report for a **source** and **source_account_id**; optionally with **campaign_id**.
+Fetch targets report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
     + `source`: "revcontent" (Source, optional) - source name
         + Sample: "revcontent"
     :[](params/source_account_id.apib)
-    :[](params/campaign_id.apib)
+    :[](params/source_campaign_id.apib)
     :[](params/start_end_dates.apib)
 
 + Request (application/json)

@@ -70,14 +70,14 @@ Endpoints to manage accounts and account settings.
 Represents an account accessible at a network
 
 
-| Field                 | Type                             | Example          | Description                                |
-|:----------------------|----------------------------------|------------------|--------------------------------------------|
-| **id**                | <a href='#ID'>ID</a> *required*  | 123              | primary identifier for the account         |
-| **source**            | <a href='#Source'>Source</a>     | content-ad       | name of the source                         |
-| **source_account_id** | <a href='#SourceID'>SourceID</a> | 782415           | source's unique identifier for the account |
-| **name**              | string                           | Selfserve_test_1 | name of the account                        |
-| **created_at**        | <a href='#DateTime'>DateTime</a> |                  | date and time the account was created      |
-| **updated_at**        | <a href='#DateTime'>DateTime</a> |                  | date and time the account was last updated |
+| Field                 | Type                             | Example                   | Description                                |
+|:----------------------|----------------------------------|---------------------------|--------------------------------------------|
+| **id**                | <a href='#ID'>ID</a> *required*  | 123                       | primary identifier for the account         |
+| **source**            | <a href='#Source'>Source</a>     | content-ad                | name of the source                         |
+| **source_account_id** | <a href='#SourceID'>SourceID</a> | 782415                    | source's unique identifier for the account |
+| **name**              | string                           | Selfserve_test_1          | name of the account                        |
+| **created_at**        | <a href='#DateTime'>DateTime</a> | 2017-01-21T08:02:43+00:00 | date and time the account was created      |
+| **updated_at**        | <a href='#DateTime'>DateTime</a> | 2017-01-25T08:02:43+00:00 | date and time the account was last updated |
 
 #### Source <a name='Source' />
 String representing an ad network
@@ -482,10 +482,10 @@ Fetch ads report for a source and **account_id**.
             }
 
 
-## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Ad Groups [GET]
-Fetch ad groups report for a **source** and **source_account_id**; optionally with **campaign_id**.
+Fetch ad groups report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -496,7 +496,7 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
         + Sample: "yahoo"
     + `source_account_id` (SourceID, required) - account id
         + Sample: 123456789
-    + `campaign_id` (ID, optional) -
+    + `source_campaign_id` (SourceID, optional) -
         + Sample: 987654321
     + `start_date` (Date, optional) -
         + Default: yesterday
@@ -581,10 +581,10 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
             }
 
 
-## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Campaigns [GET]
-Fetch campaigns report for a **source** and **source_account_id**; optionally with **campaign_id**.
+Fetch campaigns report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -595,7 +595,7 @@ Fetch campaigns report for a **source** and **source_account_id**; optionally wi
         + Sample: "outbrain"
     + `source_account_id` (SourceID, required) - account id
         + Sample: 123456789
-    + `campaign_id` (ID, optional) -
+    + `source_campaign_id` (SourceID, optional) -
         + Sample: 987654321
     + `start_date` (Date, optional) -
         + Default: yesterday
@@ -695,10 +695,10 @@ Fetch campaigns report for a **source** and **source_account_id**; optionally wi
             }
 
 
-## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Publishers [GET]
-Fetch publishers report for a **source** and **source_account_id**; optionally with **campaign_id**.
+Fetch publishers report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -711,7 +711,7 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
         + Sample: revcontent
     + `source_account_id` (SourceID, required) - account id
         + Sample: 123456789
-    + `campaign_id` (ID, optional) -
+    + `source_campaign_id` (SourceID, optional) -
         + Sample: 987654321
     + `start_date` (Date, optional) -
         + Default: yesterday
@@ -822,10 +822,10 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
             }
 
 
-## Sections Report [/reports/sections{?offset,limit,source,account_id,campaign_id,start_date,end_date}]
+## Sections Report [/reports/sections{?offset,limit,source,account_id,source_campaign_id,start_date,end_date}]
 
 ### Sections [GET]
-Fetch sections report for a source and **account_id**; optionally with **campaign_id**.
+Fetch sections report for a source and **account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -836,7 +836,7 @@ Fetch sections report for a source and **account_id**; optionally with **campaig
         + Sample: "outbrain"
     + `source_account_id` (SourceID, required) - account id
         + Sample: 123456789
-    + `campaign_id` (ID, optional) -
+    + `source_campaign_id` (SourceID, optional) -
         + Sample: 987654321
     + `start_date` (Date, optional) -
         + Default: yesterday
@@ -950,10 +950,10 @@ Fetch sections report for a source and **account_id**; optionally with **campaig
 
 
 
-## Targets Report [/reports/targets{?offset,limit,source,source_account_id,campaign_id,start_date,end_date}]
+## Targets Report [/reports/targets{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Targets [GET]
-Fetch targets report for a **source** and **source_account_id**; optionally with **campaign_id**.
+Fetch targets report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -964,7 +964,7 @@ Fetch targets report for a **source** and **source_account_id**; optionally with
         + Sample: "revcontent"
     + `source_account_id` (SourceID, required) - account id
         + Sample: 123456789
-    + `campaign_id` (ID, optional) -
+    + `source_campaign_id` (SourceID, optional) -
         + Sample: 987654321
     + `start_date` (Date, optional) -
         + Default: yesterday
@@ -1374,6 +1374,7 @@ Describes a Brax user
 
 | Field             | Type                             | Example                   | Description                               |
 |:------------------|----------------------------------|---------------------------|-------------------------------------------|
+| **id**            | <a href='#ID'>ID</a>             | 234567                    | primary user identifier                   |
 | **username**      | string                           | ivan                      | username                                  |
 | **email**         | string                           | user@site.com             | user's email                              |
 | **confirmed**     | boolean                          | true                      | user's confirmed status                   |
@@ -1418,6 +1419,7 @@ List all users.
         {
           "results": [
             {
+              "id": "123",
               "username": "test_user",
               "email": "test_user@example.com",
               "confirmed": true,
@@ -1426,6 +1428,7 @@ List all users.
               "updated_at": "2017-02-17T05:41:51+00:00"
             },
             {
+              "id": "124",
               "username": "admin_user",
               "email": "admin_user@example.com",
               "confirmed": true,
@@ -1603,8 +1606,8 @@ A properly formatted URI according to RFC 3986
 + `source`: content-ad (Source) - name of the source
 + `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
 + `name`: Selfserve_test_1 (string) - name of the account
-+ `created_at` (DateTime) - date and time the account was created
-+ `updated_at` (DateTime) - date and time the account was last updated
++ `created_at`: 2017-01-21T08:02:43+00:00 (DateTime) - date and time the account was created
++ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the account was last updated
 
 ## Ad (object) - represents an ad in a campaign 
 + `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
@@ -1633,6 +1636,7 @@ A properly formatted URI according to RFC 3986
 
 
 ## User (object) - describes a Brax user
++ `id`: 234567 (ID) - primary user identifier
 + `username`: ivan (string) - username
 + `email`: user@site.com (string) - user's email
 + `confirmed`: true (boolean) - user's confirmed status
