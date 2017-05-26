@@ -1,5 +1,53 @@
 {
     "results": [
+        {
+            "id": 123,
+            "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad5",
+            "source": "outbrain",
+            "name": "Test Campaign 1",
+            "start_at": "2015-05-27T04:00:00+00:00",
+            "end_at": null,
+            "enabled": false,
+            "status": "paused",
+            "budget_amount": "121.000",
+            "tracking_code": "utm_campaign=Test%20Campaign%201&utm_content={{source_id}}",
+            "created_at": "2016-01-01T00:00:00+00:00",
+            "updated_at": "2017-05-01T01:31:01+00:00",
+            "cpc": "0.051",
+            "cpc_per_ad_enabled": false
+        },
+        {
+            "id": 125,
+            "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad7",
+            "source": "outbrain",
+            "name": "Test Campaign 2",
+            "start_at": "2015-05-27T04:00:00+00:00",
+            "end_at": null,
+            "enabled": false,
+            "status": "paused",
+            "budget_amount": "123.000",
+            "tracking_code": "utm_campaign=Test%20Campaign%202&utm_content={{source_id}}",
+            "created_at": "2016-01-01T00:00:00+00:00",
+            "updated_at": "2017-05-01T01:31:01+00:00",
+            "cpc": "0.061",
+            "cpc_per_ad_enabled": false
+        },
+        {
+            "id": 127,
+            "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad9",
+            "source": "outbrain",
+            "name": "Test Campaign 3",
+            "start_at": "2015-05-27T04:00:00+00:00",
+            "end_at": null,
+            "enabled": false,
+            "status": "paused",
+            "budget_amount": "125.000",
+            "tracking_code": "utm_campaign=Test%20Campaign%203&utm_content={{source_id}}",
+            "created_at": "2016-01-01T00:00:00+00:00",
+            "updated_at": "2017-05-01T01:31:01+00:00",
+            "cpc": "0.071",
+            "cpc_per_ad_enabled": false
+        }
     ],
     "pagination": {
         "offset": 0,

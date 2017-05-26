@@ -1,10 +1,11 @@
 {
     "results": [
         {
-            "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
-            "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
-            "vendor_marketer": "",
-            "vendor_campaign": "",
+            "source_account_id": "123456",
+            "source_campaign_id": "597866360",
+            "source_publisher_id": "00a4cb19d55ea630d69fba33dba5d44106",
+            "source_section_id": "00a4cb91d55ea63d069fab3d3b5ad41460",
+            "publisher_name": "Test Publisher 1",
             "name": "previously.tv",
             "ctr": "0.0136",
             "ecpc": "0.8267",
@@ -24,10 +25,11 @@
             "goal_2_completions": "68"
         },
         {
-            "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
-            "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
-            "vendor_marketer": "",
-            "vendor_campaign": "",
+            "source_account_id": "123456",
+            "source_campaign_id": "597866360",
+            "source_publisher_id": "00f5489fcb230267aba360a47a9f93b3d6",
+            "source_section_id": "00a4cb91d55ea63d069fab3d3b5ad41460",
+            "publisher_name": "Test Publisher 2",
             "name": "Rebel Circus (Sell It Social)",
             "ctr": "0.0161",
             "ecpc": "1.2802",
@@ -47,10 +49,11 @@
             "goal_2_completions": "44"
         },
         {
-            "vendor_publisher": "00a4cb19d55ea630d69fba33dba5d44106",
-            "vendor_section": "00a4cb91d55ea63d069fab3d3b5ad41460",
-            "vendor_marketer": "",
-            "vendor_campaign": "",
+            "source_account_id": "123457",
+            "source_campaign_id": "654969786",
+            "source_publisher_id": "00795491b416e2a259b0be2fd2835bbdb0",
+            "source_section_id": "00a4cb91d55ea63d069fab3d3b5ad41460",
+            "publisher_name": "Test Publisher 3",
             "name": "thepoplr (Pitria)",
             "ctr": "0.0053",
             "ecpc": "0.9360",
@@ -73,7 +76,7 @@
     "pagination": {
         "offset": 0,
         "limit": 100,
-        "count": 10,
-        "total": 10
+        "count": 3,
+        "total": 3 
     }
 }

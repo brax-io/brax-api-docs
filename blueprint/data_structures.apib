@@ -105,16 +105,16 @@
 
 ## Account (object) - represents an account accessible at a network
 + `id`: 123 (ID, required) - primary identifier for the account
-+ `source`: content-ad (Source) - name of the source
 + `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source`: content-ad (Source) - name of the source
 + `name`: Selfserve_test_1 (string) - name of the account
 + `created_at`: 2017-01-21T08:02:43+00:00 (DateTime) - date and time the account was created
 + `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the account was last updated
 
 ## Ad (object) - represents an ad in a campaign 
-+ `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + `source_campaign_id` (SourceID) - source's unique campaign identifier
 + `source_ad_id` (SourceID) - source's unique ad identifier
++ `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + `title` (string) - ad title / headline
 + `url` (Url) - ad destination url
 + `image_url` (Url) - ad image url
@@ -123,8 +123,8 @@
 
 ## Campaign (object) - represents a campaign running on a network
 + `id`: 234567 (ID) - primary campaign identifier
-+ `source`: revcontent (Source) - name of the source
 + `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source`: revcontent (Source) - name of the source
 + `name`: my-test-campaign (string) - campaign name
 + `start_at`: 2017-01-01T05:00:00+00:00 (DateTime) - campaign start datetime
 + `end_at`:  2017-01-31T05:00:00+00:00 (DateTime) - campaign end datetime
@@ -180,9 +180,7 @@
 + `source_account_id` (SourceID) - source's unique account identifier
 + `source_campaign_id` (SourceID) - source's unique campaign identifier
 + `source_ad_id` (SourceID) - source's unique ad identifier
-+ `title` (string) - ad title / headline
-+ `url` (Url) - ad destination url
-+ `image_url` (Url) - ad image url
++ `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
@@ -197,7 +195,7 @@
 + `source_account_id` (SourceID) - source's unique account identifier
 + `source_campaign_id` (SourceID) - source's unique campaign identifier
 + `source_ad_group_id` (SourceID) - source's unique ad group identifier
-+ `name` (string) - name identifying ad
++ `name` (string) - name identifying ad group
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
@@ -216,7 +214,8 @@
 + `source_campaign_id` (SourceID) - source's unique campaign identifier
 + `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (SourceID) - source's unique publisher identifier
 + `source_section_id`: "00a4cb1d955ea603d69fb3a3dba54d1460" (SourceID) - source's unique section identifier
-+ `name`: "Test Publisher" (string) - name identifying section
++ `publisher_name`: "Test Publisher" (string) - name identifying publisher 
++ `name`: "Test Section" (string) - name identifying section
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
@@ -225,7 +224,7 @@
 + `source_account_id` (SourceID) - source's unique account identifier
 + `source_campaign_id` (SourceID) - source's unique campaign identifier
 + `source_target_id`: (SourceID) - source's unique target identifier
-+ `name`: "Test Target" (string) - name identifying section
++ `name`: "Test Target" (string) - name identifying target 
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 

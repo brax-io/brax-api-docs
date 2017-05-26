@@ -1,9 +1,10 @@
 {
     "results": [
         {
-            "vendor_campaign": "85adef34d6a87d00c54fdb561dcc5e0b59",
-            "vendor_ad": "c0e425ea1becbadf1864dd0aa33e87d71b",
-            "name": "test-ad-1",
+            "source_account_id": "123451",
+            "source_campaign_id": "85adef34d6a87d00c54fdb561dcc5e0b59",
+            "source_ad_id": "c0e425ea1becbadf1864dd0aa33e87d71b",
+            "tracking_ad_id": "8352d1",
             "ctr": "0.0075",
             "ecpc": "0.0200",
             "cost": "4.4000",
@@ -14,9 +15,10 @@
             "conversions": 0
         },
         {
-            "vendor_campaign": "85adef34d6a87d00c54fdb561dcc5e0b59",
-            "vendor_ad": "6a3c34102c0694384646005ae4c363ca57",
-            "name": "test-ad-2",
+            "source_account_id": "123457",
+            "source_campaign_id": "85adef34d6a87d00c54fdb561dcc5e0b59",
+            "source_ad_id": "6a3c34102c0694384646005ae4c363ca57",
+            "tracking_ad_id": "8352d7",
             "ctr": "0.0069",
             "ecpc": "0.0450",
             "cost": "12.0700",
@@ -27,9 +29,10 @@
             "conversions": 765
         },
         {
-            "vendor_campaign": "095a5a268d1424ac39d82c49f8365a8f4a",
-            "vendor_ad": "5f09f9526ada9e8ad51682e0f24fdbafe6",
-            "name": "test-ad-3",
+            "source_account_id": "123459",
+            "source_campaign_id": "095a5a268d1424ac39d82c49f8365a8f4a",
+            "source_ad_id": "5f09f9526ada9e8ad51682e0f24fdbafe6",
+            "tracking_ad_id": "8352d9",
             "ctr": "0.0059",
             "ecpc": "0.0200",
             "cost": "2.4200",

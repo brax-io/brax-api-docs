@@ -14,13 +14,14 @@ All reporting endpoints accept a combination of parameters to refine the result 
 ## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,start_date,end_date}]
 
 ### Ads [GET]
-Fetch ads report for a source and **account_id**.
+Fetch ads report for a source and **source_account_id**.
 
 + Parameters
     :[](params/pagination.apib)
     + `source` (Source, optional) - source name
         + Sample: "content-ad"
     :[](params/source_account_id.apib)
+    :[](params/source_campaign_id.apib)
     :[](params/start_end_dates.apib)
 
 + Request (application/json)
@@ -153,7 +154,7 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
 ## Sections Report [/reports/sections{?offset,limit,source,account_id,source_campaign_id,start_date,end_date}]
 
 ### Sections [GET]
-Fetch sections report for a source and **account_id**; optionally with **source_campaign_id**.
+Fetch sections report for a source and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     :[](params/pagination.apib)
@@ -212,7 +213,7 @@ Fetch targets report for a **source** and **source_account_id**; optionally with
     
     + Attributes
 
-        - `results` (array[SectionsReport])
+        - `results` (array[TargetsReport])
         - `pagination` (Pagination)
 
     + Body
