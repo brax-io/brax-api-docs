@@ -1,0 +1,49 @@
+{
+  "job": {
+    "id": 35,
+    "created_at": "2017-05-26T22:58:19+00:00",
+    "rule": {
+      "id": 132,
+      "name": "asdf",
+      "type": "pause_campaign",
+      "amount": null,
+      "conditions": [
+        {
+          "id": null,
+          "metric": "campaign.cost",
+          "operator": ">",
+          "value": "10",
+          "date_range": "last_7_days"
+        }
+      ],
+      "filters": [
+        {
+          "id": null,
+          "source": null,
+          "account_id": null,
+          "campaign_id": null
+        }
+      ],
+      "created_at": null,
+      "updated_at": null
+    },
+    "details": [
+      {
+        "source": "yahoo",
+        "account_id": 14975,
+        "campaign_id": 503502,
+        "account_name": "brax-test-account",
+        "campaign_name": "brax-test-us",
+        "campaign cost last_7_days": "$415.51"
+      },
+      {
+        "source": "yahoo",
+        "account_id": 14759,
+        "campaign_id": 503580,
+        "account_name": "brax-test-account",
+        "campaign_name": "brax-test-uk",
+        "campaign cost last_7_days": "$170.20"
+      }
+    ]
+  }
+}

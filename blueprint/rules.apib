@@ -27,43 +27,49 @@ List all rules.
 
         :[](headers/ratelimit.apib)
 
-    + Attributes (object)
+    + Attributes
+        + `results` (array[Rule])
+        + `pagination` (Pagination)
 
     + Body
 
         :[](../json/rules.json)
 
 
-## Rules By Rule Id [/rules/{rule_id}]
+## Get a Rule by ID [/rules/{rule_id}]
+Show the configuration of a single rule by ID
 
 + Parameters
     + `rule_id` (ID, required)
 
-
-### Rule by id [GET]
-TODO: Add Description
+### Rule by ID [GET]
 
 + Request (application/json)
     + Headers
 
         :[](headers/basic.apib)
 
-
-
-
 + Response 200 (application/json)
-    + Attributes (Rule by idResponse)
+    + Attributes (Rule)
 
+    + Body
+
+        :[](../json/rules.json)
 
 
 ## Rules Preview By Rule Id [/rules/{rule_id}/preview]
+Shows the potential result of running a rule, including the current rule settings, and the affected objects.
+
+Rule previews have the following structure...
+:[](tables/RulePreview.apib)
+:[](tables/Match.apib)
+
+Depending on how a rule is configured, there will be multiple object metrics shown in the response. The field names will contain spaces for these metrics.
 
 + Parameters
     + `rule_id` (ID, required)
-
 
 ### Preview running a rule [GET]
-TODO: Add Description
 
 + Request (application/json)
     + Headers
@@ -71,45 +77,46 @@ TODO: Add Description
         :[](headers/basic.apib)
 
 + Response 200 (application/json)
-    + Attributes (object)
+    + Attributes (RulePreview)
+
+    + Body
+
+        :[](../json/rule_preview.json)
 
 
-
-## Rules Run By Rule Id [/rules/{rule_id}/run]
+## Run a Rule by ID [/rules/{rule_id}/run]
+A POST request send to this endpoint will enqueue the running of the specified rule with the default match items selected,
+and return a response with the `job_id` of the job which can be queried via the status endpoint below.
 
 + Parameters
     + `rule_id` (ID, required)
 
-
 ### Run a rule [POST]
-TODO: Add Description
 
 + Request (application/json)
     + Headers
 
         :[](headers/basic.apib)
-
-
-
 
 + Response 200 (application/json)
-    + Attributes (object)
+    + Attributes (RuleRun)
+
+    + Body
+
+        :[](../json/rule_run.json)
 
 
 
-## Rules Jobs [/rules/jobs]
 
+## Rule History [/rules/jobs]
 
 ### Job history [GET]
-TODO: Add Description
+Returns a list of jobs currently running or that have run in the past.
 
 + Request (application/json)
     + Headers
 
         :[](headers/basic.apib)
-
-
-
 
 + Response 200 (application/json)
 
@@ -117,32 +124,33 @@ TODO: Add Description
     
         :[](headers/ratelimit.apib)
 
-    + Attributes (object)
+    + Attributes
+        - `results` (array[RuleJob])
+        - `pagination` (Pagination)
 
     + Body
 
         :[](../json/rule_jobs.json)
 
 
-## Rules Jobs By Job Id [/rules/jobs/{job_id}]
+## Rules Job Status Job ID [/rules/jobs/{job_id}]
+Returns the status details of a job for running a rule.
 
 + Parameters
     + `job_id` (ID, required)
 
-
-### Job status by id [GET]
-TODO: Add Description
+### Job status by Job ID [GET]
 
 + Request (application/json)
     + Headers
 
         :[](headers/basic.apib)
 
-
-
-
 + Response 200 (application/json)
-    + Attributes (object)
+    + Attributes
+        + `job` (RuleStatus) - running status of the job
 
+    + Body
 
+        :[](../json/rule_jobs.json)
 

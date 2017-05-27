@@ -67,12 +67,13 @@
 - `=` - equals
 - `>` - greater than
 
-## Rule by idResponse (object)
+
+## Rule (object)
 
 ### Properties
 + `id`: 986 (ID, required) - rule primary identifier
 + `name`: my ads rule (string, required) - name of the rule
-+ `type`: `pause_ads` (RuleType, required) - determines what actions are performed on which objects
++ `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
 
@@ -94,6 +95,44 @@
 + `source`: taboola (Source, optional) - restrict search to the given network
 + `account_id`: 96751 (ID, optional) - restrict search to the given account
 + `campaign_id`: 452677 (ID, optional) - restrict search to the given campaign
+
+## Match (object)
++ `source`: yahoo (Source) - source of the affected object
++ `account_id`: 65437 (ID) - identifier of the account of the affected object
++ `campaign_id`: 34634 (ID) - identifier of the campaign to be affected
++ `account_name`: brax-test-account (string) - name of the account of the affected object
++ `campaign_name`: brax-test-campaign (string) - name of the affected campaign
++ *object metric1 range*: `$124.56` (string) - metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days`
++ *object metric2 range*: `0.2843` (string) - metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`
+
+## RulePreview (object)
++ `rule` (Rule) - the rule being previewed
++ `matches` (array[Match]) - list of matched items to be affected by running the rule
+
+## RuleRun (object)
++ `status`: success (string) - `success` if successful, `error` otherwise
++ `message`: Job Created (string) - a human-readable message
++ `job_id`: 94 (ID) - Job ID that can be used to poll running status
+
+## RuleJob (object)
++ `id`: 32 (ID) - primary identifier for this job
++ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `created_by`: Mark Simon (string) - name of the user who ran the rule
++ `rule` (object) - short description of the running rule
+    + `name`: my campaign rule (string) - name of the rule
+    + `type`: pause_campaign (RuleType) - type of the rule
++ `stats` (object) - aggregated details of the job's running status
+    + `total`: 5 (Integer) - total action items
+    + `remaining`: 5 (Integer) - action items remaining
+    + `successful`: 0 (Integer) - action items that have completed successfully
+    + `failed`: 0 (Integer) - action items that have failed
+
+
+## RuleStatus (object)
++ `id`: 32 (ID) - primary identifier of the job
++ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `rule` (Rule) - snapshot of the rule at the time it was run
++ `details` (array[Match]) - the action items to be processed
 
 ## Pagination (object) - indicates the number of records available
 
