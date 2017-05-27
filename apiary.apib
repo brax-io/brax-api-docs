@@ -1750,8 +1750,8 @@ List all users.
 + Request (application/json)
     + Headers
 
-        Authorization:Basic {{basic_token}}
-        Accept:application/json
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -1764,9 +1764,9 @@ List all users.
 
     + Headers
 
-        X-RateLimit-Limit:60
-        X-RateLimit-Remaining:59
-        X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
     + Attributes
 
@@ -1775,34 +1775,34 @@ List all users.
 
     + Body
 
-        {
-          "results": [
             {
-              "id": "123",
-              "username": "test_user",
-              "email": "test_user@example.com",
-              "confirmed": true,
-              "administrator": false,
-              "created_at": "2016-01-01T00:53:09+00:00",
-              "updated_at": "2017-02-17T05:41:51+00:00"
-            },
-            {
-              "id": "124",
-              "username": "admin_user",
-              "email": "admin_user@example.com",
-              "confirmed": true,
-              "administrator": true,
-              "created_at": "2016-01-01T15:13:14+00:00",
-              "updated_at": "2017-05-11T15:14:48+00:00"
+              "results": [
+                {
+                  "id": "123",
+                  "username": "test_user",
+                  "email": "test_user@example.com",
+                  "confirmed": true,
+                  "administrator": false,
+                  "created_at": "2016-01-01T00:53:09+00:00",
+                  "updated_at": "2017-02-17T05:41:51+00:00"
+                },
+                {
+                  "id": "124",
+                  "username": "admin_user",
+                  "email": "admin_user@example.com",
+                  "confirmed": true,
+                  "administrator": true,
+                  "created_at": "2016-01-01T15:13:14+00:00",
+                  "updated_at": "2017-05-11T15:14:48+00:00"
+                }
+              ],
+              "pagination": {
+                "offset": 0,
+                "limit": 100,
+                "count": 2,
+                "total": 2
+              }
             }
-          ],
-          "pagination": {
-            "offset": 0,
-            "limit": 100,
-            "count": 2,
-            "total": 2
-          }
-        }
 
 # Group Types
 
@@ -2117,10 +2117,9 @@ A properly formatted URI according to RFC 3986
 
 ## TargetsReport (object)
 ### Properties
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_target_id`: (SourceID) - source's unique target identifier
++ `source_account_id`: 12345 (SourceID) - source's unique account identifier
++ `source_campaign_id`: 67890 (SourceID) - source's unique campaign identifier
++ `source_target_id`: 74 (SourceID) - source's unique target identifier
 + `name`: "Test Target" (string) - name identifying target 
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
-
