@@ -5,7 +5,7 @@ Endpoints to manage campaigns and campaign settings.
 
 :[](tables/CampaignStatus.apib)
 
-## Campaigns [/campaigns{?offset,limit,source,account_id,campaign_id}]
+## Campaigns [/campaigns{?offset,limit,source,source_account_id,source_campaign_id}]
 
 ### List Campaigns [GET]
 List all campaigns.
@@ -19,14 +19,14 @@ List all campaigns.
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 
 + Response 200 (application/json)
 
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
 
     + Attributes
 
@@ -35,6 +35,5 @@ List all campaigns.
 
     + Body
 
-        :[](../json/campaigns.json)
-
+            :[](../json/campaigns.json)
 

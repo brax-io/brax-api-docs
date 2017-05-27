@@ -11,7 +11,7 @@ All reporting endpoints accept a combination of parameters to refine the result 
 :[](tables/GoogleAnalyticsMetrics.apib)
 
 
-## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,start_date,end_date}]
+## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Ads [GET]
 Fetch ads report for a source and **source_account_id**.
@@ -27,14 +27,14 @@ Fetch ads report for a source and **source_account_id**.
 + Request (application/json)
     + Headers
     
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 
 + Response 200 (application/json)
 
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
 
     + Attributes
     
@@ -62,13 +62,13 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 + Response 200 (application/json)
 
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
 
     + Attributes
     
@@ -96,13 +96,13 @@ Fetch campaigns report for a **source** and **source_account_id**; optionally wi
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 + Response 200 (application/json)
 
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
 
     + Attributes
     
@@ -121,8 +121,6 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
 
 + Parameters
     :[](params/pagination.apib)
-    + `source` (Source, optional) - source name
-        + Sample: "taboola"
     :[](params/source.apib)
     :[](params/source_account_id.apib)
     :[](params/source_campaign_id.apib)
@@ -131,15 +129,13 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
-
-
+            :[](headers/basic.apib)
 
 
 + Response 200 (application/json)
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
     
     + Attributes
 
@@ -151,7 +147,7 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
             :[](../json/publishers_report.json)
 
 
-## Sections Report [/reports/sections{?offset,limit,source,account_id,source_campaign_id,start_date,end_date}]
+## Sections Report [/reports/sections{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Sections [GET]
 Fetch sections report for a source and **source_account_id**; optionally with **source_campaign_id**.
@@ -167,14 +163,14 @@ Fetch sections report for a source and **source_account_id**; optionally with **
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 
 
 + Response 200 (application/json)
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
     
     + Attributes
 
@@ -203,13 +199,13 @@ Fetch targets report for a **source** and **source_account_id**; optionally with
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 
 + Response 200 (application/json)
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
     
     + Attributes
 

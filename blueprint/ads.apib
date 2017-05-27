@@ -3,7 +3,7 @@ Endpoints to manage ads.
 
 :[](tables/Ad.apib)
 
-## Ads [/ads{?offset,limit,source,account_id,campaign_id}]
+## Ads [/ads{?offset,limit,source,source_account_id,source_campaign_id}]
 
 ### List Ads [GET]
 List all ads.
@@ -17,12 +17,12 @@ List all ads.
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 + Response 200 (application/json)
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
 
     + Attributes
 
@@ -31,6 +31,6 @@ List all ads.
 
     + Body
     
-        :[](../json/ads.json)
+            :[](../json/ads.json)
 
 

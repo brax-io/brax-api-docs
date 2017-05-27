@@ -17,7 +17,7 @@ List all rules.
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 
 
@@ -25,7 +25,7 @@ List all rules.
 
     + Headers
 
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
 
     + Attributes
         + `results` (array[Rule])
@@ -33,7 +33,7 @@ List all rules.
 
     + Body
 
-        :[](../json/rules.json)
+            :[](../json/rules.json)
 
 
 ## Get a Rule by ID [/rules/{rule_id}]
@@ -47,14 +47,14 @@ Show the configuration of a single rule by ID
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 + Response 200 (application/json)
     + Attributes (Rule)
 
     + Body
 
-        :[](../json/rules.json)
+            :[](../json/rules.json)
 
 
 ## Rules Preview By Rule Id [/rules/{rule_id}/preview]
@@ -74,14 +74,14 @@ Depending on how a rule is configured, there will be multiple object metrics sho
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 + Response 200 (application/json)
     + Attributes (RulePreview)
 
     + Body
 
-        :[](../json/rule_preview.json)
+            :[](../json/rule_preview.json)
 
 
 ## Run a Rule by ID [/rules/{rule_id}/run]
@@ -96,14 +96,14 @@ and return a response with the `job_id` of the job which can be queried via the 
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 + Response 200 (application/json)
     + Attributes (RuleRun)
 
     + Body
 
-        :[](../json/rule_run.json)
+            :[](../json/rule_run.json)
 
 
 
@@ -116,13 +116,13 @@ Returns a list of jobs currently running or that have run in the past.
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 + Response 200 (application/json)
 
     + Headers
     
-        :[](headers/ratelimit.apib)
+            :[](headers/ratelimit.apib)
 
     + Attributes
         - `results` (array[RuleJob])
@@ -130,7 +130,7 @@ Returns a list of jobs currently running or that have run in the past.
 
     + Body
 
-        :[](../json/rule_jobs.json)
+            :[](../json/rule_jobs.json)
 
 
 ## Rules Job Status Job ID [/rules/jobs/{job_id}]
@@ -144,7 +144,7 @@ Returns the status details of a job for running a rule.
 + Request (application/json)
     + Headers
 
-        :[](headers/basic.apib)
+            :[](headers/basic.apib)
 
 + Response 200 (application/json)
     + Attributes
@@ -152,5 +152,5 @@ Returns the status details of a job for running a rule.
 
     + Body
 
-        :[](../json/rule_status.json)
+            :[](../json/rule_status.json)
 
