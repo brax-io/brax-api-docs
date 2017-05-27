@@ -1010,7 +1010,6 @@ Fetch targets report for a **source** and **source_account_id**; optionally with
 Endpoints to manage rules, rule settings, preview running rules, run rules, and rule job statuses.
 
 #### Rule <a name='Rule' />
-IdResponse (object)
 
 
 
@@ -1019,7 +1018,7 @@ IdResponse (object)
 |:---------------|--------------------------------------------------------|-------------|--------------------------------------------------------|
 | **id**         | <a href='#ID'>ID</a> *required*                        | 986         | rule primary identifier                                |
 | **name**       | string *required*                                      | my ads rule | name of the rule                                       |
-| **type**       | <a href='#RuleType'>RuleType</a> *required*            | `pause_ads` | determines what actions are performed on which objects |
+| **type**       | <a href='#RuleType'>RuleType</a> *required*            | `pause_ad`  | determines what actions are performed on which objects |
 | **conditions** | array of <a href='#Condition'>Condition</a> *required* |             | criteria for matching                                  |
 | **filters**    | array of <a href='#Filter'>Filter</a> *required*       |             | restrict search to source, account, or campaign level  |
 
@@ -1092,111 +1091,120 @@ List all rules.
         X-RateLimit-Remaining:59
         X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (object)
+    + Attributes
+        + `results` (array[Rule])
+        + `pagination` (Pagination)
 
     + Body
 
         {
-            "rules": [
+          "results": [
+            {
+              "id": 132,
+              "name": "my pause campaign rule",
+              "type": "pause_campaign",
+              "amount": null,
+              "conditions": [
                 {
-                    "id": 132,
-                    "name": "asdf",
-                    "type": "pause_campaign",
-                    "conditions": [
-                        {
-                            "id": 75,
-                            "source": "campaign.cost",
-                            "operator": ">",
-                            "value": "10",
-                            "date_range": "last_7_days"
-                        }
-                    ],
-                    "filters": [
-                        {
-                            "id": 67,
-                            "vendor": "",
-                            "account_name": "",
-                            "campaign_name": ""
-                        }
-                    ]
-                },
-                {
-                    "id": 144,
-                    "name": "iuou",
-                    "type": "pause_ad",
-                    "conditions": [
-                        {
-                            "id": 81,
-                            "source": "campaign.cost",
-                            "operator": ">",
-                            "value": "10.00",
-                            "date_range": "last_7_days"
-                        },
-                        {
-                            "id": 86,
-                            "source": "ad.cpa",
-                            "operator": "<",
-                            "value": "8",
-                            "date_range": "last_2_days_inclusive"
-                        }
-                    ],
-                    "filters": [
-                        {
-                            "id": 74,
-                            "vendor": "outbrain",
-                            "account_name": "Selfserve_brax",
-                            "campaign_name": ""
-                        }
-                    ]
-                },
-                {
-                    "id": 150,
-                    "name": "pub",
-                    "type": "block_publisher",
-                    "conditions": [
-                        {
-                            "id": 89,
-                            "source": "campaign.cost",
-                            "operator": ">",
-                            "value": "10.00",
-                            "date_range": "last_7_days"
-                        },
-                        {
-                            "id": 90,
-                            "source": "publisher.cost",
-                            "operator": ">",
-                            "value": "0",
-                            "date_range": "last_7_days"
-                        }
-                    ],
-                    "filters": [
-                        {
-                            "id": 80,
-                            "vendor": "",
-                            "account_name": "",
-                            "campaign_name": ""
-                        }
-                    ]
+                  "id": 75,
+                  "metric": "campaign.cost",
+                  "operator": ">",
+                  "value": "10",
+                  "date_range": "last_7_days"
                 }
-            ],
-            "pagination": {
-                "offset": 0,
-                "limit": 100,
-                "count": 3,
-                "total": 3
+              ],
+              "filters": [
+                {
+                  "id": 67,
+                  "source": null,
+                  "account_id": null,
+                  "campaign_id": null
+                }
+              ],
+              "created_at": "2017-04-21T20:26:32+00:00",
+              "updated_at": "2017-04-21T20:26:32+00:00"
+            },
+            {
+              "id": 144,
+              "name": "my ads rule",
+              "type": "pause_ad",
+              "amount": null,
+              "conditions": [
+                {
+                  "id": 81,
+                  "metric": "campaign.cost",
+                  "operator": ">",
+                  "value": "10.00",
+                  "date_range": "last_7_days"
+                },
+                {
+                  "id": 86,
+                  "metric": "ad.cpa",
+                  "operator": "<",
+                  "value": "8",
+                  "date_range": "last_2_days_inclusive"
+                }
+              ],
+              "filters": [
+                {
+                  "id": 74,
+                  "source": "outbrain",
+                  "account_id": 2,
+                  "campaign_id": null
+                }
+              ],
+              "created_at": "2017-04-25T18:08:48+00:00",
+              "updated_at": "2017-04-25T18:08:48+00:00"
+            },
+            {
+              "id": 150,
+              "name": "block my publishers",
+              "type": "block_publisher",
+              "amount": null,
+              "conditions": [
+                {
+                  "id": 89,
+                  "metric": "campaign.cost",
+                  "operator": ">",
+                  "value": "10.00",
+                  "date_range": "last_7_days"
+                },
+                {
+                  "id": 90,
+                  "metric": "publisher.cost",
+                  "operator": ">",
+                  "value": "0",
+                  "date_range": "last_7_days"
+                }
+              ],
+              "filters": [
+                {
+                  "id": 80,
+                  "source": null,
+                  "account_id": null,
+                  "campaign_id": null
+                }
+              ],
+              "created_at": "2017-04-26T16:44:43+00:00",
+              "updated_at": "2017-04-26T16:44:43+00:00"
             }
+          ],
+          "pagination": {
+            "offset": 0,
+            "limit": 100,
+            "count": 3,
+            "total": 3
+          }
         }
 
 
-
-## Rules By Rule Id [/rules/{rule_id}]
+## Get a Rule by ID [/rules/{rule_id}]
+Show the configuration of a single rule by ID
 
 + Parameters
     + `rule_id` (ID, required)
 
-
-### Rule by id [GET]
-TODO: Add Description
+### Rule by ID [GET]
 
 + Request (application/json)
     + Headers
@@ -1204,22 +1212,144 @@ TODO: Add Description
         Authorization:Basic {{basic_token}}
         Accept:application/json
 
-
-
-
 + Response 200 (application/json)
-    + Attributes (Rule by idResponse)
+    + Attributes (Rule)
 
+    + Body
+
+        {
+          "results": [
+            {
+              "id": 132,
+              "name": "my pause campaign rule",
+              "type": "pause_campaign",
+              "amount": null,
+              "conditions": [
+                {
+                  "id": 75,
+                  "metric": "campaign.cost",
+                  "operator": ">",
+                  "value": "10",
+                  "date_range": "last_7_days"
+                }
+              ],
+              "filters": [
+                {
+                  "id": 67,
+                  "source": null,
+                  "account_id": null,
+                  "campaign_id": null
+                }
+              ],
+              "created_at": "2017-04-21T20:26:32+00:00",
+              "updated_at": "2017-04-21T20:26:32+00:00"
+            },
+            {
+              "id": 144,
+              "name": "my ads rule",
+              "type": "pause_ad",
+              "amount": null,
+              "conditions": [
+                {
+                  "id": 81,
+                  "metric": "campaign.cost",
+                  "operator": ">",
+                  "value": "10.00",
+                  "date_range": "last_7_days"
+                },
+                {
+                  "id": 86,
+                  "metric": "ad.cpa",
+                  "operator": "<",
+                  "value": "8",
+                  "date_range": "last_2_days_inclusive"
+                }
+              ],
+              "filters": [
+                {
+                  "id": 74,
+                  "source": "outbrain",
+                  "account_id": 2,
+                  "campaign_id": null
+                }
+              ],
+              "created_at": "2017-04-25T18:08:48+00:00",
+              "updated_at": "2017-04-25T18:08:48+00:00"
+            },
+            {
+              "id": 150,
+              "name": "block my publishers",
+              "type": "block_publisher",
+              "amount": null,
+              "conditions": [
+                {
+                  "id": 89,
+                  "metric": "campaign.cost",
+                  "operator": ">",
+                  "value": "10.00",
+                  "date_range": "last_7_days"
+                },
+                {
+                  "id": 90,
+                  "metric": "publisher.cost",
+                  "operator": ">",
+                  "value": "0",
+                  "date_range": "last_7_days"
+                }
+              ],
+              "filters": [
+                {
+                  "id": 80,
+                  "source": null,
+                  "account_id": null,
+                  "campaign_id": null
+                }
+              ],
+              "created_at": "2017-04-26T16:44:43+00:00",
+              "updated_at": "2017-04-26T16:44:43+00:00"
+            }
+          ],
+          "pagination": {
+            "offset": 0,
+            "limit": 100,
+            "count": 3,
+            "total": 3
+          }
+        }
 
 
 ## Rules Preview By Rule Id [/rules/{rule_id}/preview]
+Shows the potential result of running a rule, including the current rule settings, and the affected objects.
+
+Rule previews have the following structure...
+#### RulePreview <a name='RulePreview' />
+
+
+| Field       | Type                                | Description                                              |
+|:------------|-------------------------------------|----------------------------------------------------------|
+| **rule**    | <a href='#Rule'>Rule</a>            | the rule being previewed                                 |
+| **matches** | array of <a href='#Match'>Match</a> | list of matched items to be affected by running the rule |
+
+#### Match <a name='Match' />
+
+
+| Field                    | Type                         | Example            | Description                                                                                      |
+|:-------------------------|------------------------------|--------------------|--------------------------------------------------------------------------------------------------|
+| **source**               | <a href='#Source'>Source</a> | yahoo              | source of the affected object                                                                    |
+| **account_id**           | <a href='#ID'>ID</a>         | 65437              | identifier of the account of the affected object                                                 |
+| **campaign_id**          | <a href='#ID'>ID</a>         | 34634              | identifier of the campaign to be affected                                                        |
+| **account_name**         | string                       | brax-test-account  | name of the account of the affected object                                                       |
+| **campaign_name**        | string                       | brax-test-campaign | name of the affected campaign                                                                    |
+| *object metric1 range* | string                       | `$124.56`          | metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days` |
+| *object metric2 range* | string                       | `0.2843`           | metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`  |
+
+
+Depending on how a rule is configured, there will be multiple object metrics shown in the response. The field names will contain spaces for these metrics.
 
 + Parameters
     + `rule_id` (ID, required)
-
 
 ### Preview running a rule [GET]
-TODO: Add Description
 
 + Request (application/json)
     + Headers
@@ -1228,47 +1358,98 @@ TODO: Add Description
         Accept:application/json
 
 + Response 200 (application/json)
-    + Attributes (object)
+    + Attributes (RulePreview)
+
+    + Body
+
+        {
+          "rule": {
+            "id": 132,
+            "name": "asdf",
+            "type": "pause_campaign",
+            "amount": null,
+            "conditions": [
+              {
+                "id": 75,
+                "metric": "campaign.cost",
+                "operator": ">",
+                "value": "10",
+                "date_range": "last_7_days",
+                "start_date": "2017-05-19",
+                "end_date": "2017-05-25"
+              }
+            ],
+            "filters": [
+              {
+                "id": 67,
+                "source": null,
+                "account_id": null,
+                "campaign_id": null
+              }
+            ],
+            "created_at": "2017-04-21T20:26:32+00:00",
+            "updated_at": "2017-04-21T20:26:32+00:00"
+          },
+          "matches": [
+            {
+              "source": "yahoo",
+              "account_id": 14975,
+              "campaign_id": 503502,
+              "account_name": "brax-test-account",
+              "campaign_name": "brax-test-us",
+              "campaign cost last_7_days": "$415.51"
+            },
+            {
+              "source": "yahoo",
+              "account_id": 14759,
+              "campaign_id": 503580,
+              "account_name": "brax-test-account",
+              "campaign_name": "brax-test-uk",
+              "campaign cost last_7_days": "$170.20"
+            }
+          ]
+        }
 
 
-
-## Rules Run By Rule Id [/rules/{rule_id}/run]
+## Run a Rule by ID [/rules/{rule_id}/run]
+A POST request send to this endpoint will enqueue the running of the specified rule with the default match items selected,
+and return a response with the `job_id` of the job which can be queried via the status endpoint below.
 
 + Parameters
     + `rule_id` (ID, required)
 
-
 ### Run a rule [POST]
-TODO: Add Description
 
 + Request (application/json)
     + Headers
 
         Authorization:Basic {{basic_token}}
         Accept:application/json
-
-
-
 
 + Response 200 (application/json)
-    + Attributes (object)
+    + Attributes (RuleRun)
+
+    + Body
+
+        {
+          "status": "success",
+          "message": "Job Created",
+          "job_id": 36
+        } 
 
 
 
-## Rules Jobs [/rules/jobs]
 
+## Rule History [/rules/jobs]
 
 ### Job history [GET]
-TODO: Add Description
+Returns a list of jobs currently running or that have run in the past.
 
 + Request (application/json)
     + Headers
 
         Authorization:Basic {{basic_token}}
         Accept:application/json
-
-
-
 
 + Response 200 (application/json)
 
@@ -1278,7 +1459,9 @@ TODO: Add Description
         X-RateLimit-Remaining:59
         X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
 
-    + Attributes (object)
+    + Attributes
+        - `results` (array[RuleJob])
+        - `pagination` (Pagination)
 
     + Body
 
@@ -1340,14 +1523,13 @@ TODO: Add Description
 
 
 
-## Rules Jobs By Job Id [/rules/jobs/{job_id}]
+## Rules Job Status Job ID [/rules/jobs/{job_id}]
+Returns the status details of a job for running a rule.
 
 + Parameters
     + `job_id` (ID, required)
 
-
-### Job status by id [GET]
-TODO: Add Description
+### Job status by Job ID [GET]
 
 + Request (application/json)
     + Headers
@@ -1355,12 +1537,67 @@ TODO: Add Description
         Authorization:Basic {{basic_token}}
         Accept:application/json
 
-
-
-
 + Response 200 (application/json)
-    + Attributes (object)
+    + Attributes
+        + `job` (RuleStatus) - running status of the job
 
+    + Body
+
+        {
+            "jobs": [
+                {
+                    "id": 32,
+                    "created_at": "2017-05-19T18:46:28+00:00",
+                    "created_by": "Mark Simon",
+                    "rule": {
+                        "name": "asdf",
+                        "type": "pause_campaign"
+                    },
+                    "stats": {
+                        "total": 5,
+                        "remaining": 5,
+                        "successful": 0,
+                        "failed": 0
+                    }
+                },
+                {
+                    "id": 33,
+                    "created_at": "2017-05-19T23:50:52+00:00",
+                    "created_by": "Mark Simon",
+                    "rule": {
+                        "name": "asdf",
+                        "type": "pause_campaign"
+                    },
+                    "stats": {
+                        "total": 5,
+                        "remaining": 5,
+                        "successful": 0,
+                        "failed": 0
+                    }
+                },
+                {
+                    "id": 34,
+                    "created_at": "2017-05-20T01:10:28+00:00",
+                    "created_by": "Mark Simon",
+                    "rule": {
+                        "name": "asdf",
+                        "type": "pause_campaign"
+                    },
+                    "stats": {
+                        "total": 2,
+                        "remaining": 2,
+                        "successful": 0,
+                        "failed": 0
+                    }
+                }
+            ],
+            "pagination": {
+                "offset": 0,
+                "limit": 100,
+                "count": 3,
+                "total": 3
+            }
+        }
 
 
 # Group Users
@@ -1565,12 +1802,13 @@ A properly formatted URI according to RFC 3986
 - `=` - equals
 - `>` - greater than
 
-## Rule by idResponse (object)
+
+## Rule (object)
 
 ### Properties
 + `id`: 986 (ID, required) - rule primary identifier
 + `name`: my ads rule (string, required) - name of the rule
-+ `type`: `pause_ads` (RuleType, required) - determines what actions are performed on which objects
++ `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
 
@@ -1592,6 +1830,44 @@ A properly formatted URI according to RFC 3986
 + `source`: taboola (Source, optional) - restrict search to the given network
 + `account_id`: 96751 (ID, optional) - restrict search to the given account
 + `campaign_id`: 452677 (ID, optional) - restrict search to the given campaign
+
+## Match (object)
++ `source`: yahoo (Source) - source of the affected object
++ `account_id`: 65437 (ID) - identifier of the account of the affected object
++ `campaign_id`: 34634 (ID) - identifier of the campaign to be affected
++ `account_name`: brax-test-account (string) - name of the account of the affected object
++ `campaign_name`: brax-test-campaign (string) - name of the affected campaign
++ *object metric1 range*: `$124.56` (string) - metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days`
++ *object metric2 range*: `0.2843` (string) - metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`
+
+## RulePreview (object)
++ `rule` (Rule) - the rule being previewed
++ `matches` (array[Match]) - list of matched items to be affected by running the rule
+
+## RuleRun (object)
++ `status`: success (string) - `success` if successful, `error` otherwise
++ `message`: Job Created (string) - a human-readable message
++ `job_id`: 94 (ID) - Job ID that can be used to poll running status
+
+## RuleJob (object)
++ `id`: 32 (ID) - primary identifier for this job
++ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `created_by`: Mark Simon (string) - name of the user who ran the rule
++ `rule` (object) - short description of the running rule
+    + `name`: my campaign rule (string) - name of the rule
+    + `type`: pause_campaign (RuleType) - type of the rule
++ `stats` (object) - aggregated details of the job's running status
+    + `total`: 5 (Integer) - total action items
+    + `remaining`: 5 (Integer) - action items remaining
+    + `successful`: 0 (Integer) - action items that have completed successfully
+    + `failed`: 0 (Integer) - action items that have failed
+
+
+## RuleStatus (object)
++ `id`: 32 (ID) - primary identifier of the job
++ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `rule` (Rule) - snapshot of the rule at the time it was run
++ `details` (array[Match]) - the action items to be processed
 
 ## Pagination (object) - indicates the number of records available
 
