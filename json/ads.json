@@ -1,9 +1,11 @@
 {
     "results": [
         {
+            "source_account_id": "e010f3346de2e41fed1a288a3ba5cd5e29",
             "source_campaign_id": "12345",
             "source_ad_id": "342336233",
             "tracking_ad_id": "ccccbf",
+            "source": "outbrain",
             "title": "Brax automates the world",
             "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1",
             "image_url": "https://example.com/test_image_1.jpg",
@@ -11,9 +13,11 @@
             "status": "paused"
         },
         {
+            "source_account_id": "e010f3346de2e41fed1a288a3ba5cd5e29",
             "source_campaign_id": "12345",
             "source_ad_id": "342336234",
             "tracking_ad_id": "8352d9",
+            "source": "outbrain",
             "title": "Brax automates the world",
             "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=2",
             "image_url": "https://example.com/test_image_2.jpg",

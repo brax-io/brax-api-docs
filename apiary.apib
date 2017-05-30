@@ -169,16 +169,18 @@ Endpoints to manage ads.
 Represents an ad in a campaign 
 
 
-| Field                  | Type                             | Description                                                                       |
-|:-----------------------|----------------------------------|-----------------------------------------------------------------------------------|
-| **source_campaign_id** | <a href='#SourceID'>SourceID</a> | source's unique campaign identifier                                               |
-| **source_ad_id**       | <a href='#SourceID'>SourceID</a> | source's unique ad identifier                                                     |
-| **tracking_ad_id**     | string                           | identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax |
-| **title**              | string                           | ad title / headline                                                               |
-| **url**                | <a href='#Url'>Url</a>           | ad destination url                                                                |
-| **image_url**          | <a href='#Url'>Url</a>           | ad image url                                                                      |
-| **enabled**            | boolean                          | ad enabled status                                                                 |
-| **status**             | string                           | ad status                                                                         |
+| Field                  | Type                             | Example                                                                                                 | Description                                                                       |
+|:-----------------------|----------------------------------|---------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| **source_account_id**  | <a href='#SourceID'>SourceID</a> | 782415                                                                                                  | source's unique identifier for the account                                        |
+| **source_campaign_id** | <a href='#SourceID'>SourceID</a> | 9862145                                                                                                 | source's unique campaign identifier                                               |
+| **source_ad_id**       | <a href='#SourceID'>SourceID</a> | 123456                                                                                                  | source's unique ad identifier                                                     |
+| **tracking_ad_id**     | string                           | "2138da"                                                                                                | identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax |
+| **source**             | <a href='#Source'>Source</a>     | taboola                                                                                                 | name of the source                                                                |
+| **title**              | string                           | Brax helps you scale with the best                                                                      | ad title / headline                                                               |
+| **url**                | <a href='#Url'>Url</a>           | https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1 | ad destination url                                                                |
+| **image_url**          | <a href='#Url'>Url</a>           | 'https://example.com/test_image_1.jpg'                                                                  | ad image url                                                                      |
+| **enabled**            | boolean                          | true                                                                                                    | ad enabled status                                                                 |
+| **status**             | string                           | active                                                                                                  | ad status                                                                         |
 
 
 ## Ads [/ads{?offset,limit,source,source_account_id,source_campaign_id}]
@@ -221,9 +223,11 @@ List all ads.
             {
                 "results": [
                     {
+                        "source_account_id": "e010f3346de2e41fed1a288a3ba5cd5e29",
                         "source_campaign_id": "12345",
                         "source_ad_id": "342336233",
                         "tracking_ad_id": "ccccbf",
+                        "source": "outbrain",
                         "title": "Brax automates the world",
                         "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1",
                         "image_url": "https://example.com/test_image_1.jpg",
@@ -231,9 +235,11 @@ List all ads.
                         "status": "paused"
                     },
                     {
+                        "source_account_id": "e010f3346de2e41fed1a288a3ba5cd5e29",
                         "source_campaign_id": "12345",
                         "source_ad_id": "342336234",
                         "tracking_ad_id": "8352d9",
+                        "source": "outbrain",
                         "title": "Brax automates the world",
                         "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=2",
                         "image_url": "https://example.com/test_image_2.jpg",
@@ -261,6 +267,7 @@ Represents a campaign running on a network
 | Field                  | Type                                         | Example                   | Description                                    |
 |:-----------------------|----------------------------------------------|---------------------------|------------------------------------------------|
 | **id**                 | <a href='#ID'>ID</a>                         | 234567                    | primary campaign identifier                    |
+| **source_account_id**  | <a href='#SourceID'>SourceID</a>             | 782415                    | source's unique identifier for the account     |
 | **source_campaign_id** | <a href='#SourceID'>SourceID</a>             | 9862145                   | source's unique campaign identifier            |
 | **source**             | <a href='#Source'>Source</a>                 | revcontent                | name of the source                             |
 | **name**               | string                                       | my-test-campaign          | campaign name                                  |
@@ -330,6 +337,7 @@ List all campaigns.
                 "results": [
                     {
                         "id": 123,
+                        "source_account_id": "782415",
                         "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad5",
                         "source": "outbrain",
                         "name": "Test Campaign 1",
@@ -346,6 +354,7 @@ List all campaigns.
                     },
                     {
                         "id": 125,
+                        "source_account_id": "782415",
                         "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad7",
                         "source": "outbrain",
                         "name": "Test Campaign 2",
@@ -362,6 +371,7 @@ List all campaigns.
                     },
                     {
                         "id": 127,
+                        "source_account_id": "782415",
                         "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad9",
                         "source": "outbrain",
                         "name": "Test Campaign 3",
@@ -2009,17 +2019,20 @@ A properly formatted URI according to RFC 3986
 + `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the account was last updated
 
 ## Ad (object) - represents an ad in a campaign 
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_ad_id` (SourceID) - source's unique ad identifier
-+ `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
-+ `title` (string) - ad title / headline
-+ `url` (Url) - ad destination url
-+ `image_url` (Url) - ad image url
-+ `enabled` (boolean) - ad enabled status
-+ `status` (string) - ad status       
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_ad_id`: 123456 (SourceID) - source's unique ad identifier
++ `tracking_ad_id`: "2138da" (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source`: taboola (Source) - name of the source
++ `title`: Brax helps you scale with the best (string) - ad title / headline
++ `url`: https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1 (Url) - ad destination url
++ `image_url`: 'https://example.com/test_image_1.jpg' (Url) - ad image url
++ `enabled`: true (boolean) - ad enabled status
++ `status`: active (string) - ad status
 
 ## Campaign (object) - represents a campaign running on a network
 + `id`: 234567 (ID) - primary campaign identifier
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
 + `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
 + `source`: revcontent (Source) - name of the source
 + `name`: my-test-campaign (string) - campaign name
@@ -2074,25 +2087,25 @@ A properly formatted URI according to RFC 3986
 + `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
 
 ## AdsReport (object)
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_ad_id` (SourceID) - source's unique ad identifier
-+ `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_ad_id`: 123456 (SourceID) - source's unique ad identifier
++ `tracking_ad_id`: 2138da (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## CampaignsReport (object)
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `name` (string) - name identifying campaign
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `name`: Content Scaling for Dummies (string) - name identifying campaign
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## AdGroupsReport (object)
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_ad_group_id` (SourceID) - source's unique ad group identifier
-+ `name` (string) - name identifying ad group
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_ad_group_id`: 12345 (SourceID) - source's unique ad group identifier
++ `name`: Content Scaling for Dummies (string) - name identifying ad group
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 

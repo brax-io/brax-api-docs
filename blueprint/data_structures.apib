@@ -151,17 +151,20 @@
 + `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the account was last updated
 
 ## Ad (object) - represents an ad in a campaign 
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_ad_id` (SourceID) - source's unique ad identifier
-+ `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
-+ `title` (string) - ad title / headline
-+ `url` (Url) - ad destination url
-+ `image_url` (Url) - ad image url
-+ `enabled` (boolean) - ad enabled status
-+ `status` (string) - ad status       
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_ad_id`: 123456 (SourceID) - source's unique ad identifier
++ `tracking_ad_id`: "2138da" (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source`: taboola (Source) - name of the source
++ `title`: Brax helps you scale with the best (string) - ad title / headline
++ `url`: https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1 (Url) - ad destination url
++ `image_url`: 'https://example.com/test_image_1.jpg' (Url) - ad image url
++ `enabled`: true (boolean) - ad enabled status
++ `status`: active (string) - ad status
 
 ## Campaign (object) - represents a campaign running on a network
 + `id`: 234567 (ID) - primary campaign identifier
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
 + `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
 + `source`: revcontent (Source) - name of the source
 + `name`: my-test-campaign (string) - campaign name
@@ -216,25 +219,25 @@
 + `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
 
 ## AdsReport (object)
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_ad_id` (SourceID) - source's unique ad identifier
-+ `tracking_ad_id` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_ad_id`: 123456 (SourceID) - source's unique ad identifier
++ `tracking_ad_id`: 2138da (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## CampaignsReport (object)
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `name` (string) - name identifying campaign
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `name`: Content Scaling for Dummies (string) - name identifying campaign
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## AdGroupsReport (object)
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_ad_group_id` (SourceID) - source's unique ad group identifier
-+ `name` (string) - name identifying ad group
++ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_ad_group_id`: 12345 (SourceID) - source's unique ad group identifier
++ `name`: Content Scaling for Dummies (string) - name identifying ad group
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 

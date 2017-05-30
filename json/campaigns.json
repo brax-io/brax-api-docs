@@ -2,6 +2,7 @@
     "results": [
         {
             "id": 123,
+            "source_account_id": "782415",
             "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad5",
             "source": "outbrain",
             "name": "Test Campaign 1",
@@ -18,6 +19,7 @@
         },
         {
             "id": 125,
+            "source_account_id": "782415",
             "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad7",
             "source": "outbrain",
             "name": "Test Campaign 2",
@@ -34,6 +36,7 @@
         },
         {
             "id": 127,
+            "source_account_id": "782415",
             "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad9",
             "source": "outbrain",
             "name": "Test Campaign 3",
