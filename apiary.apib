@@ -1,13 +1,74 @@
 FORMAT: 1A
 HOST: https://api.brax.io
 
-# BRAX Console API 1.0
-Brax Console API 1.0
+# Brax API 1.0
+![Brax Logo](https://brax.io/wp-content/uploads/2017/01/BRAX_Logo_Native-Vector-v2.png)
+
+Welcome to the Brax API version 1.0. 
+This API describes how developers can interact with Brax. More information about Brax can be found at [https://brax.io](https://brax.io).
+
+If you have questions about using our API, please contact [api@brax.io](mailto:api@brax.io).
+
+If you have any questions, issues, feature requests, or just want to tell us how much you enjoy using Brax, please let us know at [love@brax.io](mailto:love@brax.io).
+
+## Rate Limits
+Each endpoint allows 60 requests per minute from a single IP address. If these limits are exceeded, an HTTP 421 response will be sent in lieu of the usual success response. If the rate limits are exceeded too frequently, we reserve the right to deny further access, thus we encourage responsible usage of our API.
+
+# API Url
+The base URL for all API endpoints is [https://api.brax.io/v1](https://api.brax.io/v1).
+
+# Troubleshooting
+If you run into trouble, please let us know via [api@brax.io](mailto:api@brax.io). Please attach the `X-Request-Id` header from the returned response. This header allows us to pinpoint your unique request and helps us troubleshoot more effectively.
 
 # Postman
 Feel free to take advantage of our Postman collection here: [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ff73088700e24511e68a)
-## Authentication [/ping]
-This API uses Basic Authentication for its authentication.
+
+
+# Group Overview
+
+The API generally follows the RESTful interface and is structured into the following sections:
+
+- Accounts
+- Campaigns
+- Ads
+- Reports
+- Rules
+
+| Resource  | Actions  |
+|:----------|----------|
+| Account   | List     |
+| Campaign  | List, Read     |
+| Ad        | Read     |
+| Report    | Read     |
+| Rule      | List, Read, Preview, Run, History, Status |
+
+## HTTP Requests
+
+Following RESTful conventions, the HTTP method corresponds to the action requested:
+
+| HTTP Method    | Action                      |
+|:---------------|-----------------------------|
+| `GET`          | List or retrieve a resource |
+| `POST`         | Create a resource           |
+| `PUT`/`PATCH`  | Update a resource           |
+| `DELETE`       | Delete a resource           |
+
+## Error Handling
+When the API returns a HTTP status code indicating an error (`400`, `401`, `403`, `404`, `421`, `429`) it will also include a JSON object describing the error.
+
+```
+{
+    "status": "error",
+    "message": "Access Denied"
+}
+```
+# Group Authentication
+This API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) for its authentication.
+
+## Ping [/ping]
+Ping can be used to make sure your implementation of authentication is working as expected.
+
+In this document, you can click links that look like the one below to get a full description and an example of the request and response for the given endpoint.
 
 ### Authentication Test [GET]
 
