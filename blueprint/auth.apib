@@ -1,8 +1,7 @@
 # Group Authentication
-This API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) for its authentication.
 
-## Ping [/ping]
-Ping can be used to make sure your implementation of authentication is working as expected.
+## Authentication [/auth/info]
+This API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) for its authentication.
 
 In this document, you can click links that look like the one below to get a full description and an example of the request and response for the given endpoint.
 
@@ -22,9 +21,7 @@ In this document, you can click links that look like the one below to get a full
 
     + Body
 
-            {
-                "results": "pong"
-            }
+            :[](../json/auth.json)
 
 + Response 401 (application/json)
 

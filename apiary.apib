@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.brax.io
+HOST: https://api.brax.io/api/v1
 
 # Brax API 1.0
 ![Brax Logo](https://brax.io/wp-content/uploads/2017/01/BRAX_Logo_Native-Vector-v2.png)
@@ -22,6 +22,33 @@ If you run into trouble, please let us know via [api@brax.io](mailto:api@brax.io
 
 # Postman
 Feel free to take advantage of our Postman collection here: [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ff73088700e24511e68a)
+
+## Example [/ping]
+This is a sanity check when all else fails.
+
++ Parameters
+
+### Ping Test [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept:application/json
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Body
+
+            {
+                "results": "pong"
+            }
 
 
 # Group Overview
@@ -63,10 +90,9 @@ When the API returns a HTTP status code indicating an error (`400`, `401`, `403`
 }
 ```
 # Group Authentication
-This API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) for its authentication.
 
-## Ping [/ping]
-Ping can be used to make sure your implementation of authentication is working as expected.
+## Authentication [/auth/info]
+This API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) for its authentication.
 
 In this document, you can click links that look like the one below to get a full description and an example of the request and response for the given endpoint.
 
@@ -89,9 +115,7 @@ In this document, you can click links that look like the one below to get a full
 
     + Body
 
-            {
-                "results": "pong"
-            }
+            {}
 
 + Response 401 (application/json)
 
