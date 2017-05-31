@@ -12,7 +12,7 @@ If you have questions about using our API, please contact [api@brax.io](mailto:a
 If you have any questions, issues, feature requests, or just want to tell us how much you enjoy using Brax, please let us know at [love@brax.io](mailto:love@brax.io).
 
 ## Rate Limits
-Each endpoint allows 60 requests per minute from a single IP address. If these limits are exceeded, an HTTP 421 response will be sent in lieu of the usual success response. If the rate limits are exceeded too frequently, we reserve the right to deny further access, thus we encourage responsible usage of our API.
+Each endpoint allows 60 requests per minute from a single IP address. If these limits are exceeded, an HTTP 429 response will be sent in lieu of the usual success response. If the rate limits are exceeded too frequently, we reserve the right to deny further access, thus we encourage responsible usage of our API.
 
 # API Url
 The base URL for all API endpoints is [https://api.brax.io/v1](https://api.brax.io/v1).
@@ -26,8 +26,6 @@ Feel free to take advantage of our Postman collection here: [![Run in Postman](h
 
 ## Example [/ping]
 This is a sanity check when all else fails.
-
-+ Parameters
 
 ### Ping Test [GET]
 
