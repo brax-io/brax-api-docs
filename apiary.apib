@@ -84,8 +84,9 @@ When the API returns a HTTP status code indicating an error (`400`, `401`, `403`
 
 ```
 {
-    "status": "error",
-    "message": "Access Denied"
+    "timestamp": "2017-05-31 20:10:05",
+    "message": "Invalid credentials",
+    "errors": null
 }
 ```
 # Group Authentication
@@ -535,7 +536,7 @@ For users with Google Analytics enabled, results will also contain these analyti
 ## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 ### Ads [GET]
-Fetch ads report for a source and **source_account_id**.
+Fetch ads report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
