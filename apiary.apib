@@ -1242,7 +1242,7 @@ Endpoints to manage rules, rule settings, preview running rules, run rules, and 
 |:---------------|--------------------------------------------------------|---------------------------|----------------------------------------------------------------|
 | **id**         | <a href='#ID'>ID</a> *required*                        | 986                       | rule primary identifier                                        |
 | **name**       | string *required*                                      | my ads rule               | name of the rule                                               |
-| **type**       | <a href='#RuleType'>RuleType</a> *required*            | `pause_ad`                | determines what actions are performed on which objects         |
+| **type**       | <a href='#RuleType'>RuleType</a> *required*            | pause_ad                  | determines what actions are performed on which objects         |
 | **amount**     | <a href='#Decimal'>Decimal</a> *optional*              | 1.2500                    | multiplier or value by which to modify existing bids or values |
 | **conditions** | array of <a href='#Condition'>Condition</a> *required* |                           | criteria for matching                                          |
 | **filters**    | array of <a href='#Filter'>Filter</a> *required*       |                           | restrict search to source, account, or campaign level          |
@@ -1255,15 +1255,15 @@ Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7
 
 
 
-| Field          | Type                                          | Example         | Description                          |
-|:---------------|-----------------------------------------------|-----------------|--------------------------------------|
-| **id**         | <a href='#ID'>ID</a> *required*               | 721             | condition primary identifier         |
-| **metric**     | <a href='#Metric'>Metric</a> *required*       | `campaign.cost` | metric for input criteria            |
-| **operator**   | <a href='#Operator'>Operator</a> *required*   | `<`             | comparison operator to apply         |
-| **value**      | <a href='#Decimal'>Decimal</a> *required*     | 10              | expected value for comparison        |
-| **date_range** | <a href='#DateRange'>DateRange</a> *required* | `last_7_days`   | reporting range to aggregate metrics |
-| **start_date** | <a href='#Date'>Date</a> *required*           | 2017-02-12      | start date for aggregating metrics   |
-| **end_date**   | <a href='#Date'>Date</a> *required*           | 2017-02-12      | end date for aggregating metrics     |
+| Field          | Type                                          | Example       | Description                          |
+|:---------------|-----------------------------------------------|---------------|--------------------------------------|
+| **id**         | <a href='#ID'>ID</a> *required*               | 721           | condition primary identifier         |
+| **metric**     | <a href='#Metric'>Metric</a> *required*       | campaign.cost | metric for input criteria            |
+| **operator**   | <a href='#Operator'>Operator</a> *required*   | <             | comparison operator to apply         |
+| **value**      | <a href='#Decimal'>Decimal</a> *required*     | 10            | expected value for comparison        |
+| **date_range** | <a href='#DateRange'>DateRange</a> *required* | last_7_days   | reporting range to aggregate metrics |
+| **start_date** | <a href='#Date'>Date</a> *required*           | 2017-02-12    | start date for aggregating metrics   |
+| **end_date**   | <a href='#Date'>Date</a> *required*           | 2017-02-12    | end date for aggregating metrics     |
 
 #### Filter <a name='Filter' />
 
@@ -1495,8 +1495,8 @@ Rule previews have the following structure...
 | **campaign_id**          | <a href='#ID'>ID</a>         | 34634              | identifier of the campaign to be affected                                                        |
 | **account_name**         | string                       | brax-test-account  | name of the account of the affected object                                                       |
 | **campaign_name**        | string                       | brax-test-campaign | name of the affected campaign                                                                    |
-| *object metric1 range* | string                       | `$124.56`          | metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days` |
-| *object metric2 range* | string                       | `0.2843`           | metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`  |
+| *object metric1 range* | string                       | $124.56            | metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days` |
+| *object metric2 range* | string                       | 0.2843             | metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`  |
 
 
 Depending on how a rule is configured, there will be multiple object metrics shown in the response. The field names will contain spaces for these metrics.
@@ -1952,26 +1952,26 @@ A properly formatted URI according to RFC 3986
 ## Rule (object)
 
 ### Properties
-+ `id`: 986 (ID, required) - rule primary identifier
-+ `name`: my ads rule (string, required) - name of the rule
++ `id`: `986` (ID, required) - rule primary identifier
++ `name`: `my ads rule` (string, required) - name of the rule
 + `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
-+ `amount`: 1.2500 (Decimal, optional) - multiplier or value by which to modify existing bids or values
++ `amount`: `1.2500` (Decimal, optional) - multiplier or value by which to modify existing bids or values
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
-+ `created_at`: 2017-01-21T08:02:43+00:00 (DateTime) - date and time the rule was created
-+ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the rule was last updated
++ `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the rule was created
++ `updated_at`: `2017-01-25T08:02:43+00:00` (DateTime) - date and time the rule was last updated
 
 
 ## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
 
 ### Properties
-+ `id`: 721 (ID, required) - condition primary identifier
++ `id`: `721` (ID, required) - condition primary identifier
 + `metric`: `campaign.cost` (Metric, required) - metric for input criteria
 + `operator`: `<` (Operator, required) - comparison operator to apply
-+ `value`: 10 (Decimal, required) - expected value for comparison
++ `value`: `10` (Decimal, required) - expected value for comparison
 + `date_range`: `last_7_days` (DateRange, required) - reporting range to aggregate metrics
-+ `start_date`: 2017-02-12 (Date, required) - start date for aggregating metrics
-+ `end_date`: 2017-02-12 (Date, required) - end date for aggregating metrics
++ `start_date`: `2017-02-12` (Date, required) - start date for aggregating metrics
++ `end_date`: `2017-02-12` (Date, required) - end date for aggregating metrics
 
 
 ## Filter (object)

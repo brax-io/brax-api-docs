@@ -112,7 +112,7 @@ foreach( $f as $line )
 				$name = substr($name, 0, -1);
 				$split = explode('(', $type, 2);
 				$type = '('.$split[1];
-				$example = trim($split[0]);
+				$example = trim(str_replace('`','', $split[0]));
 			}
 		}
 		else
