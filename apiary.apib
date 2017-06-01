@@ -254,8 +254,12 @@ List all accounts.
 # Group Ads
 Endpoints to manage ads.
 
+All ads have a **title**, an **image_url**, and a destination **url**.
+
+Ads pushed from Brax with the {{AD_ID}} parameter set in the tracking code will have a **tracking_ad_id** which can be used to enable ad-level tracking for Google Analytics on the `utm_content` parameter.
+
 #### Ad <a name='Ad' />
-Represents an ad in a campaign 
+Represents an ad in a campaign
 
 
 | Field                  | Type                             | Example                                                                                                 | Description                                                                       |
@@ -494,15 +498,15 @@ All reporting endpoints accept a combination of parameters to refine the result 
 Input parameters for pulling reporting data
 
 
-| Field                  | Type                                 | Example     | Description                                    |
-|:-----------------------|--------------------------------------|-------------|------------------------------------------------|
-| **offset**             | <a href='#Integer'>Integer</a>       | 0           | starting index of the result set               |
-| **limit**              | <a href='#Integer'>Integer</a>       | 100         | maximum number of records to fetch; max: `100` |
-| **source**             | <a href='#Source'>Source</a>         | revcontent  | name of the source                             |
-| **source_account_id**  | <a href='#SourceID'>SourceID</a>     | acmecompany | source's unique account identifier             |
-| **source_campaign_id** | <a href='#SourceID'>SourceID</a>     | 67890       | source's unique campaign identifier            |
-| **start_date**         | <a href='#Date'>Date</a> *required`* | 2017-02-12  | start date for aggregating metrics             |
-| **end_date**           | <a href='#Date'>Date</a> *required`* | 2017-02-18  | end date for aggregating metrics               |
+| Field                  | Type                                | Example     | Description                                    |
+|:-----------------------|-------------------------------------|-------------|------------------------------------------------|
+| **offset**             | <a href='#Integer'>Integer</a>      | 0           | starting index of the result set               |
+| **limit**              | <a href='#Integer'>Integer</a>      | 100         | maximum number of records to fetch; max: `100` |
+| **source**             | <a href='#Source'>Source</a>        | revcontent  | name of the source                             |
+| **source_account_id**  | <a href='#SourceID'>SourceID</a>    | acmecompany | source's unique account identifier             |
+| **source_campaign_id** | <a href='#SourceID'>SourceID</a>    | 67890       | source's unique campaign identifier            |
+| **start_date**         | <a href='#Date'>Date</a> *required* | 2017-02-12  | start date for aggregating metrics             |
+| **end_date**           | <a href='#Date'>Date</a> *required* | 2017-02-18  | end date for aggregating metrics               |
 
 
 #### ReportingMetrics <a name='ReportingMetrics' />
@@ -1238,21 +1242,46 @@ Fetch targets report for a **source** and **source_account_id**; optionally with
 # Group Rules
 Endpoints to manage rules, rule settings, preview running rules, run rules, and rule job statuses.
 
+Rules allow bulk modification of campaign settings based on a filter and a condition.
+
+Conditions specify how objects are selected for applying changes, and include a metric, operator, expected value, and a date range. These parameters are used when querying the reporting system and are applied using logical `AND`. This means the more conditions applied, the more narrow the matching criteria.
+
+Filters enable matching only within certain networks, accounts, or individual campaigns. These parameters are also used when querying the reporting system and are applied using logical `OR`. This means you can request matching on several accounts for the same rule, or attempt matching for all accounts by default to keep the criteria as broad as possible.
+
 #### Rule <a name='Rule' />
 
 
 
 
-| Field          | Type                                                   | Example                    | Description                                                    |
-|:---------------|--------------------------------------------------------|----------------------------|----------------------------------------------------------------|
-| **id**         | <a href='#ID'>ID</a> *required*                        | 986                        | rule primary identifier                                        |
-| **name**       | string *required*                                      | Pause poor performaing ads | name of the rule                                               |
-| **type**       | <a href='#RuleType'>RuleType</a> *required*            | pause_ad                   | determines what actions are performed on which objects         |
-| **amount**     | <a href='#Decimal'>Decimal</a> *optional*              | 1.2500                     | multiplier or value by which to modify existing bids or values |
-| **conditions** | array of <a href='#Condition'>Condition</a> *required* |                            | criteria for matching                                          |
-| **filters**    | array of <a href='#Filter'>Filter</a> *required*       |                            | restrict search to source, account, or campaign level          |
-| **created_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-21T08:02:43+00:00  | date and time the rule was created in Brax                     |
-| **updated_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-25T08:02:43+00:00  | date and time the rule was last updated in Brax                |
+| Field          | Type                                                   | Example                    | Description                                                                                                       |
+|:---------------|--------------------------------------------------------|----------------------------|-------------------------------------------------------------------------------------------------------------------|
+| **id**         | <a href='#ID'>ID</a>                                   | 986                        | rule primary identifier                                                                                           |
+| **name**       | string *required*                                      | Pause poor performaing ads | name of the rule                                                                                                  |
+| **type**       | <a href='#RuleType'>RuleType</a> *required*            | pause_ad                   | determines what actions are performed on which objects                                                            |
+| **amount**     | <a href='#Decimal'>Decimal</a> *optional*              | 1.2500                     | value or multiplier by which to modify existing bids or values; `null` if amount does not apply to this rule type |
+| **conditions** | array of <a href='#Condition'>Condition</a> *required* |                            | criteria for matching                                                                                             |
+| **filters**    | array of <a href='#Filter'>Filter</a> *required*       |                            | restrict search to source, account, or campaign level                                                             |
+| **created_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-21T08:02:43+00:00  | date and time the rule was created in Brax                                                                        |
+| **updated_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-25T08:02:43+00:00  | date and time the rule was last updated in Brax                                                                   |
+
+
+#### RuleType <a name='RuleType' />
+String describing the type of rule, indicating what it affects and how
+
+Starred rule types will have an **amount** specified in the rule.
+
+| Value                   | Description                 |
+|:------------------------|-----------------------------|
+| `pause_campaign`        | Pause Campaigns             |
+| `pause_ad`              | Pause Ads                   |
+| `block_publisher`       | Block Publishers            |
+| `block_section`         | Block Sections (Outbrain)   |
+| `block_target`          | Block Targets (Revcontent)  |
+| `pause_ad_group`        | Pause Ad Groups (Yahoo)     |
+| `modify_bid_publisher`  | Update Site Bid Modifiers * |
+| `multiply_bid_target`   | Update Target Bids *        |
+| `multiply_bid_campaign` | Update Campaign Bids *      |
+
 
 #### Condition <a name='Condition' />
 Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
@@ -1260,42 +1289,32 @@ Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7
 
 
 
-| Field          | Type                                          | Example       | Description                          |
-|:---------------|-----------------------------------------------|---------------|--------------------------------------|
-| **id**         | <a href='#ID'>ID</a> *required*               | 721           | condition primary identifier         |
-| **metric**     | <a href='#Metric'>Metric</a> *required*       | campaign.cost | metric for input criteria            |
-| **operator**   | <a href='#Operator'>Operator</a> *required*   | <             | comparison operator to apply         |
-| **value**      | <a href='#Decimal'>Decimal</a> *required*     | 10            | expected value for comparison        |
-| **date_range** | <a href='#DateRange'>DateRange</a> *required* | last_7_days   | reporting range to aggregate metrics |
-| **start_date** | <a href='#Date'>Date</a> *required*           | 2017-02-12    | start date for aggregating metrics   |
-| **end_date**   | <a href='#Date'>Date</a> *required*           | 2017-02-12    | end date for aggregating metrics     |
+| Field          | Type                                          | Example       | Description                                                       |
+|:---------------|-----------------------------------------------|---------------|-------------------------------------------------------------------|
+| **id**         | <a href='#ID'>ID</a>                          | 721           | condition primary identifier                                      |
+| **metric**     | <a href='#Metric'>Metric</a> *required*       | campaign.cost | metric for input criteria                                         |
+| **operator**   | <a href='#Operator'>Operator</a> *required*   | <             | comparison operator to apply                                      |
+| **value**      | <a href='#Decimal'>Decimal</a> *required*     | 10            | expected value for comparison                                     |
+| **date_range** | <a href='#DateRange'>DateRange</a> *required* | last_7_days   | reporting range to aggregate metrics                              |
+| **start_date** | <a href='#Date'>Date</a>                      | 2017-02-12    | start date for aggregating metrics (determined by **date_range**) |
+| **end_date**   | <a href='#Date'>Date</a>                      | 2017-02-12    | end date for aggregating metrics (determined by **date_range**)   |
 
 #### Filter <a name='Filter' />
 
 
 
-| Field           | Type                                    | Example | Description                           |
-|:----------------|-----------------------------------------|---------|---------------------------------------|
-| **id**          | <a href='#ID'>ID</a> *required*         | 87      | filter primary identifier             |
-| **source**      | <a href='#Source'>Source</a> *optional* | taboola | restrict search to the given network  |
-| **account_id**  | <a href='#ID'>ID</a> *optional*         | 96751   | restrict search to the given account  |
-| **campaign_id** | <a href='#ID'>ID</a> *optional*         | 452677  | restrict search to the given campaign |
+| Field           | Type                         | Example | Description                           |
+|:----------------|------------------------------|---------|---------------------------------------|
+| **id**          | <a href='#ID'>ID</a>         | 87      | filter primary identifier             |
+| **source**      | <a href='#Source'>Source</a> | taboola | restrict search to the given network  |
+| **account_id**  | <a href='#ID'>ID</a>         | 96751   | restrict search to the given account  |
+| **campaign_id** | <a href='#ID'>ID</a>         | 452677  | restrict search to the given campaign |
 
-#### RuleType <a name='RuleType' />
-String describing the type of rule, indicating what it affects and how
-
-
-| Value                   | Description                |
-|:------------------------|----------------------------|
-| `pause_campaign`        | Pause Campaigns            |
-| `pause_ad`              | Pause Ads                  |
-| `block_publisher`       | Block Publishers           |
-| `block_section`         | Block Sections (Outbrain)  |
-| `block_target`          | Block Targets (Revcontent) |
-| `pause_ad_group`        | Pause Ad Groups (Yahoo)    |
-| `modify_bid_publisher`  | Update Site Bid Modifiers  |
-| `multiply_bid_target`   | Update Target Bids         |
-| `multiply_bid_campaign` | Update Campaign Bids       |
+- Filters may specify a **source**, an **account_id**, and a **campaign_id**, or can be set to `null` indicating non-specific.
+- For example, a filter can have **source** set to `outbrain`, **account_id** set to `3216`, and **campaign_id** set to `null` to ask for any campaign in the Outbrain account whose ID is `3216`.
+- A filter can also have all optional values set to `null` to indicate "include all networks, accounts, and campaigns known to Brax".
+- Or a filter may specify only **source** and leave the other two `null` to indicate only campaigns in the given network.
+- If **campaign_id** is set, the other two must also be set, and likewise when **account_id** is set, **source** must also be set.
 
 
 ## Rules [/rules{?offset,limit}]
@@ -1687,7 +1706,7 @@ Returns a list of jobs currently running or that have run in the past.
                     "total": 3
                 }
             }
-            
+
 
 
 ## Rules Job Status Job ID [/rules/jobs/{job_id}]
@@ -1760,6 +1779,8 @@ Returns the status details of a job for running a rule.
 
 # Group Users
 Endpoints to manage users and user settings.
+
+Users can be **administrator**s which enables creation of other users and adding integrations.
 
 #### User <a name='User' />
 Describes a Brax user
@@ -1843,15 +1864,15 @@ List all users.
 # Group Types
 
 #### ID <a name='ID' />
-Fields named **..._id** — the primary identifier for the referenced object
+Fields named **..._id** — an integer representing the primary identifier for the referenced object
 
 
 #### SourceID <a name='SourceID' />
-Fields named **source_..._id** — the source's unique identifier for the referenced object
+Fields named **source_..._id** — a string representation of the source's unique identifier for the referenced object
 
 
 #### Integer <a name='Integer' />
-A whole number such as `1`, `2`, `3`...
+Whole numbers such as `1`, `2`, `3`...
 
 
 #### Decimal <a name='Decimal' />
@@ -1860,15 +1881,15 @@ Decimal or double numeric value, such as: `0.001`, or `3.14`
 
 
 #### Date <a name='Date' />
-Formatted date, such as: `2017-01-01`
+Dates are specified in YYYY-MM-DD format. e.g. `2017-01-01`
 
 
 #### DateTime <a name='DateTime' />
-Date time formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
+Date and time with timezone formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
 
 
 #### DateRange <a name='DateRange' />
-String describing a relative date range
+Date ranges are simply strings describing relative date ranges
 
 
 | Value          | Description                |
@@ -1884,32 +1905,32 @@ String describing a relative date range
 | `last_30_days` | last thirty days           |
 
 #### Duration <a name='Duration' />
-A duration in hours, minutes, and seconds, e.g. `00:02:34`
+Time durations specified in hours, minutes, and seconds, e.g. `00:02:34`
 
 
 #### Url <a name='Url' />
-A properly formatted URI according to RFC 3986
+A properly formatted URI string according to RFC 3986
 
 
 # Data Structures
 
-## Url (string) - a properly formatted URI according to RFC 3986
+## Url (string) - a properly formatted URI string according to RFC 3986
 
-## Date (string) - formatted date, such as: `2017-01-01`
+## Date (string) - dates are specified in YYYY-MM-DD format. e.g. `2017-01-01`
 
-## DateTime (string) - date time formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
+## DateTime (string) - date and time with timezone formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
 
 ## Decimal (number) - decimal or double numeric value, such as: `0.001`, or `3.14`
 
-## Integer (number) - a whole number such as `1`, `2`, `3`...
+## Integer (number) - whole numbers such as `1`, `2`, `3`...
 
-## Duration (string) - a duration in hours, minutes, and seconds, e.g. `00:02:34`
+## Duration (string) - time durations specified in hours, minutes, and seconds, e.g. `00:02:34`
 
-## ID (Integer) - fields named **..._id** — the primary identifier for the referenced object
+## ID (Integer) - fields named **..._id** — an integer representing the primary identifier for the referenced object
 
-## SourceID (string) - fields named **source_..._id** — the source's unique identifier for the referenced object
+## SourceID (string) - fields named **source_..._id** — a string representation of the source's unique identifier for the referenced object
 
-## DateRange (enum) - string describing a relative date range
+## DateRange (enum) - date ranges are simply strings describing relative date ranges
 - `yesterday` - yesterday
 - `last_2_days` - two days ago and yesterday
 - `last_3_days` - last three days
@@ -1934,15 +1955,16 @@ A properly formatted URI according to RFC 3986
 + `content-ad` - Content.ad ([www.content.ad](//content.ad))
 
 ## RuleType (enum) - string describing the type of rule, indicating what it affects and how
+Starred rule types will have an **amount** specified in the rule.
 - `pause_campaign` - Pause Campaigns
 - `pause_ad` - Pause Ads
 - `block_publisher` - Block Publishers
 - `block_section` - Block Sections (Outbrain)
 - `block_target` - Block Targets (Revcontent)
 - `pause_ad_group` - Pause Ad Groups (Yahoo)
-- `modify_bid_publisher` - Update Site Bid Modifiers
-- `multiply_bid_target` - Update Target Bids
-- `multiply_bid_campaign` - Update Campaign Bids
+- `modify_bid_publisher` - Update Site Bid Modifiers *
+- `multiply_bid_target` - Update Target Bids *
+- `multiply_bid_campaign` - Update Campaign Bids *
 
 ## Metric (enum) - a string composed of an object and a metric separated by a dot
 ### Members
@@ -1964,10 +1986,10 @@ A properly formatted URI according to RFC 3986
 ## Rule (object)
 
 ### Properties
-+ `id`: `986` (ID, required) - rule primary identifier
++ `id`: `986` (ID) - rule primary identifier
 + `name`: `Pause poor performaing ads` (string, required) - name of the rule
 + `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
-+ `amount`: `1.2500` (Decimal, optional) - multiplier or value by which to modify existing bids or values
++ `amount`: `1.2500` (Decimal, optional) - value or multiplier by which to modify existing bids or values; `null` if amount does not apply to this rule type
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
 + `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the rule was created in Brax
@@ -1977,22 +1999,22 @@ A properly formatted URI according to RFC 3986
 ## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
 
 ### Properties
-+ `id`: `721` (ID, required) - condition primary identifier
++ `id`: `721` (ID) - condition primary identifier
 + `metric`: `campaign.cost` (Metric, required) - metric for input criteria
 + `operator`: `<` (Operator, required) - comparison operator to apply
 + `value`: `10` (Decimal, required) - expected value for comparison
 + `date_range`: `last_7_days` (DateRange, required) - reporting range to aggregate metrics
-+ `start_date`: `2017-02-12` (Date, required) - start date for aggregating metrics
-+ `end_date`: `2017-02-12` (Date, required) - end date for aggregating metrics
++ `start_date`: `2017-02-12` (Date) - start date for aggregating metrics (determined by **date_range**)
++ `end_date`: `2017-02-12` (Date) - end date for aggregating metrics (determined by **date_range**)
 
 
 ## Filter (object)
 
 ### Properties
-+ `id`: 87 (ID, required) - filter primary identifier
-+ `source`: taboola (Source, optional) - restrict search to the given network
-+ `account_id`: 96751 (ID, optional) - restrict search to the given account
-+ `campaign_id`: 452677 (ID, optional) - restrict search to the given campaign
++ `id`: 87 (ID) - filter primary identifier
++ `source`: taboola (Source) - restrict search to the given network
++ `account_id`: 96751 (ID) - restrict search to the given account
++ `campaign_id`: 452677 (ID) - restrict search to the given campaign
 
 ## Match (object)
 + `source`: yahoo (Source) - source of the affected object
@@ -2049,7 +2071,7 @@ A properly formatted URI according to RFC 3986
 + `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the account was created in Brax
 + `updated_at`: `2017-01-25T08:02:44+00:00` (DateTime) - date and time the account was last updated in Brax
 
-## Ad (object) - represents an ad in a campaign 
+## Ad (object) - represents an ad in a campaign
 + `source_account_id`: `ACME-Rockets-SC` (SourceID) - source's unique identifier for the account
 + `source_campaign_id`: 26465874 (SourceID) - source's unique campaign identifier
 + `source_ad_id`: 0214741 (SourceID) - source's unique ad identifier
@@ -2095,8 +2117,8 @@ A properly formatted URI according to RFC 3986
 + `source`: revcontent (Source) - name of the source
 + `source_account_id`: acmecompany (SourceID) - source's unique account identifier
 + `source_campaign_id`: 67890 (SourceID) - source's unique campaign identifier
-+ `start_date`: `2017-02-12 (Date, required)` - start date for aggregating metrics
-+ `end_date`: `2017-02-18 (Date, required)` - end date for aggregating metrics
++ `start_date`: `2017-02-12` (Date, required) - start date for aggregating metrics
++ `end_date`: `2017-02-18` (Date, required) - end date for aggregating metrics
 
 ## ReportingMetrics (object) - Results will contain these standard performance metrics
 + `impressions`: 21 (Integer) - impressions

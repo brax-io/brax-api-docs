@@ -1,10 +1,24 @@
 # Group Rules
 Endpoints to manage rules, rule settings, preview running rules, run rules, and rule job statuses.
 
+Rules allow bulk modification of campaign settings based on a filter and a condition.
+
+Conditions specify how objects are selected for applying changes, and include a metric, operator, expected value, and a date range. These parameters are used when querying the reporting system and are applied using logical `AND`. This means the more conditions applied, the more narrow the matching criteria.
+
+Filters enable matching only within certain networks, accounts, or individual campaigns. These parameters are also used when querying the reporting system and are applied using logical `OR`. This means you can request matching on several accounts for the same rule, or attempt matching for all accounts by default to keep the criteria as broad as possible.
+
 :[](tables/Rule.apib)
+
+:[](tables/RuleType.apib)
+
 :[](tables/Condition.apib)
 :[](tables/Filter.apib)
-:[](tables/RuleType.apib)
+- Filters may specify a **source**, an **account_id**, and a **campaign_id**, or can be set to `null` indicating non-specific.
+- For example, a filter can have **source** set to `outbrain`, **account_id** set to `3216`, and **campaign_id** set to `null` to ask for any campaign in the Outbrain account whose ID is `3216`.
+- A filter can also have all optional values set to `null` to indicate "include all networks, accounts, and campaigns known to Brax".
+- Or a filter may specify only **source** and leave the other two `null` to indicate only campaigns in the given network.
+- If **campaign_id** is set, the other two must also be set, and likewise when **account_id** is set, **source** must also be set.
+
 
 ## Rules [/rules{?offset,limit}]
 

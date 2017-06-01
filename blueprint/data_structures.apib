@@ -1,22 +1,22 @@
 # Data Structures
 
-## Url (string) - a properly formatted URI according to RFC 3986
+## Url (string) - a properly formatted URI string according to RFC 3986
 
-## Date (string) - formatted date, such as: `2017-01-01`
+## Date (string) - dates are specified in YYYY-MM-DD format. e.g. `2017-01-01`
 
-## DateTime (string) - date time formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
+## DateTime (string) - date and time with timezone formatted according to ISO-8601, e.g. `2016-01-01T15:13:14+00:00`
 
 ## Decimal (number) - decimal or double numeric value, such as: `0.001`, or `3.14`
 
-## Integer (number) - a whole number such as `1`, `2`, `3`...
+## Integer (number) - whole numbers such as `1`, `2`, `3`...
 
-## Duration (string) - a duration in hours, minutes, and seconds, e.g. `00:02:34`
+## Duration (string) - time durations specified in hours, minutes, and seconds, e.g. `00:02:34`
 
-## ID (Integer) - fields named **..._id** — the primary identifier for the referenced object
+## ID (Integer) - fields named **..._id** — an integer representing the primary identifier for the referenced object
 
-## SourceID (string) - fields named **source_..._id** — the source's unique identifier for the referenced object
+## SourceID (string) - fields named **source_..._id** — a string representation of the source's unique identifier for the referenced object
 
-## DateRange (enum) - string describing a relative date range
+## DateRange (enum) - date ranges are simply strings describing relative date ranges
 - `yesterday` - yesterday
 - `last_2_days` - two days ago and yesterday
 - `last_3_days` - last three days
@@ -41,15 +41,16 @@
 + `content-ad` - Content.ad ([www.content.ad](//content.ad))
 
 ## RuleType (enum) - string describing the type of rule, indicating what it affects and how
+Starred rule types will have an **amount** specified in the rule.
 - `pause_campaign` - Pause Campaigns
 - `pause_ad` - Pause Ads
 - `block_publisher` - Block Publishers
 - `block_section` - Block Sections (Outbrain)
 - `block_target` - Block Targets (Revcontent)
 - `pause_ad_group` - Pause Ad Groups (Yahoo)
-- `modify_bid_publisher` - Update Site Bid Modifiers
-- `multiply_bid_target` - Update Target Bids
-- `multiply_bid_campaign` - Update Campaign Bids
+- `modify_bid_publisher` - Update Site Bid Modifiers *
+- `multiply_bid_target` - Update Target Bids *
+- `multiply_bid_campaign` - Update Campaign Bids *
 
 ## Metric (enum) - a string composed of an object and a metric separated by a dot
 ### Members
@@ -71,10 +72,10 @@
 ## Rule (object)
 
 ### Properties
-+ `id`: `986` (ID, required) - rule primary identifier
++ `id`: `986` (ID) - rule primary identifier
 + `name`: `Pause poor performaing ads` (string, required) - name of the rule
 + `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
-+ `amount`: `1.2500` (Decimal, optional) - multiplier or value by which to modify existing bids or values
++ `amount`: `1.2500` (Decimal, optional) - value or multiplier by which to modify existing bids or values; `null` if amount does not apply to this rule type
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
 + `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the rule was created in Brax
@@ -84,22 +85,22 @@
 ## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
 
 ### Properties
-+ `id`: `721` (ID, required) - condition primary identifier
++ `id`: `721` (ID) - condition primary identifier
 + `metric`: `campaign.cost` (Metric, required) - metric for input criteria
 + `operator`: `<` (Operator, required) - comparison operator to apply
 + `value`: `10` (Decimal, required) - expected value for comparison
 + `date_range`: `last_7_days` (DateRange, required) - reporting range to aggregate metrics
-+ `start_date`: `2017-02-12` (Date, required) - start date for aggregating metrics
-+ `end_date`: `2017-02-12` (Date, required) - end date for aggregating metrics
++ `start_date`: `2017-02-12` (Date) - start date for aggregating metrics (determined by **date_range**)
++ `end_date`: `2017-02-12` (Date) - end date for aggregating metrics (determined by **date_range**)
 
 
 ## Filter (object)
 
 ### Properties
-+ `id`: 87 (ID, required) - filter primary identifier
-+ `source`: taboola (Source, optional) - restrict search to the given network
-+ `account_id`: 96751 (ID, optional) - restrict search to the given account
-+ `campaign_id`: 452677 (ID, optional) - restrict search to the given campaign
++ `id`: 87 (ID) - filter primary identifier
++ `source`: taboola (Source) - restrict search to the given network
++ `account_id`: 96751 (ID) - restrict search to the given account
++ `campaign_id`: 452677 (ID) - restrict search to the given campaign
 
 ## Match (object)
 + `source`: yahoo (Source) - source of the affected object
@@ -156,7 +157,7 @@
 + `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the account was created in Brax
 + `updated_at`: `2017-01-25T08:02:44+00:00` (DateTime) - date and time the account was last updated in Brax
 
-## Ad (object) - represents an ad in a campaign 
+## Ad (object) - represents an ad in a campaign
 + `source_account_id`: `ACME-Rockets-SC` (SourceID) - source's unique identifier for the account
 + `source_campaign_id`: 26465874 (SourceID) - source's unique campaign identifier
 + `source_ad_id`: 0214741 (SourceID) - source's unique ad identifier
@@ -202,8 +203,8 @@
 + `source`: revcontent (Source) - name of the source
 + `source_account_id`: acmecompany (SourceID) - source's unique account identifier
 + `source_campaign_id`: 67890 (SourceID) - source's unique campaign identifier
-+ `start_date`: `2017-02-12 (Date, required)` - start date for aggregating metrics
-+ `end_date`: `2017-02-18 (Date, required)` - end date for aggregating metrics
++ `start_date`: `2017-02-12` (Date, required) - start date for aggregating metrics
++ `end_date`: `2017-02-18` (Date, required) - end date for aggregating metrics
 
 ## ReportingMetrics (object) - Results will contain these standard performance metrics
 + `impressions`: 21 (Integer) - impressions
