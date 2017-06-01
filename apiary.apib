@@ -489,7 +489,21 @@ List all campaigns.
             }
 
 # Group Reporting
-Endpoints for managing reporting of ads, ad groups, campaigns, publishers, sections, and targets.
+Endpoints for accessing reporting data for...
+
+#### ReportingObject <a name='ReportingObject' />
+Entities that exports reporting data
+
+
+| Value       | Description                                                      |
+|:------------|------------------------------------------------------------------|
+| `campaign`  | Campaigns                                                        |
+| `ad`        | Ads                                                              |
+| `publisher` | Publishers (Outbrain), Sites (Taboola), and Widgets (Revcontent) |
+| `section`   | Sections (Outbrain)                                              |
+| `target`    | Targets (Revcontent)                                             |
+| `ad_group`  | Ad Groups (Yahoo)                                                |
+
 
 # Requests and responses
 All reporting endpoints accept a combination of parameters to refine the result set.
@@ -1244,9 +1258,35 @@ Endpoints to manage rules, rule settings, preview running rules, run rules, and 
 
 Rules allow bulk modification of campaign settings based on a filter and a condition.
 
-Conditions specify how objects are selected for applying changes, and include a metric, operator, expected value, and a date range. These parameters are used when querying the reporting system and are applied using logical `AND`. This means the more conditions applied, the more narrow the matching criteria.
+<a href='#Filter'>Filter</a>s enable matching only within certain networks, accounts, or individual campaigns. These parameters are also used when querying the reporting system and are applied using logical `OR`. This means you can request matching on several accounts for the same rule, or attempt matching for all accounts by default to keep the criteria as broad as possible.
 
-Filters enable matching only within certain networks, accounts, or individual campaigns. These parameters are also used when querying the reporting system and are applied using logical `OR`. This means you can request matching on several accounts for the same rule, or attempt matching for all accounts by default to keep the criteria as broad as possible.
+<a href='#Condition'>Condition</a>s specify how objects are selected for applying changes, and include a metric, operator, expected value, and a date range. These parameters are used when querying the reporting system and are applied using logical `AND`. This means the more conditions applied, the more narrow the matching criteria.
+
+A rule will always have at least one filter one condition, and its first condition will always use the `campaign.cost` metric.
+
+The following rule types are supported...
+
+#### RuleType <a name='RuleType' />
+Describes the type of rule, indicates what it affects and how
+
+Starred rule types will have an **amount** specified in the rule.
+
+| Value                   | Description                 |
+|:------------------------|-----------------------------|
+| `pause_campaign`        | Pause Campaigns             |
+| `pause_ad`              | Pause Ads                   |
+| `block_publisher`       | Block Publishers            |
+| `block_section`         | Block Sections (Outbrain)   |
+| `block_target`          | Block Targets (Revcontent)  |
+| `pause_ad_group`        | Pause Ad Groups (Yahoo)     |
+| `modify_bid_publisher`  | Update Site Bid Modifiers * |
+| `multiply_bid_target`   | Update Target Bids *        |
+| `multiply_bid_campaign` | Update Campaign Bids *      |
+
+
+## Get Rules [/rules]
+
+The structure of a rule and its constituents are described as follows...
 
 #### Rule <a name='Rule' />
 
@@ -1265,40 +1305,6 @@ Filters enable matching only within certain networks, accounts, or individual ca
 | **updated_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-25T08:02:43+00:00  | date and time the rule was last updated in Brax                                                                   |
 
 
-#### RuleType <a name='RuleType' />
-String describing the type of rule, indicating what it affects and how
-
-Starred rule types will have an **amount** specified in the rule.
-
-| Value                   | Description                 |
-|:------------------------|-----------------------------|
-| `pause_campaign`        | Pause Campaigns             |
-| `pause_ad`              | Pause Ads                   |
-| `block_publisher`       | Block Publishers            |
-| `block_section`         | Block Sections (Outbrain)   |
-| `block_target`          | Block Targets (Revcontent)  |
-| `pause_ad_group`        | Pause Ad Groups (Yahoo)     |
-| `modify_bid_publisher`  | Update Site Bid Modifiers * |
-| `multiply_bid_target`   | Update Target Bids *        |
-| `multiply_bid_campaign` | Update Campaign Bids *      |
-
-
-#### Condition <a name='Condition' />
-Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
-
-
-
-
-| Field          | Type                                          | Example       | Description                                                       |
-|:---------------|-----------------------------------------------|---------------|-------------------------------------------------------------------|
-| **id**         | <a href='#ID'>ID</a>                          | 721           | condition primary identifier                                      |
-| **metric**     | <a href='#Metric'>Metric</a> *required*       | campaign.cost | metric for input criteria                                         |
-| **operator**   | <a href='#Operator'>Operator</a> *required*   | <             | comparison operator to apply                                      |
-| **value**      | <a href='#Decimal'>Decimal</a> *required*     | 10            | expected value for comparison                                     |
-| **date_range** | <a href='#DateRange'>DateRange</a> *required* | last_7_days   | reporting range to aggregate metrics                              |
-| **start_date** | <a href='#Date'>Date</a>                      | 2017-02-12    | start date for aggregating metrics (determined by **date_range**) |
-| **end_date**   | <a href='#Date'>Date</a>                      | 2017-02-12    | end date for aggregating metrics (determined by **date_range**)   |
-
 #### Filter <a name='Filter' />
 
 
@@ -1316,11 +1322,43 @@ Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7
 - Or a filter may specify only **source** and leave the other two `null` to indicate only campaigns in the given network.
 - If **campaign_id** is set, the other two must also be set, and likewise when **account_id** is set, **source** must also be set.
 
+#### Condition <a name='Condition' />
+Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
 
-## Rules [/rules{?offset,limit}]
 
-### List Rules [GET]
-List all rules.
+
+
+| Field          | Type                                          | Example       | Description                                                       |
+|:---------------|-----------------------------------------------|---------------|-------------------------------------------------------------------|
+| **id**         | <a href='#ID'>ID</a>                          | 721           | condition primary identifier                                      |
+| **metric**     | <a href='#Metric'>Metric</a> *required*       | campaign.cost | metric for input criteria                                         |
+| **operator**   | <a href='#Operator'>Operator</a> *required*   | <             | comparison operator to apply                                      |
+| **value**      | <a href='#Decimal'>Decimal</a> *required*     | 10            | expected value for comparison                                     |
+| **date_range** | <a href='#DateRange'>DateRange</a> *required* | last_7_days   | reporting range to aggregate metrics                              |
+| **start_date** | <a href='#Date'>Date</a>                      | 2017-02-12    | start date for aggregating metrics (determined by **date_range**) |
+| **end_date**   | <a href='#Date'>Date</a>                      | 2017-02-12    | end date for aggregating metrics (determined by **date_range**)   |
+
+
+#### Metric <a name="Metric" />
+Metric is a string composed of an object and a metric separated by a dot, i.e. **reporting_object**.**metric_field**
+
+Reporting object can be one of: `campaign`, `ad`, `publisher`, `target`, `section`, `ad_group`
+
+Metric field can be one of the standard <a href="#ReportingMetrics">ReportingMetrics</a>:
+
+`impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`
+
+Or one of the <a href="#GoogleAnalyticsMetrics">GoogleAnalyticsMetrics</a>:
+
+`sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions`
+
+**Examples**
+
+- `campaign.clicks` - Clicks for a campaign
+- `target.ctr` - Click-through rate for a target
+- `publisher.conversions` - Number of conversions for a publisher
+
+### List Rules [GET /rules{?offset,limit}]
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -1451,13 +1489,10 @@ List all rules.
             }
 
 
-## Get a Rule by ID [/rules/{rule_id}]
-Show the configuration of a single rule by ID
+### Rule by ID [GET /rules/{rule_id}]
 
 + Parameters
     + `rule_id` (ID, required)
-
-### Rule by ID [GET]
 
 + Request (application/json)
     + Headers
@@ -1497,8 +1532,14 @@ Show the configuration of a single rule by ID
             }
 
 
-## Rules Preview By Rule Id [/rules/{rule_id}/preview]
-Shows the potential result of running a rule, including the current rule settings, and the affected objects.
+## Running Rules [/rules/{rule_id}]
+
+Before running a rule, you may want to find out what the rule will do.
+The preview endpoint can be used to return details showing potential result of running a rule, including the current rule settings, and the affected objects.
+
+A POST request sent to the run endpoint will enqueue the running of the specified rule with the default match items selected,
+and return a response with the `job_id` of the job which can be queried via the status endpoint below.
+
 
 Rule previews have the following structure...
 #### RulePreview <a name='RulePreview' />
@@ -1525,10 +1566,10 @@ Rule previews have the following structure...
 
 Depending on how a rule is configured, there will be multiple object metrics shown in the response. The field names will contain spaces for these metrics.
 
+### Preview a Rule by ID [GET /rules/{rule_id}/preview]
+
 + Parameters
     + `rule_id` (ID, required)
-
-### Preview running a rule [GET]
 
 + Request (application/json)
     + Headers
@@ -1597,14 +1638,10 @@ Depending on how a rule is configured, there will be multiple object metrics sho
             }
 
 
-## Run a Rule by ID [/rules/{rule_id}/run]
-A POST request send to this endpoint will enqueue the running of the specified rule with the default match items selected,
-and return a response with the `job_id` of the job which can be queried via the status endpoint below.
+## Run a Rule by ID [POST /rules/{rule_id}/run]
 
 + Parameters
     + `rule_id` (ID, required)
-
-### Run a rule [POST]
 
 + Request (application/json)
     + Headers
@@ -1626,10 +1663,14 @@ and return a response with the `job_id` of the job which can be queried via the 
 
 
 
-## Rule History [/rules/jobs]
+## Rule Job Status [/rules/jobs]
+
+After running a rule, its running status can be checked to show confirm whether the desired changes have been made.
+
+The status endpoint returns the status details of a job for running a rule, and the history endpoint returns a list of jobs currently running or that have run in the past.
+
 
 ### Job history [GET]
-Returns a list of jobs currently running or that have run in the past.
 
 + Request (application/json)
     + Headers
@@ -1709,13 +1750,10 @@ Returns a list of jobs currently running or that have run in the past.
 
 
 
-## Rules Job Status Job ID [/rules/jobs/{job_id}]
-Returns the status details of a job for running a rule.
+## Job Status Job ID [GET /rules/jobs/{job_id}]
 
 + Parameters
     + `job_id` (ID, required)
-
-### Job status by Job ID [GET]
 
 + Request (application/json)
     + Headers
@@ -1954,7 +1992,7 @@ A properly formatted URI string according to RFC 3986
 + `yahoo` - Yahoo Gemini ([gemini.yahoo.com](//gemini.yahoo.com))
 + `content-ad` - Content.ad ([www.content.ad](//content.ad))
 
-## RuleType (enum) - string describing the type of rule, indicating what it affects and how
+## RuleType (enum) - describes the type of rule, indicates what it affects and how
 Starred rule types will have an **amount** specified in the rule.
 - `pause_campaign` - Pause Campaigns
 - `pause_ad` - Pause Ads
@@ -1966,11 +2004,22 @@ Starred rule types will have an **amount** specified in the rule.
 - `multiply_bid_target` - Update Target Bids *
 - `multiply_bid_campaign` - Update Campaign Bids *
 
+## ReportingObject (enum) - entities that exports reporting data
+- `campaign` - Campaigns
+- `ad` - Ads
+- `publisher` - Publishers (Outbrain), Sites (Taboola), and Widgets (Revcontent)
+- `section` - Sections (Outbrain)
+- `target` - Targets (Revcontent)
+- `ad_group` - Ad Groups (Yahoo)
+
 ## Metric (enum) - a string composed of an object and a metric separated by a dot
 ### Members
-- `campaign`, `ad`, `publisher`, `target`, `section`, `ad_group` (enum) - reporting object
-- .
-- `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`, `sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions` (enum) - metric field
+- (enum) - reporting object
+  - `campaign`, `ad`, `publisher`, `target`, `section`, `ad_group`
+- . - a literal dot separating the reporting object and metric field
+- (enum) - metric field
+  - `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`
+  - `sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions`
 
 ### Sample
 - `campaign.clicks` - Campaign clicks

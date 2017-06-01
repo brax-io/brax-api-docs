@@ -40,7 +40,7 @@
 + `yahoo` - Yahoo Gemini ([gemini.yahoo.com](//gemini.yahoo.com))
 + `content-ad` - Content.ad ([www.content.ad](//content.ad))
 
-## RuleType (enum) - string describing the type of rule, indicating what it affects and how
+## RuleType (enum) - describes the type of rule, indicates what it affects and how
 Starred rule types will have an **amount** specified in the rule.
 - `pause_campaign` - Pause Campaigns
 - `pause_ad` - Pause Ads
@@ -52,11 +52,22 @@ Starred rule types will have an **amount** specified in the rule.
 - `multiply_bid_target` - Update Target Bids *
 - `multiply_bid_campaign` - Update Campaign Bids *
 
+## ReportingObject (enum) - entities that exports reporting data
+- `campaign` - Campaigns
+- `ad` - Ads
+- `publisher` - Publishers (Outbrain), Sites (Taboola), and Widgets (Revcontent)
+- `section` - Sections (Outbrain)
+- `target` - Targets (Revcontent)
+- `ad_group` - Ad Groups (Yahoo)
+
 ## Metric (enum) - a string composed of an object and a metric separated by a dot
 ### Members
-- `campaign`, `ad`, `publisher`, `target`, `section`, `ad_group` (enum) - reporting object
-- .
-- `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`, `sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions` (enum) - metric field
+- (enum) - reporting object
+  - `campaign`, `ad`, `publisher`, `target`, `section`, `ad_group`
+- . - a literal dot separating the reporting object and metric field
+- (enum) - metric field
+  - `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`
+  - `sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions`
 
 ### Sample
 - `campaign.clicks` - Campaign clicks
