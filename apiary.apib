@@ -19,8 +19,7 @@ The base URL for all API endpoints is [https://api.brax.io/v1](https://api.brax.
 If you run into trouble, please let us know via [api@brax.io](mailto:api@brax.io). Please attach the `X-Request-Id` header from the returned response. This header allows us to pinpoint your unique request and helps us troubleshoot more effectively.
 
 # Postman
-Feel free to take advantage of our Postman collection here: [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ff73088700e24511e68a#?env%5BBrax%20API%20(Public-Facing%20Documentation)%5D=W3siZW5hYmxlZCI6dHJ1ZSwia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6Imh0dHBzOi8vYXBpLmJyYXguaW8iLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5IjoidXJsIiwidmFsdWUiOiJ7e2Jhc2VfdXJsfX0vdjEiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5IjoiYmFzaWNfdG9rZW4iLCJ2YWx1ZSI6Int0b2tlbn0iLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic291cmNlIiwidmFsdWUiOiJvdXRicmFpbiIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJzb3VyY2VfYWNjb3VudF9pZCIsInZhbHVlIjoiMTIzNDU2NzgiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic291cmNlX2NhbXBhaWduX2lkIiwidmFsdWUiOiIxMjMiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic3RhcnRfZGF0ZSIsInZhbHVlIjoiMjAxNy0wNS0wMSIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJlbmRfZGF0ZSIsInZhbHVlIjoiMjAxNy0wNS0yMSIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJydWxlX2lkIiwidmFsdWUiOiIzMiIsInR5cGUiOiJ0ZXh0In1d)
-
+Feel free to take advantage of our Postman collection here: [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ff73088700e24511e68a#?env%5BBrax%20Marketing%20API%201.0%5D=W3siZW5hYmxlZCI6dHJ1ZSwia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6Imh0dHBzOi8vYXBpLmJyYXguaW8iLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5IjoidXJsIiwidmFsdWUiOiJ7e2Jhc2VfdXJsfX0vdjEiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5IjoiYmFzaWNfdG9rZW4iLCJ2YWx1ZSI6Int0b2tlbn0iLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic291cmNlIiwidmFsdWUiOiJvdXRicmFpbiIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJzb3VyY2VfYWNjb3VudF9pZCIsInZhbHVlIjoiMTIzNDU2NzgiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic291cmNlX2NhbXBhaWduX2lkIiwidmFsdWUiOiIxMjMiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic3RhcnRfZGF0ZSIsInZhbHVlIjoiMjAxNy0wNS0wMSIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJlbmRfZGF0ZSIsInZhbHVlIjoiMjAxNy0wNS0yMSIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJydWxlX2lkIiwidmFsdWUiOiIzMiIsInR5cGUiOiJ0ZXh0In1d)
 
 ## Example [/ping]
 This is a sanity check when all else fails.
@@ -57,6 +56,7 @@ The API generally follows the RESTful interface and is structured into the follo
 - Ads
 - Reports
 - Rules
+- Users
 
 | Resource  | Actions  |
 |:----------|----------|
@@ -65,6 +65,7 @@ The API generally follows the RESTful interface and is structured into the follo
 | Ad        | Read     |
 | Report    | Read     |
 | Rule      | List, Read, Preview, Run, History, Status |
+| User      | List     |
 
 ## HTTP Requests
 
@@ -1237,13 +1238,16 @@ Endpoints to manage rules, rule settings, preview running rules, run rules, and 
 
 
 
-| Field          | Type                                                   | Example     | Description                                            |
-|:---------------|--------------------------------------------------------|-------------|--------------------------------------------------------|
-| **id**         | <a href='#ID'>ID</a> *required*                        | 986         | rule primary identifier                                |
-| **name**       | string *required*                                      | my ads rule | name of the rule                                       |
-| **type**       | <a href='#RuleType'>RuleType</a> *required*            | `pause_ad`  | determines what actions are performed on which objects |
-| **conditions** | array of <a href='#Condition'>Condition</a> *required* |             | criteria for matching                                  |
-| **filters**    | array of <a href='#Filter'>Filter</a> *required*       |             | restrict search to source, account, or campaign level  |
+| Field          | Type                                                   | Example                   | Description                                                    |
+|:---------------|--------------------------------------------------------|---------------------------|----------------------------------------------------------------|
+| **id**         | <a href='#ID'>ID</a> *required*                        | 986                       | rule primary identifier                                        |
+| **name**       | string *required*                                      | my ads rule               | name of the rule                                               |
+| **type**       | <a href='#RuleType'>RuleType</a> *required*            | `pause_ad`                | determines what actions are performed on which objects         |
+| **amount**     | <a href='#Decimal'>Decimal</a> *optional*              | 1.2500                    | multiplier or value by which to modify existing bids or values |
+| **conditions** | array of <a href='#Condition'>Condition</a> *required* |                           | criteria for matching                                          |
+| **filters**    | array of <a href='#Filter'>Filter</a> *required*       |                           | restrict search to source, account, or campaign level          |
+| **created_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-21T08:02:43+00:00 | date and time the rule was created                             |
+| **updated_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-25T08:02:43+00:00 | date and time the rule was last updated                        |
 
 #### Condition <a name='Condition' />
 Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
@@ -1258,6 +1262,8 @@ Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7
 | **operator**   | <a href='#Operator'>Operator</a> *required*   | `<`             | comparison operator to apply         |
 | **value**      | <a href='#Decimal'>Decimal</a> *required*     | 10              | expected value for comparison        |
 | **date_range** | <a href='#DateRange'>DateRange</a> *required* | `last_7_days`   | reporting range to aggregate metrics |
+| **start_date** | <a href='#Date'>Date</a> *required*           | 2017-02-12      | start date for aggregating metrics   |
+| **end_date**   | <a href='#Date'>Date</a> *required*           | 2017-02-12      | end date for aggregating metrics     |
 
 #### Filter <a name='Filter' />
 
@@ -1466,70 +1472,6 @@ Show the configuration of a single rule by ID
                   ],
                   "created_at": "2017-04-21T20:26:32+00:00",
                   "updated_at": "2017-04-21T20:26:32+00:00"
-                },
-                {
-                  "id": 144,
-                  "name": "my ads rule",
-                  "type": "pause_ad",
-                  "amount": null,
-                  "conditions": [
-                    {
-                      "id": 81,
-                      "metric": "campaign.cost",
-                      "operator": ">",
-                      "value": "10.00",
-                      "date_range": "last_7_days"
-                    },
-                    {
-                      "id": 86,
-                      "metric": "ad.cpa",
-                      "operator": "<",
-                      "value": "8",
-                      "date_range": "last_2_days_inclusive"
-                    }
-                  ],
-                  "filters": [
-                    {
-                      "id": 74,
-                      "source": "outbrain",
-                      "account_id": 2,
-                      "campaign_id": null
-                    }
-                  ],
-                  "created_at": "2017-04-25T18:08:48+00:00",
-                  "updated_at": "2017-04-25T18:08:48+00:00"
-                },
-                {
-                  "id": 150,
-                  "name": "block my publishers",
-                  "type": "block_publisher",
-                  "amount": null,
-                  "conditions": [
-                    {
-                      "id": 89,
-                      "metric": "campaign.cost",
-                      "operator": ">",
-                      "value": "10.00",
-                      "date_range": "last_7_days"
-                    },
-                    {
-                      "id": 90,
-                      "metric": "publisher.cost",
-                      "operator": ">",
-                      "value": "0",
-                      "date_range": "last_7_days"
-                    }
-                  ],
-                  "filters": [
-                    {
-                      "id": 80,
-                      "source": null,
-                      "account_id": null,
-                      "campaign_id": null
-                    }
-                  ],
-                  "created_at": "2017-04-26T16:44:43+00:00",
-                  "updated_at": "2017-04-26T16:44:43+00:00"
                 }
               ],
               "pagination": {
@@ -1692,8 +1634,6 @@ Returns a list of jobs currently running or that have run in the past.
                 "jobs": [
                     {
                         "id": 32,
-                        "created_at": "2017-05-19T18:46:28+00:00",
-                        "created_by": "Mark Simon",
                         "rule": {
                             "name": "asdf",
                             "type": "pause_campaign"
@@ -1703,12 +1643,12 @@ Returns a list of jobs currently running or that have run in the past.
                             "remaining": 5,
                             "successful": 0,
                             "failed": 0
-                        }
+                        },
+                        "created_at": "2017-05-19T18:46:28+00:00",
+                        "created_by": "Mark Simon"
                     },
                     {
                         "id": 33,
-                        "created_at": "2017-05-19T23:50:52+00:00",
-                        "created_by": "Mark Simon",
                         "rule": {
                             "name": "asdf",
                             "type": "pause_campaign"
@@ -1718,12 +1658,12 @@ Returns a list of jobs currently running or that have run in the past.
                             "remaining": 5,
                             "successful": 0,
                             "failed": 0
-                        }
+                        },
+                        "created_at": "2017-05-19T23:50:52+00:00",
+                        "created_by": "Mark Simon"
                     },
                     {
                         "id": 34,
-                        "created_at": "2017-05-20T01:10:28+00:00",
-                        "created_by": "Mark Simon",
                         "rule": {
                             "name": "asdf",
                             "type": "pause_campaign"
@@ -1733,7 +1673,9 @@ Returns a list of jobs currently running or that have run in the past.
                             "remaining": 2,
                             "successful": 0,
                             "failed": 0
-                        }
+                        },
+                        "created_at": "2017-05-20T01:10:28+00:00",
+                        "created_by": "Mark Simon"
                     }
                 ],
                 "pagination": {
@@ -1767,53 +1709,51 @@ Returns the status details of a job for running a rule.
     + Body
 
             {
-              "job": {
                 "id": 35,
-                "created_at": "2017-05-26T22:58:19+00:00",
                 "rule": {
-                  "id": 132,
-                  "name": "asdf",
-                  "type": "pause_campaign",
-                  "amount": null,
-                  "conditions": [
-                    {
-                      "id": null,
-                      "metric": "campaign.cost",
-                      "operator": ">",
-                      "value": "10",
-                      "date_range": "last_7_days"
-                    }
-                  ],
-                  "filters": [
-                    {
-                      "id": null,
-                      "source": null,
-                      "account_id": null,
-                      "campaign_id": null
-                    }
-                  ],
-                  "created_at": null,
-                  "updated_at": null
+                    "id": 132,
+                    "name": "asdf",
+                    "type": "pause_campaign",
+                    "amount": null,
+                    "conditions": [
+                        {
+                            "id": null,
+                            "metric": "campaign.cost",
+                            "operator": ">",
+                            "value": "10",
+                            "date_range": "last_7_days"
+                        }
+                    ],
+                    "filters": [
+                        {
+                            "id": null,
+                            "source": null,
+                            "account_id": null,
+                            "campaign_id": null
+                        }
+                    ],
+                    "created_at": null,
+                    "updated_at": null
                 },
                 "details": [
-                  {
-                    "source": "yahoo",
-                    "account_id": 14975,
-                    "campaign_id": 503502,
-                    "account_name": "brax-test-account",
-                    "campaign_name": "brax-test-us",
-                    "campaign cost last_7_days": "$415.51"
-                  },
-                  {
-                    "source": "yahoo",
-                    "account_id": 14759,
-                    "campaign_id": 503580,
-                    "account_name": "brax-test-account",
-                    "campaign_name": "brax-test-uk",
-                    "campaign cost last_7_days": "$170.20"
-                  }
-                ]
-              }
+                    {
+                        "source": "yahoo",
+                        "account_id": 14975,
+                        "campaign_id": 503502,
+                        "account_name": "brax-test-account",
+                        "campaign_name": "brax-test-us",
+                        "campaign cost last_7_days": "$415.51"
+                    },
+                    {
+                        "source": "yahoo",
+                        "account_id": 14759,
+                        "campaign_id": 503580,
+                        "account_name": "brax-test-account",
+                        "campaign_name": "brax-test-uk",
+                        "campaign cost last_7_days": "$170.20"
+                    }
+                ],
+                "created_at": "2017-05-26T22:58:19+00:00"
             }
 
 # Group Users
@@ -2025,8 +1965,11 @@ A properly formatted URI according to RFC 3986
 + `id`: 986 (ID, required) - rule primary identifier
 + `name`: my ads rule (string, required) - name of the rule
 + `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
++ `amount`: 1.2500 (Decimal, optional) - multiplier or value by which to modify existing bids or values
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
++ `created_at`: 2017-01-21T08:02:43+00:00 (DateTime) - date and time the rule was created
++ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the rule was last updated
 
 
 ## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
@@ -2037,6 +1980,8 @@ A properly formatted URI according to RFC 3986
 + `operator`: `<` (Operator, required) - comparison operator to apply
 + `value`: 10 (Decimal, required) - expected value for comparison
 + `date_range`: `last_7_days` (DateRange, required) - reporting range to aggregate metrics
++ `start_date`: 2017-02-12 (Date, required) - start date for aggregating metrics
++ `end_date`: 2017-02-12 (Date, required) - end date for aggregating metrics
 
 
 ## Filter (object)
@@ -2067,9 +2012,8 @@ A properly formatted URI according to RFC 3986
 
 ## RuleJob (object)
 + `id`: 32 (ID) - primary identifier for this job
-+ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
-+ `created_by`: Mark Simon (string) - name of the user who ran the rule
 + `rule` (object) - short description of the running rule
+    + `id`: 986 (ID, required) - rule primary identifier
     + `name`: my campaign rule (string) - name of the rule
     + `type`: pause_campaign (RuleType) - type of the rule
 + `stats` (object) - aggregated details of the job's running status
@@ -2077,6 +2021,8 @@ A properly formatted URI according to RFC 3986
     + `remaining`: 5 (Integer) - action items remaining
     + `successful`: 0 (Integer) - action items that have completed successfully
     + `failed`: 0 (Integer) - action items that have failed
++ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `created_by`: Mark Simon (string) - name of the user who ran the rule
 
 
 ## RuleStatus (object)

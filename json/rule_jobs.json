@@ -2,8 +2,6 @@
     "jobs": [
         {
             "id": 32,
-            "created_at": "2017-05-19T18:46:28+00:00",
-            "created_by": "Mark Simon",
             "rule": {
                 "name": "asdf",
                 "type": "pause_campaign"
@@ -13,12 +11,12 @@
                 "remaining": 5,
                 "successful": 0,
                 "failed": 0
-            }
+            },
+            "created_at": "2017-05-19T18:46:28+00:00",
+            "created_by": "Mark Simon"
         },
         {
             "id": 33,
-            "created_at": "2017-05-19T23:50:52+00:00",
-            "created_by": "Mark Simon",
             "rule": {
                 "name": "asdf",
                 "type": "pause_campaign"
@@ -28,12 +26,12 @@
                 "remaining": 5,
                 "successful": 0,
                 "failed": 0
-            }
+            },
+            "created_at": "2017-05-19T23:50:52+00:00",
+            "created_by": "Mark Simon"
         },
         {
             "id": 34,
-            "created_at": "2017-05-20T01:10:28+00:00",
-            "created_by": "Mark Simon",
             "rule": {
                 "name": "asdf",
                 "type": "pause_campaign"
@@ -43,7 +41,9 @@
                 "remaining": 2,
                 "successful": 0,
                 "failed": 0
-            }
+            },
+            "created_at": "2017-05-20T01:10:28+00:00",
+            "created_by": "Mark Simon"
         }
     ],
     "pagination": {

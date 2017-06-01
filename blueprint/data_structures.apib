@@ -74,8 +74,11 @@
 + `id`: 986 (ID, required) - rule primary identifier
 + `name`: my ads rule (string, required) - name of the rule
 + `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
++ `amount`: 1.2500 (Decimal, optional) - multiplier or value by which to modify existing bids or values
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
++ `created_at`: 2017-01-21T08:02:43+00:00 (DateTime) - date and time the rule was created
++ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the rule was last updated
 
 
 ## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
@@ -86,6 +89,8 @@
 + `operator`: `<` (Operator, required) - comparison operator to apply
 + `value`: 10 (Decimal, required) - expected value for comparison
 + `date_range`: `last_7_days` (DateRange, required) - reporting range to aggregate metrics
++ `start_date`: 2017-02-12 (Date, required) - start date for aggregating metrics
++ `end_date`: 2017-02-12 (Date, required) - end date for aggregating metrics
 
 
 ## Filter (object)
@@ -116,9 +121,8 @@
 
 ## RuleJob (object)
 + `id`: 32 (ID) - primary identifier for this job
-+ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
-+ `created_by`: Mark Simon (string) - name of the user who ran the rule
 + `rule` (object) - short description of the running rule
+    + `id`: 986 (ID, required) - rule primary identifier
     + `name`: my campaign rule (string) - name of the rule
     + `type`: pause_campaign (RuleType) - type of the rule
 + `stats` (object) - aggregated details of the job's running status
@@ -126,6 +130,8 @@
     + `remaining`: 5 (Integer) - action items remaining
     + `successful`: 0 (Integer) - action items that have completed successfully
     + `failed`: 0 (Integer) - action items that have failed
++ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `created_by`: Mark Simon (string) - name of the user who ran the rule
 
 
 ## RuleStatus (object)
