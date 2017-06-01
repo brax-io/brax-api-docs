@@ -1447,39 +1447,29 @@ Show the configuration of a single rule by ID
     + Body
 
             {
-              "results": [
-                {
-                  "id": 132,
-                  "name": "my pause campaign rule",
-                  "type": "pause_campaign",
-                  "amount": null,
-                  "conditions": [
+                "id": 132,
+                "name": "my pause campaign rule",
+                "type": "pause_campaign",
+                "amount": null,
+                "conditions": [
                     {
-                      "id": 75,
-                      "metric": "campaign.cost",
-                      "operator": ">",
-                      "value": "10",
-                      "date_range": "last_7_days"
+                        "id": 75,
+                        "metric": "campaign.cost",
+                        "operator": ">",
+                        "value": "10",
+                        "date_range": "last_7_days"
                     }
-                  ],
-                  "filters": [
+                ],
+                "filters": [
                     {
-                      "id": 67,
-                      "source": null,
-                      "account_id": null,
-                      "campaign_id": null
+                        "id": 67,
+                        "source": null,
+                        "account_id": null,
+                        "campaign_id": null
                     }
-                  ],
-                  "created_at": "2017-04-21T20:26:32+00:00",
-                  "updated_at": "2017-04-21T20:26:32+00:00"
-                }
-              ],
-              "pagination": {
-                "offset": 0,
-                "limit": 100,
-                "count": 3,
-                "total": 3
-              }
+                ],
+                "created_at": "2017-04-21T20:26:32+00:00",
+                "updated_at": "2017-04-21T20:26:32+00:00"
             }
 
 
