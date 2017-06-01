@@ -1,7 +1,8 @@
 # Group Reporting
-Endpoints for accessing reporting data for...
 
-:[](tables/ReportingObject.apib)
+Performance data can be accessed via endpoints given a date range and filtering parameters.
+
+We will describe the parmeters availalbe for requests and responses, and then list the endpoints below.
 
 # Requests and responses
 All reporting endpoints accept a combination of parameters to refine the result set.
@@ -13,10 +14,14 @@ All reporting endpoints accept a combination of parameters to refine the result 
 :[](tables/GoogleAnalyticsMetrics.apib)
 
 
-## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
+## Reporting Endpoints [/reports]
+Reports can be fetched for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
-### Ads [GET]
-Fetch ads report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+These are the objects that provide performance data:
+
+:[](tables/ReportingObject.apib)
+
+### Ads Report [GET /reports/ads{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     :[](params/pagination.apib)
@@ -47,11 +52,7 @@ Fetch ads report for a **source** and **source_account_id**; optionally with **s
 
             :[](../json/ads_report.json)
 
-
-## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Ad Groups [GET]
-Fetch ad groups report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+### Ad Groups Report [GET /reports/ad-groups{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     :[](params/pagination.apib)
@@ -82,10 +83,7 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
             :[](../json/ad_groups_report.json)
 
 
-## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Campaigns [GET]
-Fetch campaigns report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+### Campaigns Report [GET /reports/campaigns{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     :[](params/pagination.apib)
@@ -116,10 +114,7 @@ Fetch campaigns report for a **source** and **source_account_id**; optionally wi
             :[](../json/campaigns_report.json)
 
 
-## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Publishers [GET]
-Fetch publishers report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+### Publishers Report [GET /reports/publishers{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     :[](params/pagination.apib)
@@ -149,10 +144,7 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
             :[](../json/publishers_report.json)
 
 
-## Sections Report [/reports/sections{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Sections [GET]
-Fetch sections report for a source and **source_account_id**; optionally with **source_campaign_id**.
+### Sections Report [GET /reports/sections{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     :[](params/pagination.apib)
@@ -184,11 +176,7 @@ Fetch sections report for a source and **source_account_id**; optionally with **
             :[](../json/sections_report.json)
 
 
-
-## Targets Report [/reports/targets{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Targets [GET]
-Fetch targets report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+## Targets Report [GET /reports/targets{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     :[](params/pagination.apib)

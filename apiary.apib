@@ -489,21 +489,10 @@ List all campaigns.
             }
 
 # Group Reporting
-Endpoints for accessing reporting data for...
 
-#### ReportingObject <a name='ReportingObject' />
-Entities that exports reporting data
+Performance data can be accessed via endpoints given a date range and filtering parameters.
 
-
-| Value       | Description                                                      |
-|:------------|------------------------------------------------------------------|
-| `campaign`  | Campaigns                                                        |
-| `ad`        | Ads                                                              |
-| `publisher` | Publishers (Outbrain), Sites (Taboola), and Widgets (Revcontent) |
-| `section`   | Sections (Outbrain)                                              |
-| `target`    | Targets (Revcontent)                                             |
-| `ad_group`  | Ad Groups (Yahoo)                                                |
-
+We will describe the parmeters availalbe for requests and responses, and then list the endpoints below.
 
 # Requests and responses
 All reporting endpoints accept a combination of parameters to refine the result set.
@@ -555,10 +544,26 @@ For users with Google Analytics enabled, results will also contain these analyti
 
 
 
-## Ad Reports [/reports/ads{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
+## Reporting Endpoints [/reports]
+Reports can be fetched for a **source** and **source_account_id**; optionally with **source_campaign_id**.
 
-### Ads [GET]
-Fetch ads report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+These are the objects that provide performance data:
+
+#### ReportingObject <a name='ReportingObject' />
+Entities that export reporting data
+
+
+| Value       | Description                                                      |
+|:------------|------------------------------------------------------------------|
+| `campaign`  | Campaigns                                                        |
+| `ad`        | Ads                                                              |
+| `publisher` | Publishers (Outbrain), Sites (Taboola), and Widgets (Revcontent) |
+| `section`   | Sections (Outbrain)                                              |
+| `target`    | Targets (Revcontent)                                             |
+| `ad_group`  | Ad Groups (Yahoo)                                                |
+
+
+### Ads Report [GET /reports/ads{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -654,11 +659,7 @@ Fetch ads report for a **source** and **source_account_id**; optionally with **s
                 }
             }
 
-
-## Ad Groups Report [/reports/ad-groups{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Ad Groups [GET]
-Fetch ad groups report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+### Ad Groups Report [GET /reports/ad-groups{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -754,10 +755,7 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
             }
 
 
-## Campaigns Report [/reports/campaigns{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Campaigns [GET]
-Fetch campaigns report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+### Campaigns Report [GET /reports/campaigns{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -871,10 +869,7 @@ Fetch campaigns report for a **source** and **source_account_id**; optionally wi
             }
 
 
-## Publishers Report [/reports/publishers{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Publishers [GET]
-Fetch publishers report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+### Publishers Report [GET /reports/publishers{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -994,10 +989,7 @@ Fetch publishers report for a **source** and **source_account_id**; optionally w
             }
 
 
-## Sections Report [/reports/sections{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Sections [GET]
-Fetch sections report for a source and **source_account_id**; optionally with **source_campaign_id**.
+### Sections Report [GET /reports/sections{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -1124,11 +1116,7 @@ Fetch sections report for a source and **source_account_id**; optionally with **
             }
 
 
-
-## Targets Report [/reports/targets{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
-
-### Targets [GET]
-Fetch targets report for a **source** and **source_account_id**; optionally with **source_campaign_id**.
+## Targets Report [GET /reports/targets{?offset,limit,source,source_account_id,source_campaign_id,start_date,end_date}]
 
 + Parameters
     + `offset` (Integer, optional) - starting index of the items to fetch
@@ -2004,7 +1992,7 @@ Starred rule types will have an **amount** specified in the rule.
 - `multiply_bid_target` - Update Target Bids *
 - `multiply_bid_campaign` - Update Campaign Bids *
 
-## ReportingObject (enum) - entities that exports reporting data
+## ReportingObject (enum) - entities that export reporting data
 - `campaign` - Campaigns
 - `ad` - Ads
 - `publisher` - Publishers (Outbrain), Sites (Taboola), and Widgets (Revcontent)
