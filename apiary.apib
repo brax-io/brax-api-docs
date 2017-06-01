@@ -78,6 +78,24 @@ Following RESTful conventions, the HTTP method corresponds to the action request
 | `PUT`/`PATCH`  | Update a resource           |
 | `DELETE`       | Delete a resource           |
 
+## Pagination
+
+Endpoints that may return large result sets will accept pagination parameters as input and include a **pagination** object in their result sets. These parameters are described as follows.
+
+#### Pagination <a name='Pagination' />
+Indicates the number of records available
+
+
+
+| Field      | Type                           | Example | Description                                                  |
+|:-----------|--------------------------------|---------|--------------------------------------------------------------|
+| **offset** | <a href='#Integer'>Integer</a> | 0       | starting index of the result set                             |
+| **limit**  | <a href='#Integer'>Integer</a> | 100     | maximum possible records in the result set / page size       |
+| **count**  | <a href='#Integer'>Integer</a> | 100     | actual number of records in the result set                   |
+| **total**  | <a href='#Integer'>Integer</a> | 984     | total number of available records for the requested resource |
+
+
+
 ## Error Handling
 When the API returns a HTTP status code indicating an error (`400`, `401`, `403`, `404`, `429`) it will also include a JSON object describing the error.
 

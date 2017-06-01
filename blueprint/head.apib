@@ -54,6 +54,13 @@ Following RESTful conventions, the HTTP method corresponds to the action request
 | `PUT`/`PATCH`  | Update a resource           |
 | `DELETE`       | Delete a resource           |
 
+## Pagination
+
+Endpoints that may return large result sets will accept pagination parameters as input and include a **pagination** object in their result sets. These parameters are described as follows.
+
+:[](tables/Pagination.apib)
+
+
 ## Error Handling
 When the API returns a HTTP status code indicating an error (`400`, `401`, `403`, `404`, `429`) it will also include a JSON object describing the error.
 
