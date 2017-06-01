@@ -3,7 +3,7 @@
         {
             "id": 32,
             "rule": {
-                "name": "asdf",
+                "name": "Pause poor performing campaigns",
                 "type": "pause_campaign"
             },
             "stats": {
@@ -18,7 +18,7 @@
         {
             "id": 33,
             "rule": {
-                "name": "asdf",
+                "name": "Pause low spending campaigns",
                 "type": "pause_campaign"
             },
             "stats": {
@@ -33,8 +33,8 @@
         {
             "id": 34,
             "rule": {
-                "name": "asdf",
-                "type": "pause_campaign"
+                "name": "Pause poor performing ads",
+                "type": "pause_ad"
             },
             "stats": {
                 "total": 2,

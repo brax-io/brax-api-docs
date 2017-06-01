@@ -72,13 +72,13 @@
 
 ### Properties
 + `id`: `986` (ID, required) - rule primary identifier
-+ `name`: `my ads rule` (string, required) - name of the rule
++ `name`: `Pause poor performaing ads` (string, required) - name of the rule
 + `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
 + `amount`: `1.2500` (Decimal, optional) - multiplier or value by which to modify existing bids or values
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
-+ `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the rule was created
-+ `updated_at`: `2017-01-25T08:02:43+00:00` (DateTime) - date and time the rule was last updated
++ `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the rule was created in Brax
++ `updated_at`: `2017-01-25T08:02:43+00:00` (DateTime) - date and time the rule was last updated in Brax
 
 
 ## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
@@ -105,8 +105,8 @@
 + `source`: yahoo (Source) - source of the affected object
 + `account_id`: 65437 (ID) - identifier of the account of the affected object
 + `campaign_id`: 34634 (ID) - identifier of the campaign to be affected
-+ `account_name`: brax-test-account (string) - name of the account of the affected object
-+ `campaign_name`: brax-test-campaign (string) - name of the affected campaign
++ `account_name`: Selfserve_ACME (string) - name of the account of the affected object
++ `campaign_name`: my_first_campaign (string) - name of the affected campaign
 + *object metric1 range*: `$124.56` (string) - metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days`
 + *object metric2 range*: `0.2843` (string) - metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`
 
@@ -123,20 +123,20 @@
 + `id`: 32 (ID) - primary identifier for this job
 + `rule` (object) - short description of the running rule
     + `id`: 986 (ID, required) - rule primary identifier
-    + `name`: my campaign rule (string) - name of the rule
+    + `name`: Pause poor performing campaigns (string) - name of the rule
     + `type`: pause_campaign (RuleType) - type of the rule
 + `stats` (object) - aggregated details of the job's running status
     + `total`: 5 (Integer) - total action items
     + `remaining`: 5 (Integer) - action items remaining
     + `successful`: 0 (Integer) - action items that have completed successfully
     + `failed`: 0 (Integer) - action items that have failed
-+ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `created_at`: `2017-05-19T18:46:28+00:00` (DateTime) - when the job was initiated
 + `created_by`: Mark Simon (string) - name of the user who ran the rule
 
 
 ## RuleStatus (object)
 + `id`: 32 (ID) - primary identifier of the job
-+ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `created_at`: `2017-05-19T18:46:28+00:00` (DateTime) - when the job was initiated
 + `rule` (Rule) - snapshot of the rule at the time it was run
 + `details` (array[Match]) - the action items to be processed
 
@@ -150,39 +150,39 @@
 
 ## Account (object) - represents an account accessible at a network
 + `id`: 123 (ID, required) - primary identifier for the account
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source`: content-ad (Source) - name of the source
-+ `name`: Selfserve_test_1 (string) - name of the account
-+ `created_at`: 2017-01-21T08:02:43+00:00 (DateTime) - date and time the account was created
-+ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the account was last updated
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account
++ `source`: outbrain (Source) - name of the source
++ `name`: Selfserve_ACME (string) - name of the account
++ `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the account was created in Brax
++ `updated_at`: `2017-01-25T08:02:44+00:00` (DateTime) - date and time the account was last updated in Brax
 
 ## Ad (object) - represents an ad in a campaign 
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
-+ `source_ad_id`: 123456 (SourceID) - source's unique ad identifier
-+ `tracking_ad_id`: "2138da" (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source_account_id`: `ACME-Rockets-SC` (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 26465874 (SourceID) - source's unique campaign identifier
++ `source_ad_id`: 0214741 (SourceID) - source's unique ad identifier
++ `tracking_ad_id`: `e138da` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + `source`: taboola (Source) - name of the source
 + `title`: Brax helps you scale with the best (string) - ad title / headline
-+ `url`: https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1 (Url) - ad destination url
++ `url`: `https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1` (Url) - ad destination url
 + `image_url`: 'https://example.com/test_image_1.jpg' (Url) - ad image url
 + `enabled`: true (boolean) - ad enabled status
 + `status`: active (string) - ad status
 
 ## Campaign (object) - represents a campaign running on a network
 + `id`: 234567 (ID) - primary campaign identifier
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_account_id`: acmecorporation (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 232145547 (SourceID) - source's unique campaign identifier
 + `source`: revcontent (Source) - name of the source
-+ `name`: my-test-campaign (string) - campaign name
-+ `start_at`: 2017-01-01T05:00:00+00:00 (DateTime) - campaign start datetime
-+ `end_at`:  2017-01-31T05:00:00+00:00 (DateTime) - campaign end datetime
++ `name`: my_first_campaign (string) - campaign name
++ `start_at`: `2017-01-01T05:00:00+00:00` (DateTime) - campaign start datetime
++ `end_at`: `2017-01-31T05:00:00+00:00` (DateTime) - campaign end datetime
 + `enabled`: true (boolean) - campaign enabled status
 + `status`: active (CampaignStatus) - campaign status
 + `cpc`: 0.08 (Decimal) - the cost per click assigned to this campaign
 + `budget_amount`: 105.00 (Decimal) - the allotted budget for this campaign
 + `tracking_code`: utm_campaign={{CAMPAIGN}} (string) - tracking code used on ads within this campaign
-+ `created_at`: 2016-12-30T23:18:42+00:00 (DateTime) - date and time the campaign was created
-+ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the campaign was last updated
++ `created_at`: `2016-12-30T23:18:42+00:00` (DateTime) - date and time the campaign was created in Brax
++ `updated_at`: `2017-01-25T08:02:43+00:00` (DateTime) - date and time the campaign was last updated in Brax
 
 
 ## User (object) - describes a Brax user
@@ -191,8 +191,8 @@
 + `email`: user@site.com (string) - user's email
 + `confirmed`: true (boolean) - user's confirmed status
 + `administrator`: false (boolean) - whether or not a user is an administrator
-+ `created_at`: 2017-01-01T00:12:34+00:00 (DateTime) - date and time the user was created
-+ `updated_at`: 2017-02-03T13:45:01+00:00 (DateTime) - date and time the user was last updated
++ `created_at`: `2017-01-01T00:12:34+00:00` (DateTime) - date and time the user was created in Brax
++ `updated_at`: `2017-02-03T13:45:01+00:00` (DateTime) - date and time the user was last updated in Brax
 
 
 
@@ -200,10 +200,10 @@
 + `offset`: 0 (Integer) - starting index of the result set
 + `limit`: 100 (Integer) - maximum number of records to fetch; max: `100`
 + `source`: revcontent (Source) - name of the source
-+ `source_account_id`: 12345 (SourceID) - source's unique account identifier
++ `source_account_id`: acmecompany (SourceID) - source's unique account identifier
 + `source_campaign_id`: 67890 (SourceID) - source's unique campaign identifier
-+ `start_date`: 2017-02-12 (Date, required) - start date for aggregating metrics
-+ `end_date`: 2017-02-18 (Date, required) - end date for aggregating metrics
++ `start_date`: `2017-02-12 (Date, required)` - start date for aggregating metrics
++ `end_date`: `2017-02-18 (Date, required)` - end date for aggregating metrics
 
 ## ReportingMetrics (object) - Results will contain these standard performance metrics
 + `impressions`: 21 (Integer) - impressions
@@ -225,23 +225,23 @@
 + `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
 
 ## AdsReport (object)
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
-+ `source_ad_id`: 123456 (SourceID) - source's unique ad identifier
-+ `tracking_ad_id`: 2138da (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
++ `source_ad_id`: 0214741 (SourceID) - source's unique ad identifier
++ `tracking_ad_id`: e138da (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## CampaignsReport (object)
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
 + `name`: Content Scaling for Dummies (string) - name identifying campaign
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## AdGroupsReport (object)
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
 + `source_ad_group_id`: 12345 (SourceID) - source's unique ad group identifier
 + `name`: Content Scaling for Dummies (string) - name identifying ad group
 + Include ReportingMetrics
@@ -249,21 +249,21 @@
 
 ## PublishersReport (object)
 ### Properties
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (SourceID) - source's unique publisher identifier
-+ `name`: "Test Publisher" (string) - name identifying publisher
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique account identifier
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
++ `source_publisher_id`: fba33dba5d44106 (SourceID) - source's unique publisher identifier
++ `name`: `Big News Site` (string) - name identifying publisher
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## SectionsReport (object)
 ### Properties
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (SourceID) - source's unique publisher identifier
-+ `source_section_id`: "00a4cb1d955ea603d69fb3a3dba54d1460" (SourceID) - source's unique section identifier
-+ `publisher_name`: "Test Publisher" (string) - name identifying publisher 
-+ `name`: "Test Section" (string) - name identifying section
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique account identifier
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
++ `source_publisher_id`: fba33dba5d44106 (SourceID) - source's unique publisher identifier
++ `source_section_id`: fb3a3dba54d1460 (SourceID) - source's unique section identifier
++ `publisher_name`: `Big News Site` (string) - name identifying publisher 
++ `name`: `Booming News` (string) - name identifying section
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
@@ -272,6 +272,6 @@
 + `source_account_id`: 12345 (SourceID) - source's unique account identifier
 + `source_campaign_id`: 67890 (SourceID) - source's unique campaign identifier
 + `source_target_id`: 74 (SourceID) - source's unique target identifier
-+ `name`: "Test Target" (string) - name identifying target 
++ `name`: `Tech and Gadgets` (string) - name identifying target 
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics

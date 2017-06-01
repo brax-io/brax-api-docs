@@ -1,6 +1,6 @@
 {
   "id": 132,
-  "name": "my campaign rule",
+  "name": "Pause poor performing campaigns",
   "type": "pause_campaign",
   "amount": null,
   "conditions": [
@@ -9,6 +9,13 @@
       "metric": "campaign.cost",
       "operator": ">",
       "value": "10",
+      "date_range": "last_7_days"
+    },
+    {
+      "id": 76,
+      "metric": "campaign.ctr",
+      "operator": "<",
+      "value": "0.05",
       "date_range": "last_7_days"
     }
   ],

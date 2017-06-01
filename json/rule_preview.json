@@ -1,7 +1,7 @@
 {
   "rule": {
     "id": 132,
-    "name": "asdf",
+    "name": "Pause poor performing campaigns",
     "type": "pause_campaign",
     "amount": null,
     "conditions": [
@@ -13,7 +13,14 @@
         "date_range": "last_7_days",
         "start_date": "2017-05-19",
         "end_date": "2017-05-25"
-      }
+      },
+      {
+      "id": 76,
+      "metric": "campaign.ctr",
+      "operator": "<",
+      "value": "0.05",
+      "date_range": "last_7_days"
+    }
     ],
     "filters": [
       {
@@ -29,16 +36,16 @@
   "matches": [
     {
       "source": "yahoo",
-      "account_id": 14975,
-      "campaign_id": 503502,
+      "account_id": 90001,
+      "campaign_id": 52222,
       "account_name": "brax-test-account",
       "campaign_name": "brax-test-us",
       "campaign cost last_7_days": "$415.51"
     },
     {
       "source": "yahoo",
-      "account_id": 14759,
-      "campaign_id": 503580,
+      "account_id": 90001,
+      "campaign_id": 53333,
       "account_name": "brax-test-account",
       "campaign_name": "brax-test-uk",
       "campaign cost last_7_days": "$170.20"

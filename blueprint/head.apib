@@ -59,8 +59,13 @@ When the API returns a HTTP status code indicating an error (`400`, `401`, `403`
 
 ```
 {
-    "timestamp": "2017-05-31 20:10:05",
-    "message": "Invalid credentials",
-    "errors": null
+    "timestamp": "2017-06-01 12:00:00",
+    "resource": "Accounts Listing",
+    "message": "Validation Error",
+    "errors": {
+        "source": [
+            "The selected source is invalid."
+        ]
+    }
 }
 ```

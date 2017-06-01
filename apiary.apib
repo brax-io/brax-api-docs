@@ -83,9 +83,14 @@ When the API returns a HTTP status code indicating an error (`400`, `401`, `403`
 
 ```
 {
-    "timestamp": "2017-05-31 20:10:05",
-    "message": "Invalid credentials",
-    "errors": null
+    "timestamp": "2017-06-01 12:00:00",
+    "resource": "Accounts Listing",
+    "message": "Validation Error",
+    "errors": {
+        "source": [
+            "The selected source is invalid."
+        ]
+    }
 }
 ```
 # Group Authentication
@@ -155,14 +160,14 @@ Endpoints to manage accounts and account settings.
 Represents an account accessible at a network
 
 
-| Field                 | Type                             | Example                   | Description                                |
-|:----------------------|----------------------------------|---------------------------|--------------------------------------------|
-| **id**                | <a href='#ID'>ID</a> *required*  | 123                       | primary identifier for the account         |
-| **source_account_id** | <a href='#SourceID'>SourceID</a> | 782415                    | source's unique identifier for the account |
-| **source**            | <a href='#Source'>Source</a>     | content-ad                | name of the source                         |
-| **name**              | string                           | Selfserve_test_1          | name of the account                        |
-| **created_at**        | <a href='#DateTime'>DateTime</a> | 2017-01-21T08:02:43+00:00 | date and time the account was created      |
-| **updated_at**        | <a href='#DateTime'>DateTime</a> | 2017-01-25T08:02:43+00:00 | date and time the account was last updated |
+| Field                 | Type                             | Example                   | Description                                        |
+|:----------------------|----------------------------------|---------------------------|----------------------------------------------------|
+| **id**                | <a href='#ID'>ID</a> *required*  | 123                       | primary identifier for the account                 |
+| **source_account_id** | <a href='#SourceID'>SourceID</a> | 0ad55ae47d03845           | source's unique identifier for the account         |
+| **source**            | <a href='#Source'>Source</a>     | outbrain                  | name of the source                                 |
+| **name**              | string                           | Selfserve_ACME            | name of the account                                |
+| **created_at**        | <a href='#DateTime'>DateTime</a> | 2017-01-21T08:02:43+00:00 | date and time the account was created in Brax      |
+| **updated_at**        | <a href='#DateTime'>DateTime</a> | 2017-01-25T08:02:44+00:00 | date and time the account was last updated in Brax |
 
 #### Source <a name='Source' />
 String representing an ad network
@@ -215,7 +220,7 @@ List all accounts.
                     {
                         "id": "123",
                         "source_account_id": "e010f3346de2e41fed1a288a3ba5cd5e29",
-                        "name": "Selfserve_test_1",
+                        "name": "Selfserve_ACME",
                         "source": "outbrain",
                         "created_at": "2016-01-01T01:14:23+00:00",
                         "updated_at": "2017-05-08T21:47:21+00:00"
@@ -223,15 +228,15 @@ List all accounts.
                     {
                         "id": "124",
                         "source_account_id": "e010f3346de2e41faa3b288a3ba5cd5e3a",
-                        "name": "Selfserve_test_2",
+                        "name": "Selfserve_ACME_2",
                         "source": "outbrain",
                         "created_at": "2016-01-01T17:16:56+00:00",
                         "updated_at": "2017-02-21T20:46:20+00:00"
                     },
                     {
                         "id": "129",
-                        "source_account_id": "revcontent_test_1",
-                        "name": "revcontent_test_1",
+                        "source_account_id": "acmecorporation",
+                        "name": "ACME Corporation",
                         "source": "revcontent",
                         "created_at": "2016-01-01T02:50:16+00:00",
                         "updated_at": "2017-05-10T04:02:24+00:00"
@@ -255,10 +260,10 @@ Represents an ad in a campaign
 
 | Field                  | Type                             | Example                                                                                                 | Description                                                                       |
 |:-----------------------|----------------------------------|---------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| **source_account_id**  | <a href='#SourceID'>SourceID</a> | 782415                                                                                                  | source's unique identifier for the account                                        |
-| **source_campaign_id** | <a href='#SourceID'>SourceID</a> | 9862145                                                                                                 | source's unique campaign identifier                                               |
-| **source_ad_id**       | <a href='#SourceID'>SourceID</a> | 123456                                                                                                  | source's unique ad identifier                                                     |
-| **tracking_ad_id**     | string                           | "2138da"                                                                                                | identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax |
+| **source_account_id**  | <a href='#SourceID'>SourceID</a> | ACME-Rockets-SC                                                                                         | source's unique identifier for the account                                        |
+| **source_campaign_id** | <a href='#SourceID'>SourceID</a> | 26465874                                                                                                | source's unique campaign identifier                                               |
+| **source_ad_id**       | <a href='#SourceID'>SourceID</a> | 0214741                                                                                                 | source's unique ad identifier                                                     |
+| **tracking_ad_id**     | string                           | e138da                                                                                                  | identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax |
 | **source**             | <a href='#Source'>Source</a>     | taboola                                                                                                 | name of the source                                                                |
 | **title**              | string                           | Brax helps you scale with the best                                                                      | ad title / headline                                                               |
 | **url**                | <a href='#Url'>Url</a>           | https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1 | ad destination url                                                                |
@@ -308,24 +313,24 @@ List all ads.
                 "results": [
                     {
                         "source_account_id": "e010f3346de2e41fed1a288a3ba5cd5e29",
-                        "source_campaign_id": "12345",
+                        "source_campaign_id": "d32c2f3154f2a895ba",
                         "source_ad_id": "342336233",
                         "tracking_ad_id": "ccccbf",
                         "source": "outbrain",
                         "title": "Brax automates the world",
-                        "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1",
+                        "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=outbrain&utm_content=ccccbf",
                         "image_url": "https://example.com/test_image_1.jpg",
                         "enabled": true,
                         "status": "paused"
                     },
                     {
                         "source_account_id": "e010f3346de2e41fed1a288a3ba5cd5e29",
-                        "source_campaign_id": "12345",
+                        "source_campaign_id": "d32c2f3154f2a895ba",
                         "source_ad_id": "342336234",
                         "tracking_ad_id": "8352d9",
                         "source": "outbrain",
                         "title": "Brax automates the world",
-                        "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=2",
+                        "url": "https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=outbrain&utm_content=8352d9",
                         "image_url": "https://example.com/test_image_2.jpg",
                         "enabled": false,
                         "status": "rejected"
@@ -348,22 +353,22 @@ Represents a campaign running on a network
 
 
 
-| Field                  | Type                                         | Example                   | Description                                    |
-|:-----------------------|----------------------------------------------|---------------------------|------------------------------------------------|
-| **id**                 | <a href='#ID'>ID</a>                         | 234567                    | primary campaign identifier                    |
-| **source_account_id**  | <a href='#SourceID'>SourceID</a>             | 782415                    | source's unique identifier for the account     |
-| **source_campaign_id** | <a href='#SourceID'>SourceID</a>             | 9862145                   | source's unique campaign identifier            |
-| **source**             | <a href='#Source'>Source</a>                 | revcontent                | name of the source                             |
-| **name**               | string                                       | my-test-campaign          | campaign name                                  |
-| **start_at**           | <a href='#DateTime'>DateTime</a>             | 2017-01-01T05:00:00+00:00 | campaign start datetime                        |
-| **end_at**             | <a href='#DateTime'>DateTime</a>             | 2017-01-31T05:00:00+00:00 | campaign end datetime                          |
-| **enabled**            | boolean                                      | true                      | campaign enabled status                        |
-| **status**             | <a href='#CampaignStatus'>CampaignStatus</a> | active                    | campaign status                                |
-| **cpc**                | <a href='#Decimal'>Decimal</a>               | 0.08                      | the cost per click assigned to this campaign   |
-| **budget_amount**      | <a href='#Decimal'>Decimal</a>               | 105.00                    | the allotted budget for this campaign          |
-| **tracking_code**      | string                                       | utm_campaign={{CAMPAIGN}} | tracking code used on ads within this campaign |
-| **created_at**         | <a href='#DateTime'>DateTime</a>             | 2016-12-30T23:18:42+00:00 | date and time the campaign was created         |
-| **updated_at**         | <a href='#DateTime'>DateTime</a>             | 2017-01-25T08:02:43+00:00 | date and time the campaign was last updated    |
+| Field                  | Type                                         | Example                   | Description                                         |
+|:-----------------------|----------------------------------------------|---------------------------|-----------------------------------------------------|
+| **id**                 | <a href='#ID'>ID</a>                         | 234567                    | primary campaign identifier                         |
+| **source_account_id**  | <a href='#SourceID'>SourceID</a>             | acmecorporation           | source's unique identifier for the account          |
+| **source_campaign_id** | <a href='#SourceID'>SourceID</a>             | 232145547                 | source's unique campaign identifier                 |
+| **source**             | <a href='#Source'>Source</a>                 | revcontent                | name of the source                                  |
+| **name**               | string                                       | my_first_campaign         | campaign name                                       |
+| **start_at**           | <a href='#DateTime'>DateTime</a>             | 2017-01-01T05:00:00+00:00 | campaign start datetime                             |
+| **end_at**             | <a href='#DateTime'>DateTime</a>             | 2017-01-31T05:00:00+00:00 | campaign end datetime                               |
+| **enabled**            | boolean                                      | true                      | campaign enabled status                             |
+| **status**             | <a href='#CampaignStatus'>CampaignStatus</a> | active                    | campaign status                                     |
+| **cpc**                | <a href='#Decimal'>Decimal</a>               | 0.08                      | the cost per click assigned to this campaign        |
+| **budget_amount**      | <a href='#Decimal'>Decimal</a>               | 105.00                    | the allotted budget for this campaign               |
+| **tracking_code**      | string                                       | utm_campaign={{CAMPAIGN}} | tracking code used on ads within this campaign      |
+| **created_at**         | <a href='#DateTime'>DateTime</a>             | 2016-12-30T23:18:42+00:00 | date and time the campaign was created in Brax      |
+| **updated_at**         | <a href='#DateTime'>DateTime</a>             | 2017-01-25T08:02:43+00:00 | date and time the campaign was last updated in Brax |
 
 
 #### CampaignStatus <a name='CampaignStatus' />
@@ -421,7 +426,7 @@ List all campaigns.
                 "results": [
                     {
                         "id": 123,
-                        "source_account_id": "782415",
+                        "source_account_id": "Selfserve_ACME",
                         "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad5",
                         "source": "outbrain",
                         "name": "Test Campaign 1",
@@ -438,7 +443,7 @@ List all campaigns.
                     },
                     {
                         "id": 125,
-                        "source_account_id": "782415",
+                        "source_account_id": "Selfserve_ACME",
                         "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad7",
                         "source": "outbrain",
                         "name": "Test Campaign 2",
@@ -455,7 +460,7 @@ List all campaigns.
                     },
                     {
                         "id": 127,
-                        "source_account_id": "782415",
+                        "source_account_id": "Selfserve_ACME",
                         "source_campaign_id": "bf8e5992be46c1e62fd9560b9a2e8c4ad9",
                         "source": "outbrain",
                         "name": "Test Campaign 3",
@@ -489,15 +494,15 @@ All reporting endpoints accept a combination of parameters to refine the result 
 Input parameters for pulling reporting data
 
 
-| Field                  | Type                                | Example    | Description                                    |
-|:-----------------------|-------------------------------------|------------|------------------------------------------------|
-| **offset**             | <a href='#Integer'>Integer</a>      | 0          | starting index of the result set               |
-| **limit**              | <a href='#Integer'>Integer</a>      | 100        | maximum number of records to fetch; max: `100` |
-| **source**             | <a href='#Source'>Source</a>        | revcontent | name of the source                             |
-| **source_account_id**  | <a href='#SourceID'>SourceID</a>    | 12345      | source's unique account identifier             |
-| **source_campaign_id** | <a href='#SourceID'>SourceID</a>    | 67890      | source's unique campaign identifier            |
-| **start_date**         | <a href='#Date'>Date</a> *required* | 2017-02-12 | start date for aggregating metrics             |
-| **end_date**           | <a href='#Date'>Date</a> *required* | 2017-02-18 | end date for aggregating metrics               |
+| Field                  | Type                                 | Example     | Description                                    |
+|:-----------------------|--------------------------------------|-------------|------------------------------------------------|
+| **offset**             | <a href='#Integer'>Integer</a>       | 0           | starting index of the result set               |
+| **limit**              | <a href='#Integer'>Integer</a>       | 100         | maximum number of records to fetch; max: `100` |
+| **source**             | <a href='#Source'>Source</a>         | revcontent  | name of the source                             |
+| **source_account_id**  | <a href='#SourceID'>SourceID</a>     | acmecompany | source's unique account identifier             |
+| **source_campaign_id** | <a href='#SourceID'>SourceID</a>     | 67890       | source's unique campaign identifier            |
+| **start_date**         | <a href='#Date'>Date</a> *required`* | 2017-02-12  | start date for aggregating metrics             |
+| **end_date**           | <a href='#Date'>Date</a> *required`* | 2017-02-18  | end date for aggregating metrics               |
 
 
 #### ReportingMetrics <a name='ReportingMetrics' />
@@ -581,7 +586,7 @@ Fetch ads report for a **source** and **source_account_id**; optionally with **s
             {
                 "results": [
                     {
-                        "source_account_id": "123451",
+                        "source_account_id": "Selfserve_ACME",
                         "source_campaign_id": "85adef34d6a87d00c54fdb561dcc5e0b59",
                         "source_ad_id": "c0e425ea1becbadf1864dd0aa33e87d71b",
                         "tracking_ad_id": "8352d1",
@@ -595,7 +600,7 @@ Fetch ads report for a **source** and **source_account_id**; optionally with **s
                         "conversions": 0
                     },
                     {
-                        "source_account_id": "123457",
+                        "source_account_id": "Selfserve_ACME",
                         "source_campaign_id": "85adef34d6a87d00c54fdb561dcc5e0b59",
                         "source_ad_id": "6a3c34102c0694384646005ae4c363ca57",
                         "tracking_ad_id": "8352d7",
@@ -609,7 +614,7 @@ Fetch ads report for a **source** and **source_account_id**; optionally with **s
                         "conversions": 765
                     },
                     {
-                        "source_account_id": "123459",
+                        "source_account_id": "Selfserve_ACME_2",
                         "source_campaign_id": "095a5a268d1424ac39d82c49f8365a8f4a",
                         "source_ad_id": "5f09f9526ada9e8ad51682e0f24fdbafe6",
                         "tracking_ad_id": "8352d9",
@@ -683,7 +688,7 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
                         "source_account_id": "123456",
                         "source_campaign_id": "597866360",
                         "source_ad_group_id": "8652979185",
-                        "name": "Ad Group Test 1",
+                        "name": "Ad Group A",
                         "ctr": "0.0055",
                         "ecpc": "0.0210",
                         "cost": "2.4230",
@@ -697,7 +702,7 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
                         "source_account_id": "123456",
                         "source_campaign_id": "597866360",
                         "source_ad_group_id": "7442813551",
-                        "name": "Ad Group Test 2",
+                        "name": "Ad Group B",
                         "ctr": "0.0057",
                         "ecpc": "0.0200",
                         "cost": "2.4200",
@@ -711,7 +716,7 @@ Fetch ad groups report for a **source** and **source_account_id**; optionally wi
                         "source_account_id": "123457",
                         "source_campaign_id": "654969786",
                         "source_ad_group_id": "3516309393",
-                        "name": "Ad Group Test 3",
+                        "name": "Ad Group C",
                         "ctr": "0.0059",
                         "ecpc": "0.0200",
                         "cost": "2.4200",
@@ -1238,16 +1243,16 @@ Endpoints to manage rules, rule settings, preview running rules, run rules, and 
 
 
 
-| Field          | Type                                                   | Example                   | Description                                                    |
-|:---------------|--------------------------------------------------------|---------------------------|----------------------------------------------------------------|
-| **id**         | <a href='#ID'>ID</a> *required*                        | 986                       | rule primary identifier                                        |
-| **name**       | string *required*                                      | my ads rule               | name of the rule                                               |
-| **type**       | <a href='#RuleType'>RuleType</a> *required*            | pause_ad                  | determines what actions are performed on which objects         |
-| **amount**     | <a href='#Decimal'>Decimal</a> *optional*              | 1.2500                    | multiplier or value by which to modify existing bids or values |
-| **conditions** | array of <a href='#Condition'>Condition</a> *required* |                           | criteria for matching                                          |
-| **filters**    | array of <a href='#Filter'>Filter</a> *required*       |                           | restrict search to source, account, or campaign level          |
-| **created_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-21T08:02:43+00:00 | date and time the rule was created                             |
-| **updated_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-25T08:02:43+00:00 | date and time the rule was last updated                        |
+| Field          | Type                                                   | Example                    | Description                                                    |
+|:---------------|--------------------------------------------------------|----------------------------|----------------------------------------------------------------|
+| **id**         | <a href='#ID'>ID</a> *required*                        | 986                        | rule primary identifier                                        |
+| **name**       | string *required*                                      | Pause poor performaing ads | name of the rule                                               |
+| **type**       | <a href='#RuleType'>RuleType</a> *required*            | pause_ad                   | determines what actions are performed on which objects         |
+| **amount**     | <a href='#Decimal'>Decimal</a> *optional*              | 1.2500                     | multiplier or value by which to modify existing bids or values |
+| **conditions** | array of <a href='#Condition'>Condition</a> *required* |                            | criteria for matching                                          |
+| **filters**    | array of <a href='#Filter'>Filter</a> *required*       |                            | restrict search to source, account, or campaign level          |
+| **created_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-21T08:02:43+00:00  | date and time the rule was created in Brax                     |
+| **updated_at** | <a href='#DateTime'>DateTime</a>                       | 2017-01-25T08:02:43+00:00  | date and time the rule was last updated in Brax                |
 
 #### Condition <a name='Condition' />
 Criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
@@ -1488,15 +1493,15 @@ Rule previews have the following structure...
 #### Match <a name='Match' />
 
 
-| Field                    | Type                         | Example            | Description                                                                                      |
-|:-------------------------|------------------------------|--------------------|--------------------------------------------------------------------------------------------------|
-| **source**               | <a href='#Source'>Source</a> | yahoo              | source of the affected object                                                                    |
-| **account_id**           | <a href='#ID'>ID</a>         | 65437              | identifier of the account of the affected object                                                 |
-| **campaign_id**          | <a href='#ID'>ID</a>         | 34634              | identifier of the campaign to be affected                                                        |
-| **account_name**         | string                       | brax-test-account  | name of the account of the affected object                                                       |
-| **campaign_name**        | string                       | brax-test-campaign | name of the affected campaign                                                                    |
-| *object metric1 range* | string                       | $124.56            | metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days` |
-| *object metric2 range* | string                       | 0.2843             | metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`  |
+| Field                    | Type                         | Example           | Description                                                                                      |
+|:-------------------------|------------------------------|-------------------|--------------------------------------------------------------------------------------------------|
+| **source**               | <a href='#Source'>Source</a> | yahoo             | source of the affected object                                                                    |
+| **account_id**           | <a href='#ID'>ID</a>         | 65437             | identifier of the account of the affected object                                                 |
+| **campaign_id**          | <a href='#ID'>ID</a>         | 34634             | identifier of the campaign to be affected                                                        |
+| **account_name**         | string                       | Selfserve_ACME    | name of the account of the affected object                                                       |
+| **campaign_name**        | string                       | my_first_campaign | name of the affected campaign                                                                    |
+| *object metric1 range* | string                       | $124.56           | metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days` |
+| *object metric2 range* | string                       | 0.2843            | metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`  |
 
 
 Depending on how a rule is configured, there will be multiple object metrics shown in the response. The field names will contain spaces for these metrics.
@@ -1520,7 +1525,7 @@ Depending on how a rule is configured, there will be multiple object metrics sho
             {
               "rule": {
                 "id": 132,
-                "name": "asdf",
+                "name": "Pause poor performing campaigns",
                 "type": "pause_campaign",
                 "amount": null,
                 "conditions": [
@@ -1532,7 +1537,14 @@ Depending on how a rule is configured, there will be multiple object metrics sho
                     "date_range": "last_7_days",
                     "start_date": "2017-05-19",
                     "end_date": "2017-05-25"
-                  }
+                  },
+                  {
+                  "id": 76,
+                  "metric": "campaign.ctr",
+                  "operator": "<",
+                  "value": "0.05",
+                  "date_range": "last_7_days"
+                }
                 ],
                 "filters": [
                   {
@@ -1548,16 +1560,16 @@ Depending on how a rule is configured, there will be multiple object metrics sho
               "matches": [
                 {
                   "source": "yahoo",
-                  "account_id": 14975,
-                  "campaign_id": 503502,
+                  "account_id": 90001,
+                  "campaign_id": 52222,
                   "account_name": "brax-test-account",
                   "campaign_name": "brax-test-us",
                   "campaign cost last_7_days": "$415.51"
                 },
                 {
                   "source": "yahoo",
-                  "account_id": 14759,
-                  "campaign_id": 503580,
+                  "account_id": 90001,
+                  "campaign_id": 53333,
                   "account_name": "brax-test-account",
                   "campaign_name": "brax-test-uk",
                   "campaign cost last_7_days": "$170.20"
@@ -1625,7 +1637,7 @@ Returns a list of jobs currently running or that have run in the past.
                     {
                         "id": 32,
                         "rule": {
-                            "name": "asdf",
+                            "name": "Pause poor performing campaigns",
                             "type": "pause_campaign"
                         },
                         "stats": {
@@ -1640,7 +1652,7 @@ Returns a list of jobs currently running or that have run in the past.
                     {
                         "id": 33,
                         "rule": {
-                            "name": "asdf",
+                            "name": "Pause low spending campaigns",
                             "type": "pause_campaign"
                         },
                         "stats": {
@@ -1655,8 +1667,8 @@ Returns a list of jobs currently running or that have run in the past.
                     {
                         "id": 34,
                         "rule": {
-                            "name": "asdf",
-                            "type": "pause_campaign"
+                            "name": "Pause poor performing ads",
+                            "type": "pause_ad"
                         },
                         "stats": {
                             "total": 2,
@@ -1675,7 +1687,7 @@ Returns a list of jobs currently running or that have run in the past.
                     "total": 3
                 }
             }
-
+            
 
 
 ## Rules Job Status Job ID [/rules/jobs/{job_id}]
@@ -1728,16 +1740,16 @@ Returns the status details of a job for running a rule.
                 "details": [
                     {
                         "source": "yahoo",
-                        "account_id": 14975,
-                        "campaign_id": 503502,
+                        "account_id": 90001,
+                        "campaign_id": 52222,
                         "account_name": "brax-test-account",
                         "campaign_name": "brax-test-us",
                         "campaign cost last_7_days": "$415.51"
                     },
                     {
                         "source": "yahoo",
-                        "account_id": 14759,
-                        "campaign_id": 503580,
+                        "account_id": 90001,
+                        "campaign_id": 53333,
                         "account_name": "brax-test-account",
                         "campaign_name": "brax-test-uk",
                         "campaign cost last_7_days": "$170.20"
@@ -1755,15 +1767,15 @@ Describes a Brax user
 
 
 
-| Field             | Type                             | Example                   | Description                               |
-|:------------------|----------------------------------|---------------------------|-------------------------------------------|
-| **id**            | <a href='#ID'>ID</a>             | 234567                    | primary user identifier                   |
-| **username**      | string                           | ivan                      | username                                  |
-| **email**         | string                           | user@site.com             | user's email                              |
-| **confirmed**     | boolean                          | true                      | user's confirmed status                   |
-| **administrator** | boolean                          | false                     | whether or not a user is an administrator |
-| **created_at**    | <a href='#DateTime'>DateTime</a> | 2017-01-01T00:12:34+00:00 | date and time the user was created        |
-| **updated_at**    | <a href='#DateTime'>DateTime</a> | 2017-02-03T13:45:01+00:00 | date and time the user was last updated   |
+| Field             | Type                             | Example                   | Description                                     |
+|:------------------|----------------------------------|---------------------------|-------------------------------------------------|
+| **id**            | <a href='#ID'>ID</a>             | 234567                    | primary user identifier                         |
+| **username**      | string                           | ivan                      | username                                        |
+| **email**         | string                           | user@site.com             | user's email                                    |
+| **confirmed**     | boolean                          | true                      | user's confirmed status                         |
+| **administrator** | boolean                          | false                     | whether or not a user is an administrator       |
+| **created_at**    | <a href='#DateTime'>DateTime</a> | 2017-01-01T00:12:34+00:00 | date and time the user was created in Brax      |
+| **updated_at**    | <a href='#DateTime'>DateTime</a> | 2017-02-03T13:45:01+00:00 | date and time the user was last updated in Brax |
 
 
 ## Users [/users{?offset,limit}]
@@ -1953,13 +1965,13 @@ A properly formatted URI according to RFC 3986
 
 ### Properties
 + `id`: `986` (ID, required) - rule primary identifier
-+ `name`: `my ads rule` (string, required) - name of the rule
++ `name`: `Pause poor performaing ads` (string, required) - name of the rule
 + `type`: `pause_ad` (RuleType, required) - determines what actions are performed on which objects
 + `amount`: `1.2500` (Decimal, optional) - multiplier or value by which to modify existing bids or values
 + `conditions` (array[Condition], required) - criteria for matching
 + `filters` (array[Filter], required) - restrict search to source, account, or campaign level
-+ `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the rule was created
-+ `updated_at`: `2017-01-25T08:02:43+00:00` (DateTime) - date and time the rule was last updated
++ `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the rule was created in Brax
++ `updated_at`: `2017-01-25T08:02:43+00:00` (DateTime) - date and time the rule was last updated in Brax
 
 
 ## Condition (object) - criteria required to match target objects, e.g. `campaign.cost` `<` `10` `last_7_days`
@@ -1986,8 +1998,8 @@ A properly formatted URI according to RFC 3986
 + `source`: yahoo (Source) - source of the affected object
 + `account_id`: 65437 (ID) - identifier of the account of the affected object
 + `campaign_id`: 34634 (ID) - identifier of the campaign to be affected
-+ `account_name`: brax-test-account (string) - name of the account of the affected object
-+ `campaign_name`: brax-test-campaign (string) - name of the affected campaign
++ `account_name`: Selfserve_ACME (string) - name of the account of the affected object
++ `campaign_name`: my_first_campaign (string) - name of the affected campaign
 + *object metric1 range*: `$124.56` (string) - metric values of the affected objects for the given date range, e.g. `campaign cost last_7_days`
 + *object metric2 range*: `0.2843` (string) - metric values of the affected objects for the given date range, e.g. `campaign ctr last_7_days`
 
@@ -2004,20 +2016,20 @@ A properly formatted URI according to RFC 3986
 + `id`: 32 (ID) - primary identifier for this job
 + `rule` (object) - short description of the running rule
     + `id`: 986 (ID, required) - rule primary identifier
-    + `name`: my campaign rule (string) - name of the rule
+    + `name`: Pause poor performing campaigns (string) - name of the rule
     + `type`: pause_campaign (RuleType) - type of the rule
 + `stats` (object) - aggregated details of the job's running status
     + `total`: 5 (Integer) - total action items
     + `remaining`: 5 (Integer) - action items remaining
     + `successful`: 0 (Integer) - action items that have completed successfully
     + `failed`: 0 (Integer) - action items that have failed
-+ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `created_at`: `2017-05-19T18:46:28+00:00` (DateTime) - when the job was initiated
 + `created_by`: Mark Simon (string) - name of the user who ran the rule
 
 
 ## RuleStatus (object)
 + `id`: 32 (ID) - primary identifier of the job
-+ `created_at`: 2017-05-19T18:46:28+00:00 (DateTime) - when the job was initiated
++ `created_at`: `2017-05-19T18:46:28+00:00` (DateTime) - when the job was initiated
 + `rule` (Rule) - snapshot of the rule at the time it was run
 + `details` (array[Match]) - the action items to be processed
 
@@ -2031,39 +2043,39 @@ A properly formatted URI according to RFC 3986
 
 ## Account (object) - represents an account accessible at a network
 + `id`: 123 (ID, required) - primary identifier for the account
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source`: content-ad (Source) - name of the source
-+ `name`: Selfserve_test_1 (string) - name of the account
-+ `created_at`: 2017-01-21T08:02:43+00:00 (DateTime) - date and time the account was created
-+ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the account was last updated
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account
++ `source`: outbrain (Source) - name of the source
++ `name`: Selfserve_ACME (string) - name of the account
++ `created_at`: `2017-01-21T08:02:43+00:00` (DateTime) - date and time the account was created in Brax
++ `updated_at`: `2017-01-25T08:02:44+00:00` (DateTime) - date and time the account was last updated in Brax
 
 ## Ad (object) - represents an ad in a campaign 
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
-+ `source_ad_id`: 123456 (SourceID) - source's unique ad identifier
-+ `tracking_ad_id`: "2138da" (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source_account_id`: `ACME-Rockets-SC` (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 26465874 (SourceID) - source's unique campaign identifier
++ `source_ad_id`: 0214741 (SourceID) - source's unique ad identifier
++ `tracking_ad_id`: `e138da` (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + `source`: taboola (Source) - name of the source
 + `title`: Brax helps you scale with the best (string) - ad title / headline
-+ `url`: https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1 (Url) - ad destination url
++ `url`: `https://brax.io/campaign-tagging-content-distribution/?utm_medium=_&utm_source=Revcontent&utm_content=1` (Url) - ad destination url
 + `image_url`: 'https://example.com/test_image_1.jpg' (Url) - ad image url
 + `enabled`: true (boolean) - ad enabled status
 + `status`: active (string) - ad status
 
 ## Campaign (object) - represents a campaign running on a network
 + `id`: 234567 (ID) - primary campaign identifier
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_account_id`: acmecorporation (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 232145547 (SourceID) - source's unique campaign identifier
 + `source`: revcontent (Source) - name of the source
-+ `name`: my-test-campaign (string) - campaign name
-+ `start_at`: 2017-01-01T05:00:00+00:00 (DateTime) - campaign start datetime
-+ `end_at`:  2017-01-31T05:00:00+00:00 (DateTime) - campaign end datetime
++ `name`: my_first_campaign (string) - campaign name
++ `start_at`: `2017-01-01T05:00:00+00:00` (DateTime) - campaign start datetime
++ `end_at`: `2017-01-31T05:00:00+00:00` (DateTime) - campaign end datetime
 + `enabled`: true (boolean) - campaign enabled status
 + `status`: active (CampaignStatus) - campaign status
 + `cpc`: 0.08 (Decimal) - the cost per click assigned to this campaign
 + `budget_amount`: 105.00 (Decimal) - the allotted budget for this campaign
 + `tracking_code`: utm_campaign={{CAMPAIGN}} (string) - tracking code used on ads within this campaign
-+ `created_at`: 2016-12-30T23:18:42+00:00 (DateTime) - date and time the campaign was created
-+ `updated_at`: 2017-01-25T08:02:43+00:00 (DateTime) - date and time the campaign was last updated
++ `created_at`: `2016-12-30T23:18:42+00:00` (DateTime) - date and time the campaign was created in Brax
++ `updated_at`: `2017-01-25T08:02:43+00:00` (DateTime) - date and time the campaign was last updated in Brax
 
 
 ## User (object) - describes a Brax user
@@ -2072,8 +2084,8 @@ A properly formatted URI according to RFC 3986
 + `email`: user@site.com (string) - user's email
 + `confirmed`: true (boolean) - user's confirmed status
 + `administrator`: false (boolean) - whether or not a user is an administrator
-+ `created_at`: 2017-01-01T00:12:34+00:00 (DateTime) - date and time the user was created
-+ `updated_at`: 2017-02-03T13:45:01+00:00 (DateTime) - date and time the user was last updated
++ `created_at`: `2017-01-01T00:12:34+00:00` (DateTime) - date and time the user was created in Brax
++ `updated_at`: `2017-02-03T13:45:01+00:00` (DateTime) - date and time the user was last updated in Brax
 
 
 
@@ -2081,10 +2093,10 @@ A properly formatted URI according to RFC 3986
 + `offset`: 0 (Integer) - starting index of the result set
 + `limit`: 100 (Integer) - maximum number of records to fetch; max: `100`
 + `source`: revcontent (Source) - name of the source
-+ `source_account_id`: 12345 (SourceID) - source's unique account identifier
++ `source_account_id`: acmecompany (SourceID) - source's unique account identifier
 + `source_campaign_id`: 67890 (SourceID) - source's unique campaign identifier
-+ `start_date`: 2017-02-12 (Date, required) - start date for aggregating metrics
-+ `end_date`: 2017-02-18 (Date, required) - end date for aggregating metrics
++ `start_date`: `2017-02-12 (Date, required)` - start date for aggregating metrics
++ `end_date`: `2017-02-18 (Date, required)` - end date for aggregating metrics
 
 ## ReportingMetrics (object) - Results will contain these standard performance metrics
 + `impressions`: 21 (Integer) - impressions
@@ -2106,23 +2118,23 @@ A properly formatted URI according to RFC 3986
 + `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
 
 ## AdsReport (object)
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
-+ `source_ad_id`: 123456 (SourceID) - source's unique ad identifier
-+ `tracking_ad_id`: 2138da (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
++ `source_ad_id`: 0214741 (SourceID) - source's unique ad identifier
++ `tracking_ad_id`: e138da (string) - identifier provided to the tracking code via `{{AD_ID}}` for ads pushed from Brax
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## CampaignsReport (object)
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
 + `name`: Content Scaling for Dummies (string) - name identifying campaign
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## AdGroupsReport (object)
-+ `source_account_id`: 782415 (SourceID) - source's unique identifier for the account
-+ `source_campaign_id`: 9862145 (SourceID) - source's unique campaign identifier
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
 + `source_ad_group_id`: 12345 (SourceID) - source's unique ad group identifier
 + `name`: Content Scaling for Dummies (string) - name identifying ad group
 + Include ReportingMetrics
@@ -2130,21 +2142,21 @@ A properly formatted URI according to RFC 3986
 
 ## PublishersReport (object)
 ### Properties
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (SourceID) - source's unique publisher identifier
-+ `name`: "Test Publisher" (string) - name identifying publisher
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique account identifier
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
++ `source_publisher_id`: fba33dba5d44106 (SourceID) - source's unique publisher identifier
++ `name`: `Big News Site` (string) - name identifying publisher
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
 ## SectionsReport (object)
 ### Properties
-+ `source_account_id` (SourceID) - source's unique account identifier
-+ `source_campaign_id` (SourceID) - source's unique campaign identifier
-+ `source_publisher_id`: "00a4cb19d55ea630d69fba33dba5d44106" (SourceID) - source's unique publisher identifier
-+ `source_section_id`: "00a4cb1d955ea603d69fb3a3dba54d1460" (SourceID) - source's unique section identifier
-+ `publisher_name`: "Test Publisher" (string) - name identifying publisher 
-+ `name`: "Test Section" (string) - name identifying section
++ `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique account identifier
++ `source_campaign_id`: 0c631ab2384aaf5 (SourceID) - source's unique campaign identifier
++ `source_publisher_id`: fba33dba5d44106 (SourceID) - source's unique publisher identifier
++ `source_section_id`: fb3a3dba54d1460 (SourceID) - source's unique section identifier
++ `publisher_name`: `Big News Site` (string) - name identifying publisher 
++ `name`: `Booming News` (string) - name identifying section
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
 
@@ -2153,6 +2165,6 @@ A properly formatted URI according to RFC 3986
 + `source_account_id`: 12345 (SourceID) - source's unique account identifier
 + `source_campaign_id`: 67890 (SourceID) - source's unique campaign identifier
 + `source_target_id`: 74 (SourceID) - source's unique target identifier
-+ `name`: "Test Target" (string) - name identifying target 
++ `name`: `Tech and Gadgets` (string) - name identifying target 
 + Include ReportingMetrics
 + Include GoogleAnalyticsMetrics
