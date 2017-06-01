@@ -22,9 +22,10 @@ If you run into trouble, please let us know via [api@brax.io](mailto:api@brax.io
 Feel free to take advantage of our Postman collection here: [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ff73088700e24511e68a#?env%5BBrax%20Marketing%20API%201.0%5D=W3siZW5hYmxlZCI6dHJ1ZSwia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6Imh0dHBzOi8vYXBpLmJyYXguaW8iLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5IjoidXJsIiwidmFsdWUiOiJ7e2Jhc2VfdXJsfX0vdjEiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5IjoiYmFzaWNfdG9rZW4iLCJ2YWx1ZSI6Int0b2tlbn0iLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic291cmNlIiwidmFsdWUiOiJvdXRicmFpbiIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJzb3VyY2VfYWNjb3VudF9pZCIsInZhbHVlIjoiMTIzNDU2NzgiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic291cmNlX2NhbXBhaWduX2lkIiwidmFsdWUiOiIxMjMiLCJ0eXBlIjoidGV4dCJ9LHsiZW5hYmxlZCI6dHJ1ZSwia2V5Ijoic3RhcnRfZGF0ZSIsInZhbHVlIjoiMjAxNy0wNS0wMSIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJlbmRfZGF0ZSIsInZhbHVlIjoiMjAxNy0wNS0yMSIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJydWxlX2lkIiwidmFsdWUiOiIzMiIsInR5cGUiOiJ0ZXh0In1d)
 
 ## Example [/ping]
-This is a sanity check when all else fails.
+In this document, you can click links that look like the one below to get a full description and an example of the request and response for the given endpoint.
 
 ### Ping Test [GET]
+This is a sanity check when all else fails.
 
 + Request (application/json)
 
@@ -83,7 +84,6 @@ Following RESTful conventions, the HTTP method corresponds to the action request
 Endpoints that may return large result sets will accept pagination parameters as input and include a **pagination** object in their result sets. These parameters are described as follows.
 
 #### Pagination <a name='Pagination' />
-Indicates the number of records available
 
 
 
@@ -115,8 +115,6 @@ When the API returns a HTTP status code indicating an error (`400`, `401`, `403`
 
 ## Authentication [/auth/info]
 This API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) for its authentication.
-
-In this document, you can click links that look like the one below to get a full description and an example of the request and response for the given endpoint.
 
 ### Authentication Test [GET]
 
@@ -2110,7 +2108,7 @@ Starred rule types will have an **amount** specified in the rule.
 + `rule` (Rule) - snapshot of the rule at the time it was run
 + `details` (array[Match]) - the action items to be processed
 
-## Pagination (object) - indicates the number of records available
+## Pagination (object)
 
 ### Properties
 + `offset`: 0 (Integer) - starting index of the result set
