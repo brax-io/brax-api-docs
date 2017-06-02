@@ -3,6 +3,9 @@
 ## Authentication [/auth/info]
 This API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) for its authentication.
 
+This means that the HTTP Request should include a header named `Authorization` with a value of `Basic BASE64_ENCODE(YOUR_BRAX_USERNAME:YOUR_BRAX_PASSWORD)`.
+Since all communication to the Brax API are HTTPS, your credentials are safe.
+
 ### Authentication Test [GET]
 
 + Request (application/json)
