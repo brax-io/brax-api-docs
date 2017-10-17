@@ -550,18 +550,18 @@ Results will contain these standard performance metrics
 
 
 #### GoogleAnalyticsMetrics <a name='GoogleAnalyticsMetrics' />
-For users with Google Analytics enabled, results will also contain these analytics metrics
+For users with Google Analytics enabled, results will also contain the analytics metrics that are set for the account, such as (non-exhaustive list):
 
 
-| Field                     | Type                                        | Example  | Description              |
-|:--------------------------|---------------------------------------------|----------|--------------------------|
-| **sessions**              | <a href='#Integer'>Integer</a> *optional*   | 522      | sessions                 |
-| **pageviews**             | <a href='#Integer'>Integer</a> *optional*   | 3985     | pageviews                |
-| **pageviews_per_session** | <a href='#Decimal'>Decimal</a> *optional*   | 7.6341   | pageviews per session    |
-| **bounce_rate**           | <a href='#Decimal'>Decimal</a> *optional*   | 0.0249   | bounce rate              |
-| **avg_session_duration**  | <a href='#Duration'>Duration</a> *optional* | 00:05:54 | average session suration |
-| **goal_1_completions**    | <a href='#Integer'>Integer</a> *optional*   | 1        | goal #1 completions      |
-| **goal_2_completions**    | <a href='#Integer'>Integer</a> *optional*   | 68       | goal #2 completions      |
+| Field                      | Type                                        | Example  | Description              |
+|:---------------------------|---------------------------------------------|----------|--------------------------|
+| **ga:sessions**            | <a href='#Integer'>Integer</a> *optional*   | 522      | sessions                 |
+| **ga:pageviews**           | <a href='#Integer'>Integer</a> *optional*   | 3985     | pageviews                |
+| **ga:pageviewsPerSession** | <a href='#Decimal'>Decimal</a> *optional*   | 7.6341   | pageviews per session    |
+| **ga:bounceRate**          | <a href='#Decimal'>Decimal</a> *optional*   | 0.0249   | bounce rate              |
+| **ga:avgSessionDuration**  | <a href='#Duration'>Duration</a> *optional* | 00:05:54 | average session suration |
+| **ga:goal1Completions**    | <a href='#Integer'>Integer</a> *optional*   | 1        | goal #1 completions      |
+| **ga:goal2Completions**    | <a href='#Integer'>Integer</a> *optional*   | 68       | goal #2 completions      |
 
 
 
@@ -832,13 +832,13 @@ Entities that export reporting data
                         "impressions": 17,
                         "clicks": 121,
                         "conversions": 1,
-                        "sessions": null,
-                        "pageviews": null,
-                        "pageviews_per_session": null,
-                        "bounce_rate": null,
-                        "avg_session_duration": null,
-                        "goal_1_completions": null,
-                        "goal_2_completions": null
+                        "ga:sessions": null,
+                        "ga:pageviews": null,
+                        "ga:pageviewsPerSession": null,
+                        "ga:bounceRate": null,
+                        "ga:avgSessionDuration": null,
+                        "ga:goal1Completions": null,
+                        "ga:goal2Completions": null
                     },
                     {
                         "source_account_id": "123455",
@@ -852,13 +852,13 @@ Entities that export reporting data
                         "impressions": 2517,
                         "clicks": 123,
                         "conversions": 131,
-                        "sessions": null,
-                        "pageviews": null,
-                        "pageviews_per_session": null,
-                        "bounce_rate": null,
-                        "avg_session_duration": null,
-                        "goal_1_completions": null,
-                        "goal_2_completions": null
+                        "ga:sessions": null,
+                        "ga:pageviews": null,
+                        "ga:pageviewsPerSession": null,
+                        "ga:bounceRate": null,
+                        "ga:avgSessionDuration": null,
+                        "ga:goal1Completions": null,
+                        "ga:goal2Completions": null
                     },
                     {
                         "source_account_id": "123459",
@@ -872,13 +872,13 @@ Entities that export reporting data
                         "impressions": 517,
                         "clicks": 125,
                         "conversions": 3,
-                        "sessions": null,
-                        "pageviews": null,
-                        "pageviews_per_session": null,
-                        "bounce_rate": null,
-                        "avg_session_duration": null,
-                        "goal_1_completions": null,
-                        "goal_2_completions": null
+                        "ga:sessions": null,
+                        "ga:pageviews": null,
+                        "ga:pageviewsPerSession": null,
+                        "ga:bounceRate": null,
+                        "ga:avgSessionDuration": null,
+                        "ga:goal1Completions": null,
+                        "ga:goal2Completions": null
                     }
                 ],
                 "pagination": {
@@ -948,13 +948,13 @@ Entities that export reporting data
                         "clicks": 664,
                         "conversions": 2,
                         "conversion_rate": "0.0030",
-                        "sessions": "522",
-                        "pageviews": "3985",
-                        "pageviews_per_session": "7.6341",
-                        "bounce_rate": "0.0249",
-                        "avg_session_duration": "00:05:54",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "68"
+                        "ga:sessions": "522",
+                        "ga:pageviews": "3985",
+                        "ga:pageviewsPerSession": "7.6341",
+                        "ga:bounceRate": "0.0249",
+                        "ga:avgSessionDuration": "00:05:54",
+                        "ga:goal1Completions": "1",
+                        "ga:goal2Completions": "68"
                     },
                     {
                         "source_account_id": "123456",
@@ -970,13 +970,13 @@ Entities that export reporting data
                         "clicks": 507,
                         "conversions": 1,
                         "conversion_rate": "0.0020",
-                        "sessions": "275",
-                        "pageviews": "1390",
-                        "pageviews_per_session": "5.0545",
-                        "bounce_rate": "0.0618",
-                        "avg_session_duration": "00:02:40",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "44"
+                        "ga:sessions": "275",
+                        "ga:pageviews": "1390",
+                        "ga:pageviewsPerSession": "5.0545",
+                        "ga:bounceRate": "0.0618",
+                        "ga:avgSessionDuration": "00:02:40",
+                        "ga:goal1Completions": "1",
+                        "ga:goal2Completions": "44"
                     },
                     {
                         "source_account_id": "123457",
@@ -992,13 +992,13 @@ Entities that export reporting data
                         "clicks": 362,
                         "conversions": 3,
                         "conversion_rate": "0.0083",
-                        "sessions": "269",
-                        "pageviews": "1313",
-                        "pageviews_per_session": "4.8810",
-                        "bounce_rate": "0.0483",
-                        "avg_session_duration": "00:05:37",
-                        "goal_1_completions": "3",
-                        "goal_2_completions": "59"
+                        "ga:sessions": "269",
+                        "ga:pageviews": "1313",
+                        "ga:pageviewsPerSession": "4.8810",
+                        "ga:bounceRate": "0.0483",
+                        "ga:avgSessionDuration": "00:05:37",
+                        "ga:goal1Completions": "3",
+                        "ga:goal2Completions": "59"
                     }
                 ],
                 "pagination": {
@@ -1071,13 +1071,13 @@ Entities that export reporting data
                         "clicks": 664,
                         "conversions": 2,
                         "conversion_rate": "0.0030",
-                        "sessions": "522",
-                        "pageviews": "3985",
-                        "pageviews_per_session": "7.6341",
-                        "bounce_rate": "0.0249",
-                        "avg_session_duration": "00:05:54",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "68"
+                        "ga:sessions": "522",
+                        "ga:pageviews": "3985",
+                        "ga:pageviewsPerSession": "7.6341",
+                        "ga:bounceRate": "0.0249",
+                        "ga:avgSessionDuration": "00:05:54",
+                        "ga:goal1Completions": "1",
+                        "ga:goal2Completions": "68"
                     },
                     {
                         "source_account_id": "123456",
@@ -1095,13 +1095,13 @@ Entities that export reporting data
                         "clicks": 507,
                         "conversions": 1,
                         "conversion_rate": "0.0020",
-                        "sessions": "275",
-                        "pageviews": "1390",
-                        "pageviews_per_session": "5.0545",
-                        "bounce_rate": "0.0618",
-                        "avg_session_duration": "00:02:40",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "44"
+                        "ga:sessions": "275",
+                        "ga:pageviews": "1390",
+                        "ga:pageviewsPerSession": "5.0545",
+                        "ga:bounceRate": "0.0618",
+                        "ga:avgSessionDuration": "00:02:40",
+                        "ga:goal1Completions": "1",
+                        "ga:goal2Completions": "44"
                     },
                     {
                         "source_account_id": "123457",
@@ -1119,13 +1119,13 @@ Entities that export reporting data
                         "clicks": 362,
                         "conversions": 3,
                         "conversion_rate": "0.0083",
-                        "sessions": "269",
-                        "pageviews": "1313",
-                        "pageviews_per_session": "4.8810",
-                        "bounce_rate": "0.0483",
-                        "avg_session_duration": "00:05:37",
-                        "goal_1_completions": "3",
-                        "goal_2_completions": "59"
+                        "ga:sessions": "269",
+                        "ga:pageviews": "1313",
+                        "ga:pageviewsPerSession": "4.8810",
+                        "ga:bounceRate": "0.0483",
+                        "ga:avgSessionDuration": "00:05:37",
+                        "ga:goal1Completions": "3",
+                        "ga:goal2Completions": "59"
                     }
                 ],
                 "pagination": {
@@ -1197,13 +1197,13 @@ Entities that export reporting data
                         "clicks": 664,
                         "conversions": 2,
                         "conversion_rate": "0.0030",
-                        "sessions": "522",
-                        "pageviews": "3985",
-                        "pageviews_per_session": "7.6341",
-                        "bounce_rate": "0.0249",
-                        "avg_session_duration": "00:05:54",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "68"
+                        "ga:sessions": "522",
+                        "ga:pageviews": "3985",
+                        "ga:pageviewsPerSession": "7.6341",
+                        "ga:bounceRate": "0.0249",
+                        "ga:avgSessionDuration": "00:05:54",
+                        "ga:goal1Completions": "1",
+                        "ga:goal2Completions": "68"
                     },
                     {
                         "source_account_id": "123456",
@@ -1221,13 +1221,13 @@ Entities that export reporting data
                         "clicks": 507,
                         "conversions": 1,
                         "conversion_rate": "0.0020",
-                        "sessions": "275",
-                        "pageviews": "1390",
-                        "pageviews_per_session": "5.0545",
-                        "bounce_rate": "0.0618",
-                        "avg_session_duration": "00:02:40",
-                        "goal_1_completions": "1",
-                        "goal_2_completions": "44"
+                        "ga:sessions": "275",
+                        "ga:pageviews": "1390",
+                        "ga:pageviewsPerSession": "5.0545",
+                        "ga:bounceRate": "0.0618",
+                        "ga:avgSessionDuration": "00:02:40",
+                        "ga:goal1Completions": "1",
+                        "ga:goal2Completions": "44"
                     },
                     {
                         "source_account_id": "123457",
@@ -1245,13 +1245,13 @@ Entities that export reporting data
                         "clicks": 362,
                         "conversions": 3,
                         "conversion_rate": "0.0083",
-                        "sessions": "269",
-                        "pageviews": "1313",
-                        "pageviews_per_session": "4.8810",
-                        "bounce_rate": "0.0483",
-                        "avg_session_duration": "00:05:37",
-                        "goal_1_completions": "3",
-                        "goal_2_completions": "59"
+                        "ga:sessions": "269",
+                        "ga:pageviews": "1313",
+                        "ga:pageviewsPerSession": "4.8810",
+                        "ga:bounceRate": "0.0483",
+                        "ga:avgSessionDuration": "00:05:37",
+                        "ga:goal1Completions": "3",
+                        "ga:goal2Completions": "59"
                     }
                 ],
                 "pagination": {
@@ -1357,9 +1357,9 @@ Metric field can be one of the standard <a href="#ReportingMetrics">ReportingMet
 
 `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`
 
-Or one of the <a href="#GoogleAnalyticsMetrics">GoogleAnalyticsMetrics</a>:
+Or one of the <a href="#GoogleAnalyticsMetrics">GoogleAnalyticsMetrics</a> set for the account, such as:
 
-`sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions`
+`ga:sessions`, `ga:pageviews`, `ga:pageviewsPerSession`, `ga:bounceRate`, `ga:avgSessionDuration`, `ga:goal1Completions`, `ga:goal2Completions`
 
 **Examples**
 
@@ -1756,7 +1756,7 @@ The status endpoint returns the status details of a job for running a rule, and 
                     "total": 3
                 }
             }
-
+            
 
 
 ## Status by Job ID [GET /rules/jobs/{job_id}]
@@ -2028,7 +2028,7 @@ Starred rule types will have an **amount** specified in the rule.
 - . - a literal dot separating the reporting object and metric field
 - (enum) - metric field
   - `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`
-  - `sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions`
+  - `ga:sessions`, `ga:pageviews`, `ga:pageviewsPerSession`, `ga:bounceRate`, `ga:avgSessionDuration`, `ga:goal1Completions`, `ga:goal2Completions`
 
 ### Sample
 - `campaign.clicks` - Campaign clicks
@@ -2188,14 +2188,14 @@ Starred rule types will have an **amount** specified in the rule.
 + `cpa`: 0.545 (Decimal) - cost per action
 + `icr`: 0.09523810 (Decimal) - impression:conversion rate
 
-## GoogleAnalyticsMetrics (object) - For users with Google Analytics enabled, results will also contain these analytics metrics
-+ `sessions`: 522 (Integer,optional) - sessions
-+ `pageviews`: 3985 (Integer,optional) - pageviews
-+ `pageviews_per_session`: 7.6341 (Decimal,optional) - pageviews per session
-+ `bounce_rate`: 0.0249 (Decimal,optional) - bounce rate
-+ `avg_session_duration`: 00:05:54 (Duration,optional) - average session suration
-+ `goal_1_completions`: 1 (Integer,optional) - goal #1 completions
-+ `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
+## GoogleAnalyticsMetrics (object) - For users with Google Analytics enabled, results will also contain the analytics metrics that are set for the account, such as (non-exhaustive list):
++ `ga:sessions`: 522 (Integer,optional) - sessions
++ `ga:pageviews`: 3985 (Integer,optional) - pageviews
++ `ga:pageviewsPerSession`: 7.6341 (Decimal,optional) - pageviews per session
++ `ga:bounceRate`: 0.0249 (Decimal,optional) - bounce rate
++ `ga:avgSessionDuration`: 00:05:54 (Duration,optional) - average session suration
++ `ga:goal1Completions`: 1 (Integer,optional) - goal #1 completions
++ `ga:goal2Completions`: 68 (Integer,optional) - goal #2 completions
 
 ## AdsReport (object)
 + `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account

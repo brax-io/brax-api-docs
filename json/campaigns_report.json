@@ -12,13 +12,13 @@
             "impressions": 17,
             "clicks": 121,
             "conversions": 1,
-            "sessions": null,
-            "pageviews": null,
-            "pageviews_per_session": null,
-            "bounce_rate": null,
-            "avg_session_duration": null,
-            "goal_1_completions": null,
-            "goal_2_completions": null
+            "ga:sessions": null,
+            "ga:pageviews": null,
+            "ga:pageviewsPerSession": null,
+            "ga:bounceRate": null,
+            "ga:avgSessionDuration": null,
+            "ga:goal1Completions": null,
+            "ga:goal2Completions": null
         },
         {
             "source_account_id": "123455",
@@ -32,13 +32,13 @@
             "impressions": 2517,
             "clicks": 123,
             "conversions": 131,
-            "sessions": null,
-            "pageviews": null,
-            "pageviews_per_session": null,
-            "bounce_rate": null,
-            "avg_session_duration": null,
-            "goal_1_completions": null,
-            "goal_2_completions": null
+            "ga:sessions": null,
+            "ga:pageviews": null,
+            "ga:pageviewsPerSession": null,
+            "ga:bounceRate": null,
+            "ga:avgSessionDuration": null,
+            "ga:goal1Completions": null,
+            "ga:goal2Completions": null
         },
         {
             "source_account_id": "123459",
@@ -52,13 +52,13 @@
             "impressions": 517,
             "clicks": 125,
             "conversions": 3,
-            "sessions": null,
-            "pageviews": null,
-            "pageviews_per_session": null,
-            "bounce_rate": null,
-            "avg_session_duration": null,
-            "goal_1_completions": null,
-            "goal_2_completions": null
+            "ga:sessions": null,
+            "ga:pageviews": null,
+            "ga:pageviewsPerSession": null,
+            "ga:bounceRate": null,
+            "ga:avgSessionDuration": null,
+            "ga:goal1Completions": null,
+            "ga:goal2Completions": null
         }
     ],
     "pagination": {

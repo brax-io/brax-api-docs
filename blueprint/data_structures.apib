@@ -67,7 +67,7 @@ Starred rule types will have an **amount** specified in the rule.
 - . - a literal dot separating the reporting object and metric field
 - (enum) - metric field
   - `impressions`, `clicks`, `conversions`, `cost`, `ctr`, `ecpc`, `cpa`, `icr`
-  - `sessions`, `pageviews`, `pageviews_per_session`, `bounce_rate`, `avg_session_duration`, `goal_1_completions`, `goal_2_completions`
+  - `ga:sessions`, `ga:pageviews`, `ga:pageviewsPerSession`, `ga:bounceRate`, `ga:avgSessionDuration`, `ga:goal1Completions`, `ga:goal2Completions`
 
 ### Sample
 - `campaign.clicks` - Campaign clicks
@@ -227,14 +227,14 @@ Starred rule types will have an **amount** specified in the rule.
 + `cpa`: 0.545 (Decimal) - cost per action
 + `icr`: 0.09523810 (Decimal) - impression:conversion rate
 
-## GoogleAnalyticsMetrics (object) - For users with Google Analytics enabled, results will also contain these analytics metrics
-+ `sessions`: 522 (Integer,optional) - sessions
-+ `pageviews`: 3985 (Integer,optional) - pageviews
-+ `pageviews_per_session`: 7.6341 (Decimal,optional) - pageviews per session
-+ `bounce_rate`: 0.0249 (Decimal,optional) - bounce rate
-+ `avg_session_duration`: 00:05:54 (Duration,optional) - average session suration
-+ `goal_1_completions`: 1 (Integer,optional) - goal #1 completions
-+ `goal_2_completions`: 68 (Integer,optional) - goal #2 completions
+## GoogleAnalyticsMetrics (object) - For users with Google Analytics enabled, results will also contain the analytics metrics that are set for the account, such as (non-exhaustive list):
++ `ga:sessions`: 522 (Integer,optional) - sessions
++ `ga:pageviews`: 3985 (Integer,optional) - pageviews
++ `ga:pageviewsPerSession`: 7.6341 (Decimal,optional) - pageviews per session
++ `ga:bounceRate`: 0.0249 (Decimal,optional) - bounce rate
++ `ga:avgSessionDuration`: 00:05:54 (Duration,optional) - average session suration
++ `ga:goal1Completions`: 1 (Integer,optional) - goal #1 completions
++ `ga:goal2Completions`: 68 (Integer,optional) - goal #2 completions
 
 ## AdsReport (object)
 + `source_account_id`: 0ad55ae47d03845 (SourceID) - source's unique identifier for the account

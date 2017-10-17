@@ -16,13 +16,13 @@
             "clicks": 664,
             "conversions": 2,
             "conversion_rate": "0.0030",
-            "sessions": "522",
-            "pageviews": "3985",
-            "pageviews_per_session": "7.6341",
-            "bounce_rate": "0.0249",
-            "avg_session_duration": "00:05:54",
-            "goal_1_completions": "1",
-            "goal_2_completions": "68"
+            "ga:sessions": "522",
+            "ga:pageviews": "3985",
+            "ga:pageviewsPerSession": "7.6341",
+            "ga:bounceRate": "0.0249",
+            "ga:avgSessionDuration": "00:05:54",
+            "ga:goal1Completions": "1",
+            "ga:goal2Completions": "68"
         },
         {
             "source_account_id": "123456",
@@ -40,13 +40,13 @@
             "clicks": 507,
             "conversions": 1,
             "conversion_rate": "0.0020",
-            "sessions": "275",
-            "pageviews": "1390",
-            "pageviews_per_session": "5.0545",
-            "bounce_rate": "0.0618",
-            "avg_session_duration": "00:02:40",
-            "goal_1_completions": "1",
-            "goal_2_completions": "44"
+            "ga:sessions": "275",
+            "ga:pageviews": "1390",
+            "ga:pageviewsPerSession": "5.0545",
+            "ga:bounceRate": "0.0618",
+            "ga:avgSessionDuration": "00:02:40",
+            "ga:goal1Completions": "1",
+            "ga:goal2Completions": "44"
         },
         {
             "source_account_id": "123457",
@@ -64,13 +64,13 @@
             "clicks": 362,
             "conversions": 3,
             "conversion_rate": "0.0083",
-            "sessions": "269",
-            "pageviews": "1313",
-            "pageviews_per_session": "4.8810",
-            "bounce_rate": "0.0483",
-            "avg_session_duration": "00:05:37",
-            "goal_1_completions": "3",
-            "goal_2_completions": "59"
+            "ga:sessions": "269",
+            "ga:pageviews": "1313",
+            "ga:pageviewsPerSession": "4.8810",
+            "ga:bounceRate": "0.0483",
+            "ga:avgSessionDuration": "00:05:37",
+            "ga:goal1Completions": "3",
+            "ga:goal2Completions": "59"
         }
     ],
     "pagination": {
