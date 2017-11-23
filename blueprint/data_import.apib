@@ -1,0 +1,62 @@
+# Group Data Import
+Endpoints to manage importing custom data.
+
+Brax allows you to import data to populate custom metrics that can be viewed in reporting and used in rules.
+
+:[](tables/DataImportRow.apib)
+
+## Post Custom Data [POST /data-import]
+
+Submit data to populate custom metrics.
+
++ Request (application/json)
+    + Headers
+
+            :[](headers/basic.apib)
+
+    + Attributes
+        + `rows` (array[DataImportRow])
+
+    + Body
+
+            :[](../json/data_import_post_request.json)
+
+
+
++ Response 200 (application/json)
+
+    + Headers
+
+            :[](headers/ratelimit.apib)
+
+    + Attributes
+        + `results` (string)
+
+    + Body
+
+            :[](../json/success.json)
+
+
+## Custom Metric Names [GET /data-import/mapping]
+
+Get the names associated with metrics 1 through 5
+
++ Request (application/json)
+    + Headers
+
+            :[](headers/basic.apib)
+
+
+
++ Response 200 (application/json)
+
+    + Headers
+
+            :[](headers/ratelimit.apib)
+
+    + Attributes
+        + `results` (DataImportMap)
+
+    + Body
+
+            :[](../json/data_import_mapping_get_response.json)

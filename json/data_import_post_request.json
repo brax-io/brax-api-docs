@@ -1,0 +1,30 @@
+{
+    "rows":[
+        {
+            "date":"2017-01-31",
+            "source":"outbrain",
+            "campaign":"My First Campaign",
+            "ad_content":"e138da",
+            "publisher":"00aa212",
+            "section":"00bc3d43",
+            "metric_1":1,
+            "metric_2":1.2,
+            "metric_3":3,
+            "metric_4":100,
+            "metric_5":null
+        },
+        {
+            "date":"2017-01-31",
+            "source":"taboola",
+            "campaign":"My Other Campaign",
+            "ad_content":null,
+            "publisher":"local-news-fm",
+            "section":null,
+            "metric_1":2,
+            "metric_2":0,
+            "metric_3":0,
+            "metric_4":1,
+            "metric_5":null
+        }
+    ]
+}

@@ -5,6 +5,7 @@
 :[Campaigns](blueprint/campaigns.apib)
 :[Reporting](blueprint/reporting.apib)
 :[Rules](blueprint/rules.apib)
+:[Data Import](blueprint/data_import.apib)
 :[Users](blueprint/users.apib)
 :[Types](blueprint/types.apib)
 :[Data Structures](blueprint/data_structures.apib)

@@ -16,6 +16,8 @@
 
 ## SourceID (string) - fields named **source_..._id** — a string representation of the source's unique identifier for the referenced object
 
+## PublisherID (string) - Outbrain's Publisher ID, Taboola's Site ID, or Revcontent's Widget ID. Equivalent to source_publisher_id.
+
 ## DateRange (enum) - date ranges are simply strings describing relative date ranges
 - `yesterday` - yesterday
 - `last_2_days` - two days ago and yesterday
@@ -151,6 +153,26 @@ Starred rule types will have an **amount** specified in the rule.
 + `created_at`: `2017-05-19T18:46:28+00:00` (DateTime) - when the job was initiated
 + `rule` (Rule) - snapshot of the rule at the time it was run
 + `details` (array[Match]) - the action items to be processed
+
+## DataImportRow
++ `date`: `2017-01-31` (Date, required) - Date
++ `source`: `outbrain` (Source, required) - Name of the source
++ `campaign`: `My First Campaign` (string, required) - Campaign name
++ `ad_content`: `e138da` (string, required, nullable) - Brax's tracking ad ID or Source's ad ID
++ `publisher`: `local-news-fm` (PublisherID, required, nullable) - Source's publisher ID
++ `section`: `00bc3d43` (string, required, nullable) - Source's section ID
++ `metric_1`: `1.01` (number, nullable) - Custom metric 1
++ `metric_2`: `2.02` (number, nullable) - Custom metric 2
++ `metric_3`: `3.03` (number, nullable) - Custom metric 3
++ `metric_4`: `4.04` (number, nullable) - Custom metric 4
++ `metric_5`: `5.05` (number, nullable) - Custom metric 5
+
+## DataImportMap
++ `metric_1`: `X Conversion` (string)
++ `metric_2`: `X Revenue` (string)
++ `metric_3`: `Quality Score` (string)
++ `metric_4`: `Metric 4` (string)
++ `metric_5`: `Metric 5` (string)
 
 ## Pagination (object)
 
