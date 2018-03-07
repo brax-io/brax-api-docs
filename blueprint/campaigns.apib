@@ -5,6 +5,9 @@ Endpoints to manage campaigns and campaign settings.
 
 :[](tables/CampaignStatus.apib)
 
+## Campaign
+
+
 ## Campaigns [/campaigns{?offset,limit,source,source_account_id,source_campaign_id}]
 
 ### List Campaigns [GET]
@@ -36,4 +39,61 @@ List all campaigns.
     + Body
 
             :[](../json/campaigns.json)
+
+### Update an Existing Campaign [PATCH /campaigns/{id}]
+To update a campaign send a PATCH request with a JSON payload for one or more of the updatable campaign attributes.
+
+All attribute values left unset in the PATCH request will remain unchanged.
+
+Only the following Campaign fields are updatable:
+
+| Field                  | Networks                      |
+|:-----------------------|-------------------------------|
+| **enabled**            | All                           |
+| **cpc**                | Outbrain, Taboola, Revcontent |
+| **budget_amount**      | All                           |
+
++ Parameters
+    + `id` (ID, required) - identifier of the campaign to be affected
+
++ Request (application/json)
+    + Headers
+
+            :[](headers/basic.apib)
+
+    + Body
+
+            {
+                    "enabled": true,
+                    "cpc": 0.12,
+                    "budget_amount": 100.00
+            }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            :[](headers/ratelimit.apib)
+
+    + Body
+
+            {
+                "timestamp": "2018-01-01 13:00:00",
+                "resource": "Campaign Update",
+                "message": "Campaign updated successfully!"
+            }
+
++ Response 400 (application/json)
+
+    + Headers
+
+            :[](headers/ratelimit.apib)
+
+    + Body
+
+            {
+                "timestamp": "2018-01-01 13:00:00",
+                "resource": "Campaign Update",
+                "message": "Campaign cpc is below the cpc limit 0.03"
+            }
 

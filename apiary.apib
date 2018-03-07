@@ -409,6 +409,9 @@ Running status for a campaign
 | `deleted`        | campaign has been deleted   |
 
 
+## Campaign
+
+
 ## Campaigns [/campaigns{?offset,limit,source,source_account_id,source_campaign_id}]
 
 ### List Campaigns [GET]
@@ -508,6 +511,68 @@ List all campaigns.
                     "count": 3,
                     "total": 3
                 }
+            }
+
+### Update an Existing Campaign [PATCH /campaigns/{id}]
+To update a campaign send a PATCH request with a JSON payload for one or more of the updatable campaign attributes.
+
+All attribute values left unset in the PATCH request will remain unchanged.
+
+Only the following Campaign fields are updatable:
+
+| Field                  | Networks                      |
+|:-----------------------|-------------------------------|
+| **enabled**            | All                           |
+| **cpc**                | Outbrain, Taboola, Revcontent |
+| **budget_amount**      | All                           |
+
++ Parameters
+    + `id` (ID, required) - identifier of the campaign to be affected
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
+    + Body
+
+            {
+                    "enabled": true,
+                    "cpc": 0.12,
+                    "budget_amount": 100.00
+            }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Body
+
+            {
+                "timestamp": "2018-01-01 13:00:00",
+                "resource": "Campaign Update",
+                "message": "Campaign updated successfully!"
+            }
+
++ Response 400 (application/json)
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Body
+
+            {
+                "timestamp": "2018-01-01 13:00:00",
+                "resource": "Campaign Update",
+                "message": "Campaign cpc is below the cpc limit 0.03"
             }
 
 # Group Reporting
@@ -1829,6 +1894,8 @@ The status endpoint returns the status details of a job for running a rule, and 
 Endpoints to manage importing custom data.
 
 Brax allows you to import data to populate custom metrics that can be viewed in reporting and used in rules.
+
+Limited to 1000 items per request.
 
 #### DataImportRow <a name='DataImportRow' />
 
