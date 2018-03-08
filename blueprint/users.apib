@@ -1,8 +1,6 @@
 # Group Users
 Endpoints to manage users and user settings.
 
-Users can be **administrator**s which enables creation of other users and adding integrations.
-
 :[](tables/User.apib)
 
 ## Users [/users{?offset,limit}]
@@ -34,3 +32,27 @@ List all users.
 
             :[](../json/users.json)
 
+## Ad Count [/users/ads/count{?start_date,end_date}]
+
+### Ad Creation Count by User [GET]
+Get the number of ads that each user created for a given date range.
+
++ Request (application/json)
+    + Headers
+
+            :[](headers/basic.apib)
+
++ Parameters
+    + `start_date`: `2018-01-01` (Date, required) - starting date of the date range
+    + `end_date`: `2018-01-31` (Date, required) - ending date of the date range
+
+
++ Response 200 (application/json)
+
+    + Headers
+
+            :[](headers/ratelimit.apib)
+
+    + Body
+
+            :[](../json/users_ads_count.json)

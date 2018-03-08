@@ -1,10 +1,10 @@
 FORMAT: 1A
 HOST: https://api.brax.io/v1
 
-# Brax Marketing API 1.0
+# Brax Marketing API v1
 ![Brax Logo](https://brax.io/wp-content/uploads/2017/01/BRAX_Logo_Native-Vector-v2.png)
 
-Welcome to the Brax Marketing API version 1.0.
+Welcome to the Brax Marketing API version 1.4.
 This API describes how developers can interact with Brax. More information about Brax can be found at [https://brax.io](https://brax.io).
 
 If you have any questions, issues, feature requests, or just want to tell us how much you enjoy using Brax, please let us know at [api@brax.io](mailto:api@brax.io).
@@ -2018,8 +2018,6 @@ Get the names associated with metrics 1 through 5
 # Group Users
 Endpoints to manage users and user settings.
 
-Users can be **administrator**s which enables creation of other users and adding integrations.
-
 #### User <a name='User' />
 Describes a Brax user
 
@@ -2099,6 +2097,56 @@ List all users.
               }
             }
 
+## Ad Count [/users/ads/count{?start_date,end_date}]
+
+### Ad Creation Count by User [GET]
+Get the number of ads that each user created for a given date range.
+
++ Request (application/json)
+    + Headers
+
+            Authorization:Basic {{basic_token}}
+            Accept:application/json
+
++ Parameters
+    + `start_date`: `2018-01-01` (Date, required) - starting date of the date range
+    + `end_date`: `2018-01-31` (Date, required) - ending date of the date range
+
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-RateLimit-Limit:60
+            X-RateLimit-Remaining:59
+            X-Request-Id:25a4f2cc-08a6-4a46-be10-d4edcb7ca66b
+
+    + Body
+
+            {
+                "results": [
+                    {
+                        "user_id": 217,
+                        "user_email": "khaled@example.com",
+                        "ad_count": 85
+                    },
+                    {
+                        "user_id": 984,
+                        "user_email": "mark@example.com",
+                        "ad_count": 250
+                    },
+                    {
+                        "user_id": 2268,
+                        "user_email": "jack@example.com",
+                        "ad_count": 262
+                    },
+                    {
+                        "user_id": 2658,
+                        "user_email": "shane@example.com",
+                        "ad_count": 98
+                    }
+                ]
+            }
 # Group Types
 
 #### ID <a name='ID' />

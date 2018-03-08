@@ -1,0 +1,24 @@
+{
+    "results": [
+        {
+            "user_id": 217,
+            "user_email": "khaled@example.com",
+            "ad_count": 85
+        },
+        {
+            "user_id": 984,
+            "user_email": "mark@example.com",
+            "ad_count": 250
+        },
+        {
+            "user_id": 2268,
+            "user_email": "jack@example.com",
+            "ad_count": 262
+        },
+        {
+            "user_id": 2658,
+            "user_email": "shane@example.com",
+            "ad_count": 98
+        }
+    ]
+}
