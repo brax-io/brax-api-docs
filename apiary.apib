@@ -1346,17 +1346,20 @@ Describes the type of rule, indicates what it affects and how
 
 Starred rule types will have an **amount** specified in the rule.
 
-| Value                   | Description                 |
-|:------------------------|-----------------------------|
-| `pause_campaign`        | Pause Campaigns             |
-| `pause_ad`              | Pause Ads                   |
-| `block_publisher`       | Block Publishers            |
-| `block_section`         | Block Sections (Outbrain)   |
-| `block_target`          | Block Targets (Revcontent)  |
-| `pause_ad_group`        | Pause Ad Groups (Yahoo)     |
-| `modify_bid_publisher`  | Update Site Bid Modifiers * |
-| `multiply_bid_target`   | Update Target Bids *        |
-| `multiply_bid_campaign` | Update Campaign Bids *      |
+| Value                   | Description                   |
+|:------------------------|-------------------------------|
+| `pause_campaign`        | Pause Campaigns               |
+| `pause_ad`              | Pause Ads                     |
+| `block_ob_publisher`    | Block Publishers (Outbrain)   |
+| `block_site`            | Block Sites (Taboola)         |
+| `block_widget`          | Block Widgets (Revcontent)    |
+| `block_section`         | Block Sections (Outbrain)     |
+| `block_target`          | Block Targets (Revcontent)    |
+| `pause_ad_group`        | Pause Ad Groups (Yahoo)       |
+| `modify_bid_publisher`  | Update Site Bid Modifiers *   |
+| `multiply_bid_target`   | Update Target Bids *          |
+| `multiply_bid_campaign` | Update Campaign Bids *        |
+| `block_publisher`       | [DEPRECATED] Block Publishers |
 
 
 ## Get Rules [/rules]
@@ -1524,8 +1527,8 @@ Or one of the <a href="#GoogleAnalyticsMetrics">GoogleAnalyticsMetrics</a> set f
                 },
                 {
                   "id": 150,
-                  "name": "block my publishers",
-                  "type": "block_publisher",
+                  "name": "block bad widgets",
+                  "type": "block_widget",
                   "amount": null,
                   "conditions": [
                     {
@@ -2250,13 +2253,16 @@ A properly formatted URI string according to RFC 3986
 Starred rule types will have an **amount** specified in the rule.
 - `pause_campaign` - Pause Campaigns
 - `pause_ad` - Pause Ads
-- `block_publisher` - Block Publishers
+- `block_ob_publisher` - Block Publishers (Outbrain)
+- `block_site` - Block Sites (Taboola)
+- `block_widget` - Block Widgets (Revcontent)
 - `block_section` - Block Sections (Outbrain)
 - `block_target` - Block Targets (Revcontent)
 - `pause_ad_group` - Pause Ad Groups (Yahoo)
 - `modify_bid_publisher` - Update Site Bid Modifiers *
 - `multiply_bid_target` - Update Target Bids *
 - `multiply_bid_campaign` - Update Campaign Bids *
+- `block_publisher` - [DEPRECATED] Block Publishers
 
 ## ReportingObject (enum) - entities that export reporting data
 - `campaign` - Campaigns

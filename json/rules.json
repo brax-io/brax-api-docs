@@ -59,8 +59,8 @@
     },
     {
       "id": 150,
-      "name": "block my publishers",
-      "type": "block_publisher",
+      "name": "block bad widgets",
+      "type": "block_widget",
       "amount": null,
       "conditions": [
         {
